@@ -1,0 +1,110 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/site.master" AutoEventWireup="true" CodeFile="site-sub.master.cs" Inherits="uc_site_sub" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <div class="page-img">
+        <asp:ContentPlaceHolder ID="page_img" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    <div class="page-wrap container">
+        <div class="page-aside">
+            <asp:ContentPlaceHolder ID="page_aside" runat="server">
+            </asp:ContentPlaceHolder>
+            <section>
+                <div class="aside-mail">
+                    <h1>đăng ký nhận bản tin</h1>
+                    <div class="mail-input">
+                        <asp:TextBox ID="TextBox3" CssClass="mail-textbox" runat="server" placeholder="Nhập email để nhận cái bản tin..."></asp:TextBox>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="page-main">
+            <asp:ContentPlaceHolder ID="page_main" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+    <div class="dat-lich">
+        <div class="container">
+            <p>Để đặt lịch hẹn vui lòng gọi đến Tổng đài Bệnh viện <span>(+84) 8 3776 0648</span> hoặc 
+                <a href="#">Đặt lịch hẹn trực tuyến</a>
+            </p>
+        </div>
+    </div>
+	
+    <div class="datlich-kham popup scroll-popup">
+        <div class="popup-content">
+            <div class="form-popup">
+                <h1>Đặt lịch khám</h1>
+                <div class="wrap-datlich">
+                    <div class="left">
+                        <h3>Bạn muốn đặt lịch khám cho</h3>
+                        <asp:RadioButtonList ID="RadioButtonList1" runat="server">
+                            <asp:ListItem>Bản th&#226;n</asp:ListItem>
+                            <asp:ListItem>Người th&#226;n</asp:ListItem>
+                        </asp:RadioButtonList>
+                        <h3>Thông tin bệnh nhân</h3>
+                        <div class="form-group">
+                            <asp:TextBox ID="TextBox1" runat="server" placeholder="Họ tên(*)"></asp:TextBox>
+                        </div>
+                        <div class="form-group ngaysinh">
+                            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                            <select>
+                                <option value="value">Nam</option>
+                                <option value="value">Nữ</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <asp:TextBox ID="TextBox4" runat="server" placeholder="Điện thoại(*)"></asp:TextBox>
+                        </div>
+                        <div class="form-group">
+                            <asp:TextBox ID="TextBox5" runat="server" placeholder="Email(*)"></asp:TextBox>
+                        </div>
+                        <p>(*) là thông tin bắt buộc</p>
+                    </div>
+                    <div class="right">
+                        <h3>Thông tin đặt hẹn</h3>
+                        <div class="form-group">
+                            <select>
+                                <option value="value">Khoa tiêu hóa</option>
+                                <option value="value">Khoa chấn thương chỉnh hình</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select>
+                                <option value="value">BS Nguyễn Trí Đoàn</option>
+                                <option value="value">BS Lê Văn B</option>
+                            </select>
+                        </div>
+                        <span><a href="#">Danh sách bác sĩ</a></span>
+                        <span class="check">
+                            <asp:CheckBox ID="CheckBox1" runat="server" />
+                            Gợi ý bác sĩ giúp tôi</span>
+                        <div class="form-group">
+                            <asp:TextBox ID="TextBox6" runat="server" placeholder="Mô tả triệu chứng" TextMode="MultiLine"></asp:TextBox>
+                        </div>
+                        <p>Thời gian khám bệnh(*)</p>
+                        <div class="form-group ngaysinh">
+                            <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
+                            <select>
+                                <option value="value">Nam</option>
+                                <option value="value">Nữ</option>
+                            </select>
+                        </div>
+                        <p>Mã xác nhận(*)</p>
+                        <div class="form-group">
+                        <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox></div>
+                    </div>
+                    <div class="clr"></div>
+                    <div class="btn-gui">
+                    <asp:Button ID="Button1" runat="server" Text="Đặt lịch khám" /></div>
+                </div>
+            </div>
+            <a href="javascript:void(0);" class="close-modal"></a>
+        </div>
+    </div>
+</asp:Content>
+

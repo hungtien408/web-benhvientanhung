@@ -1,0 +1,224 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/site.master" AutoEventWireup="true" CodeFile="site-sub.master.cs" Inherits="uc_site_sub" %>
+
+<%@ Register TagPrefix="asp" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit" %>
+<%@ Register TagPrefix="asp" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <div class="page-img">
+        <asp:ContentPlaceHolder ID="page_img" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    <div class="page-wrap container">
+        <div class="page-aside">
+            <asp:ContentPlaceHolder ID="page_aside" runat="server">
+            </asp:ContentPlaceHolder>
+            <section>
+                <div class="aside-mail">
+                    <h1>đăng ký nhận bản tin</h1>
+                    <div class="mail-input">
+                        <asp:TextBox ID="txtEmailNewLetter" CssClass="mail-textbox" runat="server"></asp:TextBox>
+                        <asp:TextBoxWatermarkExtender ID="txtEmailNewLetter_WatermarkExtender" runat="server"
+                            Enabled="True" WatermarkText="Nhập email để nhận cái bản tin..." TargetControlID="txtEmailNewLetter">
+                        </asp:TextBoxWatermarkExtender>
+                        <asp:RegularExpressionValidator CssClass="lb-error" ID="RegularExpressionValidator1"
+                            runat="server" ValidationGroup="EmailNewLetter" ControlToValidate="txtEmailNewLetter"
+                            ErrorMessage="Sai định dạng email!" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                            Display="Dynamic" ForeColor="Red"></asp:RegularExpressionValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtEmailNewLetter"
+                            ValidationGroup="EmailNewLetter" runat="server" ErrorMessage="Chưa nhập Email!"
+                            Display="Dynamic"></asp:RequiredFieldValidator>
+                        <div class="email-button">
+                            <asp:Button ID="btnNewLetter" CssClass="email-btn corner" runat="server" Text="Gửi" ValidationGroup="EmailNewLetter"
+                                OnClick="btnNewLetter_Click" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="page-main">
+            <asp:ContentPlaceHolder ID="page_main" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+    <div class="dat-lich">
+        <div class="container">
+            <p>
+                Để đặt lịch hẹn vui lòng gọi đến Tổng đài Bệnh viện <span>(+84) 8 3776 0648</span> hoặc 
+                <a href="#">Đặt lịch hẹn trực tuyến</a>
+            </p>
+        </div>
+    </div>
+    <div class="datlich-kham popup scroll-popup">
+        <div class="popup-content">
+            <div class="form-popup">
+                <h1>Đặt lịch khám</h1>
+                <div class="wrap-datlich">
+                    <div class="left">
+                        <h3>Bạn muốn đặt lịch khám cho</h3>
+                        <asp:RadioButtonList ID="rdbDatHen" CssClass="sex" runat="server" RepeatDirection="Vertical">
+                            <asp:ListItem Value="0" Selected="True">Bản thân</asp:ListItem>
+                            <asp:ListItem Value="1">Người thân</asp:ListItem>
+                        </asp:RadioButtonList>
+                        <h3>Thông tin bệnh nhân</h3>
+                        <div class="form-group">
+                            <asp:TextBox ID="txtFullName" CssClass="contact-textbox" runat="server"></asp:TextBox>
+                            <asp:TextBoxWatermarkExtender ID="txtFullName_WatermarkExtender" runat="server"
+                                Enabled="True" WatermarkText="Họ tên(*)" TargetControlID="txtFullName">
+                            </asp:TextBoxWatermarkExtender>
+                            <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator2" runat="server"
+                                Display="Dynamic" ValidationGroup="DatLichKham" ControlToValidate="txtFullName"
+                                ErrorMessage="Thông tin bắt buộc!" ForeColor="Red"></asp:RequiredFieldValidator>
+                        </div>
+                        <div class="form-group ngaysinh">
+                            <asp:RadDatePicker ShowPopupOnFocus="True" ID="dpNgaySinh" runat="server" Culture="vi-VN"
+                                Calendar-CultureInfo="vi-VN" Width="45%" Height="32px">
+                                <Calendar ID="Calendar1" runat="server">
+                                    <SpecialDays>
+                                        <asp:RadCalendarDay Repeatable="Today">
+                                            <ItemStyle CssClass="rcToday" />
+                                        </asp:RadCalendarDay>
+                                    </SpecialDays>
+                                </Calendar>
+                                <DateInput ID="DateInput1" DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy"
+                                    runat="server" Height="32px">
+                                </DateInput>
+                                <DatePopupButton HoverImageUrl="" ImageUrl="" />
+                            </asp:RadDatePicker>
+                            <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator3" runat="server"
+                                Display="Dynamic" ValidationGroup="DatLichKham" ControlToValidate="dpNgaySinh"
+                                ErrorMessage="Thông tin bắt buộc!" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:DropDownList ID="dropListGender" runat="server">
+                                <asp:ListItem Value="0">Nam</asp:ListItem>
+                                <asp:ListItem Value="1">Nữ</asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+                        <div class="form-group">
+                            <asp:TextBox ID="txtPhone" CssClass="contact-textbox" runat="server"></asp:TextBox>
+                            <asp:TextBoxWatermarkExtender ID="txtPhone_WatermarkExtender" runat="server"
+                                Enabled="True" WatermarkText="Điện thoại(*)" TargetControlID="txtPhone">
+                            </asp:TextBoxWatermarkExtender>
+                            <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator4" runat="server"
+                                Display="Dynamic" ValidationGroup="DatLichKham" ControlToValidate="txtPhone"
+                                ErrorMessage="Thông tin bắt buộc!" ForeColor="Red"></asp:RequiredFieldValidator>
+                        </div>
+                        <div class="form-group">
+                            <asp:TextBox ID="txtEmail" CssClass="contact-textbox" runat="server"></asp:TextBox>
+                            <asp:TextBoxWatermarkExtender ID="txtEmail_WatermarkExtender" runat="server"
+                                Enabled="True" WatermarkText="Email(*)" TargetControlID="txtEmail">
+                            </asp:TextBoxWatermarkExtender>
+                            <asp:RegularExpressionValidator CssClass="lb-error" ID="RegularExpressionValidator2"
+                                runat="server" ValidationGroup="DatLichKham" ControlToValidate="txtEmail"
+                                ErrorMessage="Sai định dạng email!" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                                Display="Dynamic" ForeColor="Red"></asp:RegularExpressionValidator>
+                            <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator5" runat="server"
+                                Display="Dynamic" ValidationGroup="DatLichKham" ControlToValidate="txtEmail"
+                                ErrorMessage="Thông tin bắt buộc!" ForeColor="Red"></asp:RequiredFieldValidator>
+                        </div>
+                        <p>(*) là thông tin bắt buộc</p>
+                    </div>
+                    <div class="right">
+                        <h3>Thông tin đặt hẹn</h3>
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>
+                                <div class="form-group">
+                                    <asp:DropDownList ID="dropListChuyenKhoa" runat="server" DataSourceID="odsPhongBanDrop" DataTextField="ProjectCategoryName" DataValueField="ProjectCategoryID" AutoPostBack="true"></asp:DropDownList>
+                                    <asp:ObjectDataSource ID="odsPhongBanDrop" runat="server" SelectMethod="ProjectCategorySelectAll" TypeName="TLLib.ProjectCategory">
+                                        <SelectParameters>
+                                            <asp:Parameter DefaultValue="17" Name="parentID" Type="Int32" />
+                                            <asp:Parameter DefaultValue="1" Name="increaseLevelCount" Type="Int32" />
+                                            <asp:Parameter Name="IsShowOnMenu" Type="String" />
+                                            <asp:Parameter Name="IsShowOnHomePage" Type="String" />
+                                        </SelectParameters>
+                                    </asp:ObjectDataSource>
+                                </div>
+                                <div class="form-group">
+                                    <asp:DropDownList ID="dropListBacSi" runat="server" DataSourceID="odsBacSiDrop" DataTextField="ProjectTitle" DataValueField="ProjectID" AutoPostBack="true"></asp:DropDownList>
+                                    <asp:ObjectDataSource ID="odsBacSiDrop" runat="server" SelectMethod="ProjectSelectAll" TypeName="TLLib.Project">
+                                        <SelectParameters>
+                                            <asp:Parameter Name="StartRowIndex" Type="String" />
+                                            <asp:Parameter Name="EndRowIndex" Type="String" />
+                                            <asp:Parameter Name="Keyword" Type="String" />
+                                            <asp:Parameter Name="ProjectTitle" Type="String" />
+                                            <asp:Parameter Name="Description" Type="String" />
+                                            <asp:ControlParameter ControlID="dropListChuyenKhoa" Name="ProjectCategoryID" PropertyName="SelectedValue" Type="String" />
+                                            <asp:Parameter Name="Tag" Type="String" />
+                                            <asp:Parameter Name="IsHot" Type="String" />
+                                            <asp:Parameter Name="IsNew" Type="String" />
+                                            <asp:Parameter Name="IsShowOnHomePage" Type="String" />
+                                            <asp:Parameter Name="FromDate" Type="String" />
+                                            <asp:Parameter Name="ToDate" Type="String" />
+                                            <asp:Parameter DefaultValue="True" Name="IsAvailable" Type="String" />
+                                            <asp:Parameter Name="Priority" Type="String" />
+                                            <asp:Parameter DefaultValue="True" Name="SortByPriority" Type="String" />
+                                        </SelectParameters>
+                                    </asp:ObjectDataSource>
+                                </div>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                        <span>Danh sách bác sĩ</span>
+                        <span class="check">
+                            <asp:CheckBox ID="chkGoiYBacSi" runat="server" Text="Gợi ý bác sĩ giúp tôi" /></span>
+                        <div class="form-group">
+                            <asp:TextBox ID="txtMoTa" CssClass="contact-area" runat="server" TextMode="MultiLine"></asp:TextBox>
+                            <asp:TextBoxWatermarkExtender ID="txtMoTa_WatermarkExtender" runat="server"
+                                Enabled="True" WatermarkText="Mô tả triệu chứng" TargetControlID="txtMoTa">
+                            </asp:TextBoxWatermarkExtender>
+                        </div>
+                        <p>Thời gian khám bệnh(*)</p>
+                        <div class="form-group ngaysinh">
+                            <asp:RadDatePicker ShowPopupOnFocus="True" ID="dpNgayKham" runat="server" Culture="vi-VN"
+                                Calendar-CultureInfo="vi-VN" Width="60%" Height="32px" CssClass="datekhambenh">
+                                <Calendar ID="Calendar2" runat="server">
+                                    <SpecialDays>
+                                        <asp:RadCalendarDay Repeatable="Today">
+                                            <ItemStyle CssClass="rcToday" />
+                                        </asp:RadCalendarDay>
+                                    </SpecialDays>
+                                </Calendar>
+                                <DateInput ID="DateInput2" DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy"
+                                    runat="server" Height="32px">
+                                </DateInput>
+                                <DatePopupButton HoverImageUrl="" ImageUrl="" />
+                            </asp:RadDatePicker>
+                            <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator6" runat="server"
+                                Display="Dynamic" ValidationGroup="DatLichKham" ControlToValidate="dpNgayKham"
+                                ErrorMessage="Thông tin bắt buộc!" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:RadTimePicker ID="dpGioKham" runat="server" Width="40%" Height="32px" ShowPopupOnFocus="true"
+                                TimeView-StartTime="07:00:00" TimeView-Interval="00:30:00" TimeView-EndTime="18:00:01" Culture="en-US">
+                            </asp:RadTimePicker>
+                            <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator7" runat="server"
+                                Display="Dynamic" ValidationGroup="DatLichKham" ControlToValidate="dpGioKham"
+                                ErrorMessage="Thông tin bắt buộc!" ForeColor="Red"></asp:RequiredFieldValidator>
+                        </div>
+                        <p>Mã xác nhận(*)</p>
+                        <div class="form-group">
+                            <div class="img-code">
+                                <asp:RadCaptcha ID="RadCaptcha1" ValidatedTextBoxID="txtVerifyCode" ValidationGroup="DatLichKham"
+                                    runat="server" Display="Dynamic"
+                                    ErrorMessage="Mã xác nhận: không chính xác." CaptchaLinkButtonText="Refesh"
+                                    CssClass="capcha" EnableRefreshImage="True">
+                                    <CaptchaImage RenderImageOnly="True" Width="115" Height="31" BackgroundNoise="High" BackgroundColor="White" TextColor="Black" FontFamily="Tohoma" TextLength="5" ImageCssClass="code-img" />
+                                </asp:RadCaptcha>
+                            </div>
+                            <div class="contact-input">
+                                <asp:TextBox ID="txtVerifyCode" CssClass="contact-textbox" runat="server"></asp:TextBox>
+                                <asp:TextBoxWatermarkExtender ID="txtVerifyCode_WatermarkExtender" runat="server"
+                                    Enabled="True" WatermarkText="Nhập mã xác nhận" TargetControlID="txtVerifyCode">
+                                </asp:TextBoxWatermarkExtender>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clr"></div>
+                    <div class="btn-gui">
+                        <asp:Button ID="btnDatLich" runat="server" Text="Đặt lịch khám" OnClick="btnDatLich_Click" ValidationGroup="DatLichKham" />
+                    </div>
+                </div>
+            </div>
+            <a href="javascript:void(0);" class="close-modal"></a>
+        </div>
+    </div>
+</asp:Content>
+

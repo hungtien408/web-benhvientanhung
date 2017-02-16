@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'UTM God's WordBold';
+  src: url('UTM God's WordBold.eot');
+  src: url('UTM God's WordBold.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'UTMGod'sWordBold';
+  src: url('UTMGod'sWordBold.woff') format('woff'),
+       url('UTMGod'sWordBold.ttf') format('truetype'),
+       url('UTMGod'sWordBold.svg#UTMGod'sWordBold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
