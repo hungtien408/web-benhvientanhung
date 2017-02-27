@@ -33,18 +33,26 @@ public partial class site : System.Web.UI.MasterPage
             runScript.InnerHtml += startScript + "changeSubActiveMenu('" + Path.GetFileName(page) + endScript;
         }
     }
+    protected string progressTitle(object input)
+    {
+        return TLLib.Common.ConvertTitle(input.ToString());
+    }
     protected void btnVN_Click(object sender, ImageClickEventArgs e)
     {
-        string path = Path.GetFileName(Request.Url.AbsolutePath);
+        string path = Page.Request.Url.AbsolutePath;
         if (path.ToLower() == "default.aspx")
         {
             path = "";
+        }
+        if (path.Contains("en"))
+        {
+            path = path.Replace("/en/", "");
         }
         Response.Redirect("~/" + path);
     }
     protected void btnEN_Click(object sender, ImageClickEventArgs e)
     {
-        string path = Path.GetFileName(Request.Url.AbsolutePath);
+        string path = Page.Request.Url.AbsolutePath;
         if (path.ToLower() == "default.aspx")
         {
             path = "";

@@ -309,7 +309,7 @@ section.lichhen > .container {
 .lich-left .form-group {
     margin-bottom:10px;
 }
-.lich-left input[type="text"] {
+.lich-left input[type="text"], .lich-left select {
     width:100%;
     height:30px;
     padding:0 10px;
@@ -378,7 +378,8 @@ section.lichhen > .container {
     width:352px;
     height:328px;
     right:100%;
-    top:75%;
+    /*top:75%;*/
+    top:115%;
     transform:translateY(-50%);
     -webkit-transform:translateY(-50%);
     -moz-transform:translateY(-50%);
@@ -423,6 +424,7 @@ section.lichhen > .container {
     position:relative;
     z-index:3;
     bottom:2px;
+    background: #fff;
 }
 .doctors-team.owl-carousel .owl-item .item .wrap-item {
     position:absolute;
@@ -1782,17 +1784,21 @@ a.close-modal {
 #footer .pull-left ul li.web {
     background:url(../images/web.png) no-repeat left center;
 }
-#footer .pull-left p {
+#footer .pull-left p, #footer .pull-right p {
     margin-top:15px;
 }
-#footer .pull-left p,#footer .pull-left p a {
+#footer .pull-right p{
+    text-align:right;
+}
+#footer .pull-left p, #footer .pull-left p a, #footer .pull-right p, #footer .pull-right p a {
     color:#fff;
 }
-#footer .pull-left p a:hover {
+#footer .pull-left p a:hover, #footer .pull-right p a:hover {
     text-decoration:underline;
 }
 #footer .follow-us {
     text-align:right;
+    margin: 20px 0;
 }
 #footer .follow-us span{
     color:#fff;
@@ -2897,6 +2903,27 @@ form.gsc-search-box {
     background:#00a7ee;
 }
 
+.csvc-cate .item{
+    width:calc(33.333% - 4px);
+    display:inline-block;
+    vertical-align:top;
+    margin-bottom:15px;
+    padding:0 10px;
+}
+.csvc-cate .item .img img{
+    width:100%;
+}
+.csvc-cate .item .content a {
+    padding:5px 0;
+    color:#363636;
+    font-size:16px;
+    font-weight:bold;
+    display:inline-block;
+}
+.csvc-cate .item .content a:hover {
+    color:#00a7ee;
+} 
+
 @media screen and (max-width:1230px) {
 
 }
@@ -3092,6 +3119,9 @@ form.gsc-search-box {
     .lien-he-wrap .right {
         width:100%;
     }
+    #footer .pull-right p, #footer .follow-us {
+        text-align: left;
+    }
 }
 
 @media screen and (max-width:970px) {
@@ -3150,6 +3180,9 @@ form.gsc-search-box {
     .tin-accodion {
         width: 1024px;
     }
+    csvc-cate .item{
+		width: calc(50% - 4px);
+	}
 }
 
 @media screen and (max-width:750px) {
@@ -3233,6 +3266,9 @@ form.gsc-search-box {
     .hotline-mobile p {
         font-size:13px;
     }
+    .csvc-cate .item{
+		width: 100%;
+	}
 }
 
 @media screen and (max-width:420px) {
@@ -3262,4 +3298,34 @@ form.gsc-search-box {
 
 @media screen and (max-width:360px) {
 
+}
+
+
+.wrap-camnhan {
+    margin-top:30px;
+}
+.wrap-camnhan input[type="text"] {
+    width:100%;
+    height:30px;
+    border: 1px solid #cdd9e1;
+    padding: 0 10px;
+}
+.wrap-camnhan textarea{
+    width:100%;
+    height:100px;
+    border: 1px solid #cdd9e1;
+    padding: 0 10px;
+}
+.wrap-camnhan .btn-gui {
+    margin-top: 20px;
+    text-align: center;
+}
+.wrap-camnhan input[type="submit"] {
+    background: #00a7ee none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 20px;
 }

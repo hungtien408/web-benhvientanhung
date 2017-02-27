@@ -9,7 +9,9 @@ public partial class uc_site_sub : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        dpNgaySinh.DateInput.EmptyMessage = "Ngày sinh (*)";
+        dpNgayKham.DateInput.EmptyMessage = "Ngày đặt hẹn (*)";
+        dpGioKham.DateInput.EmptyMessage = "Giờ hẹn (*)";
     }
     protected void btnNewLetter_Click(object sender, EventArgs e)
     {
@@ -51,13 +53,80 @@ public partial class uc_site_sub : System.Web.UI.MasterPage
         {
             if (RadCaptcha1.IsValid)
             {
-                //send email         
-                sendEmail();
-                ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "runtime", " $(document).ready(function () {alert('Cám ơn bạn đã đặt lịch khám bệnh. Thông báo của bạn đã được gửi đi. Chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất!')});", true);
-                txtFullName.Text = "";
-                txtPhone.Text = "";
-                txtEmail.Text = "";
-                txtMoTa.Text = "";
+                var oDatLichKham = new TLLib.DatLichKham();
+                var strNgayKham = dpNgayKham.SelectedDate.HasValue ? dpNgayKham.SelectedDate.Value.ToShortDateString() : "";
+                var strGioKham = dpGioKham.SelectedDate.HasValue ? dpGioKham.SelectedDate.Value.ToShortTimeString() : "";
+                string strThoiGianKham = string.IsNullOrEmpty(strNgayKham) ? "" : strNgayKham + " " + strGioKham;
+                string strNgaySinh = dpNgaySinh.SelectedDate.HasValue ? dpNgaySinh.SelectedDate.Value.ToShortDateString() : "";
+
+                var dataDatHen = oDatLichKham.DatLichKhamSelectAll("", "", "", dropListChuyenKhoa.SelectedValue, dropListBacSi.SelectedValue, strThoiGianKham, "", "", "", "").DefaultView;
+                DateTime dateNgayKham1 = Convert.ToDateTime(strThoiGianKham);
+                DateTime dateNgayKham2 = Convert.ToDateTime(dataDatHen[0]["NgayKham"]);
+                if (dataDatHen.Count > 0)
+                {
+                    if (dateNgayKham1 == dateNgayKham2)
+                    {
+                        ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "runtime", " $(document).ready(function () {alert('Ngày và giờ khám của bác sĩ đã có hẹn, vui lòng đặt hẹn ngày và giờ khác!')});", true);
+                        ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "runtime", " $(document).ready(function () {$('.dat-lich a').trigger('click');});", true);
+                    }
+                    else
+                    {
+                        int success = oDatLichKham.DatLichKhamInsert(
+                        rdbDatHen.SelectedValue,
+                        txtFullName.Text.Trim().ToString(),
+                        strNgaySinh,
+                        dropListGender.SelectedValue,
+                        txtPhone.Text.Trim().ToString(),
+                        txtEmail.Text.Trim().ToString(),
+                        dropListChuyenKhoa.SelectedValue,
+                        dropListBacSi.SelectedValue,
+                        txtMoTa.Text.Trim().ToString(),
+                        strThoiGianKham,
+                        "",
+                        "True",
+                        ""
+                        );
+                        if (success > 0)
+                        {
+                            //send email         
+                            sendEmail();
+                            ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "runtime", " $(document).ready(function () {alert('Cám ơn bạn đã đặt lịch khám bệnh. Thông báo của bạn đã được gửi đi. Chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất!')});", true);
+                            txtFullName.Text = "";
+                            txtPhone.Text = "";
+                            txtEmail.Text = "";
+                            txtMoTa.Text = "";
+                        }
+                    }
+                }
+                else
+                {
+                    int success = oDatLichKham.DatLichKhamInsert(
+                        rdbDatHen.SelectedValue,
+                        txtFullName.Text.Trim().ToString(),
+                        strNgaySinh,
+                        dropListGender.SelectedValue,
+                        txtPhone.Text.Trim().ToString(),
+                        txtEmail.Text.Trim().ToString(),
+                        dropListChuyenKhoa.SelectedValue,
+                        dropListBacSi.SelectedValue,
+                        txtMoTa.Text.Trim().ToString(),
+                        strThoiGianKham,
+                        "",
+                        "True",
+                        ""
+                        );
+                    if (success > 0)
+                    {
+                        //send email         
+                        sendEmail();
+                        ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "runtime", " $(document).ready(function () {alert('Cám ơn bạn đã đặt lịch khám bệnh. Thông báo của bạn đã được gửi đi. Chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất!')});", true);
+                        txtFullName.Text = "";
+                        txtPhone.Text = "";
+                        txtEmail.Text = "";
+                        txtMoTa.Text = "";
+                    }
+                }
+
             }
         }
         else

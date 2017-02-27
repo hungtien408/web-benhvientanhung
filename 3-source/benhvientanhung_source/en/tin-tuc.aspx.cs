@@ -34,8 +34,8 @@ public partial class tintuc : System.Web.UI.Page
             else
             {
                 strTitle = strMetaTitle = "News";
-                strDescription = "";
-                strMetaDescription = "";
+                strDescription = "News";
+                strMetaDescription = "News";
             }
             Page.Title = !string.IsNullOrEmpty(strMetaTitle) ? strMetaTitle : strTitle;
             var meta = new HtmlMeta()

@@ -25,6 +25,9 @@ public partial class tin_tuc_chi_tiet : System.Web.UI.Page
                 strMetaTitle = Server.HtmlDecode(row["MetaTittleEn"].ToString());
                 strMetaDescription = Server.HtmlDecode(row["MetaDescriptionEn"].ToString());
                 //hdnSanPhamDetails.Value = progressTitle(dv2[0]["ProductCategoryName"].ToString()) + "-pci-" + dv2[0]["ProductCategoryID"].ToString() + ".aspx";
+                hdnTitle.Value = dv[0]["ProjectTitle"].ToString();
+                hdnDescription.Value = dv[0]["MetaDescription"].ToString();
+                hdnImageName.Value = dv[0]["ImageName"].ToString();
             }
             else
             {

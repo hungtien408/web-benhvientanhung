@@ -3,7 +3,7 @@
 <%@ Register TagPrefix="asp" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
 <section class="cauhoi-tt">
     <a href="#">
-        <img src="../assets/images/cauhoi.jpg" alt="" />
+        <img src="~/assets/images/cauhoi.jpg" alt="" runat="server" />
     </a>
 </section>
 <div class="datcauhoi popup scroll-popup">

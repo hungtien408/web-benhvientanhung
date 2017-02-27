@@ -184,11 +184,18 @@
                                 
                             </Items>
                         </asp:RadMenuItem>
-                        <asp:RadMenuItem runat="server" Text="Danh Mục Kỹ Thuật" PostBack="False" Font-Bold="True"
+                        <%--<asp:RadMenuItem runat="server" Text="Danh Mục Kỹ Thuật" PostBack="False" Font-Bold="True"
                             NavigateUrl="~/ad/bilingual/danhmuckythuat.aspx">
-                        </asp:RadMenuItem>
-                        <asp:RadMenuItem runat="server" Text="Bảng Giá Dịch Vụ" PostBack="False" Font-Bold="True"
-                            NavigateUrl="~/ad/bilingual/banggiadichvu.aspx">
+                        </asp:RadMenuItem>--%>
+                        <asp:RadMenuItem runat="server" Text="Bảng Giá" PostBack="False" Font-Bold="True">
+                            <Items>
+                                <asp:RadMenuItem runat="server" Text="Bảng Giá Dịch Vụ" NavigateUrl="~/ad/bilingual/banggiadichvu.aspx">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" IsSeparator="True">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" Text="Bảo Hiểm Y Tế" NavigateUrl="~/ad/bilingual/baohiemyte.aspx">
+                                </asp:RadMenuItem>
+                            </Items>
                         </asp:RadMenuItem>
                         <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Text="Tin Tức" Font-Bold="True">
                             <Items>
@@ -216,8 +223,8 @@
                         <asp:RadMenuItem runat="server" Text="Hỏi Bác Sĩ" PostBack="False" Font-Bold="True"
                             NavigateUrl="~/ad/bilingual/hoibacsi.aspx">
                         </asp:RadMenuItem>
-                        <asp:RadMenuItem runat="server" Text="Thiết Bị Máy Móc" PostBack="False" Font-Bold="True"
-                            NavigateUrl="~/ad/bilingual/thietbimaymoc.aspx">
+                        <asp:RadMenuItem runat="server" Text="Cơ Sở Vật Chất" PostBack="False" Font-Bold="True"
+                            NavigateUrl="~/ad/bilingual/cosovatchat.aspx">
                         </asp:RadMenuItem>
                         <%--<asp:RadMenuItem runat="server" Text="Liên Hệ" PostBack="False" Font-Bold="True"
                             NavigateUrl="~/ad/bilingual/contactus.aspx">
@@ -244,11 +251,15 @@
                                 </asp:RadMenuItem>
                                 <asp:RadMenuItem runat="server" IsSeparator="True">
                                 </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" Text="Banner Chuyên Khoa" NavigateUrl="~/ad/bilingual/bannerchuyenkhoa.aspx">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" IsSeparator="True">
+                                </asp:RadMenuItem>
                                 <asp:RadMenuItem runat="server" Text="Banner Dịch Vụ" NavigateUrl="~/ad/bilingual/bannerservice.aspx">
                                 </asp:RadMenuItem>
                                 <asp:RadMenuItem runat="server" IsSeparator="True">
                                 </asp:RadMenuItem>
-                                <asp:RadMenuItem runat="server" Text="Banner Danh Mục Kỹ Thuật" NavigateUrl="~/ad/bilingual/bannertechnology.aspx">
+                                <asp:RadMenuItem runat="server" Text="Banner Bảng Giá" NavigateUrl="~/ad/bilingual/bannertechnology.aspx">
                                 </asp:RadMenuItem>
                                 <asp:RadMenuItem runat="server" IsSeparator="True">
                                 </asp:RadMenuItem>

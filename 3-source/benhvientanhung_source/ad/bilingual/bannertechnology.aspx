@@ -94,7 +94,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cphBody" runat="Server">
     <h3 class="mainTitle">
         <img alt="" src="../assets/images/advertisement.png" class="vam" />
-        Banner Danh Mục Kỹ Thuật</h3>
+        Banner Bảng Giá</h3>
     <br />
     <asp:RadAjaxPanel ID="RadAjaxPanel1" runat="server" ClientEvents-OnRequestStart="conditionalPostback">
         <asp:Panel ID="pnlSearch" DefaultButton="btnSearch" runat="server" Visible="False">
@@ -300,7 +300,7 @@
                             <%# string.Format("{0:dd/MM/yyyy}", Eval("ToDate"))%>
                         </ItemTemplate>
                     </asp:GridTemplateColumn>
-                    <asp:GridTemplateColumn HeaderText="Vị trí" DataField="AdsCategoryName" SortExpression="AdsCategoryName">
+                    <asp:GridTemplateColumn HeaderText="Vị trí" DataField="AdsCategoryName" SortExpression="AdsCategoryName" Visible="false">
                         <ItemTemplate>
                             <%# Eval("AdsCategoryName")%>
                         </ItemTemplate>
@@ -368,7 +368,7 @@
                     <FormTemplate>
                         <asp:Panel ID="Panel1" runat="server" DefaultButton="lnkUpdate">
                             <h3 class="searchTitle">
-                                Thông Tin Banner Danh Mục Kỹ Thuật</h3>
+                                Thông Tin Banner Bảng Giá</h3>
                             <table class="search">
                                 <tr>
                                     <td class="left" valign="top">

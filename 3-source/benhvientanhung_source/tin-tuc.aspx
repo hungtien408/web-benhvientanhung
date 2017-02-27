@@ -57,9 +57,9 @@
                                             visible='<%# string.IsNullOrEmpty( Eval("ImageName").ToString()) ? false : true %>'
                                             runat="server" />
                                         <div class="content">
-                                            <a href='<%# progressTitle(Eval("ProjectTitle")) + "-tt-" + Eval("ProjectID") + ".aspx" %>'><%# Eval("ProjectTitle") %></a>
+                                            <a href='<%# "/tintuc/" + progressTitle(Eval("ProjectTitle")) + "-" + Eval("ProjectID") + ".aspx" %>'><%# Eval("ProjectTitle") %></a>
                                             <p><%# TLLib.Common.SplitSummary(Eval("Description").ToString(), 80) %></p>
-                                            <div class="read-more"><a href='<%# progressTitle(Eval("ProjectTitle")) + "-tt-" + Eval("ProjectID") + ".aspx" %>'>Xem thêm</a></div>
+                                            <div class="read-more"><a href='<%# "/tintuc/" + progressTitle(Eval("ProjectTitle")) + "-" + Eval("ProjectID") + ".aspx" %>'>Xem thêm</a></div>
                                         </div>
                                     </div>
                                 </ItemTemplate>

@@ -300,7 +300,7 @@
                             <%# string.Format("{0:dd/MM/yyyy}", Eval("ToDate"))%>
                         </ItemTemplate>
                     </asp:GridTemplateColumn>
-                    <asp:GridTemplateColumn HeaderText="Vị trí" DataField="AdsCategoryName" SortExpression="AdsCategoryName">
+                    <asp:GridTemplateColumn HeaderText="Vị trí" DataField="AdsCategoryName" SortExpression="AdsCategoryName" Visible="false">
                         <ItemTemplate>
                             <%# Eval("AdsCategoryName")%>
                         </ItemTemplate>

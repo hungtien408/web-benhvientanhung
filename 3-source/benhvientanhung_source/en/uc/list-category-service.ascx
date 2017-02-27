@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="list-category-service.ascx.cs" Inherits="uc_list_category_about" %>
 <section class="aside-list">
     <div class="icon-list">
-        <img src="../assets/images/logo-list.png" alt="">
+        <img src="/assets/images/logo-list.png" alt="">
     </div>
     <div class="list-ul">
         <asp:ListView ID="lstGioiThieu" runat="server" DataSourceID="odsGioiThieu"

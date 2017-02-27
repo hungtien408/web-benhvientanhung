@@ -1,12 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/site-sub.master" AutoEventWireup="true" CodeFile="dich-vu-chi-tiet.aspx.cs" Inherits="dich_vu_chi_tiet" %>
 <%@ Register Src="~/uc/cam-nhan-benh-nhan.ascx" TagPrefix="uc1" TagName="camnhanbenhnhan" %>
 <%@ Register Src="~/uc/cap-cuu.ascx" TagPrefix="uc1" TagName="capcuu" %>
-<%@ Register Src="~/uc/banner-service.ascx" TagPrefix="uc4" TagName="bannerservice" %>
+<%@ Register Src="~/uc/banner-chuyenkhoa.ascx" TagPrefix="uc4" TagName="bannerchuyenkhoa" %>
 <%@ Register Src="~/uc/list-category-service.ascx" TagPrefix="uc5" TagName="listcategoryservice" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="page_img" Runat="Server">
-    <uc4:bannerservice ID="bannerservice1" runat="server" />
+    <uc4:bannerchuyenkhoa ID="bannerchuyenkhoa1" runat="server" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="page_aside" Runat="Server">
     <uc5:listcategoryservice runat="server" ID="listcategoryservice1" />

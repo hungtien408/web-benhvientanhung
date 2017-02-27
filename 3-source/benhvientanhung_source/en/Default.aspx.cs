@@ -15,6 +15,10 @@ public partial class _Default : System.Web.UI.Page
             Page.Title = "Bệnh viện Tân Hưng";
             var meta = new HtmlMeta() { Name = "description", Content = "Bệnh viện Tân Hưng" };
             Header.Controls.Add(meta);
+
+            dpNgaySinh.DateInput.EmptyMessage = "Ngày sinh (*)";
+            dpNgayKham.DateInput.EmptyMessage = "Ngày đặt hẹn (*)";
+            dpGioKham.DateInput.EmptyMessage = "Giờ hẹn (*)";
         }
     }
     private void sendEmail()
@@ -29,6 +33,8 @@ public partial class _Default : System.Web.UI.Page
         msg += "<b>Ngày sinh: </b>" + strNgaySinh + "<br /><br />";
         msg += "<b>Giới tính: </b>" + dropListGender.SelectedItem.Text + "<br /><br />";
         msg += "<b>Điện thoại: </b>" + txtPhone.Text.Trim().ToString() + "<br /><br />";
+        msg += "<b>Chuyên khoa: </b>" + dropListChuyenKhoa.SelectedItem.Text + "<br /><br />";
+        msg += "<b>Bác sĩ: </b>" + dropListBacSi.SelectedItem.Text + "<br /><br />";
         msg += "<b>Thời gian hẹn: </b>" + strThoiGianKham;
         TLLib.Common.SendMail("smtp.gmail.com", 587, "webmastersendmail0401@gmail.com", "web123master", "hungtien408@gmail.com", "", "ĐẶT LỊCH HẸN BỆNH VIỆN ĐA KHOA TÂN HƯNG", msg, true);
     }
@@ -36,14 +42,87 @@ public partial class _Default : System.Web.UI.Page
     {
         if (Page.IsValid)
         {
-            //if (RadCaptcha1.IsValid)
+            var oDatLichKham = new TLLib.DatLichKham();
+            var strNgayKham = dpNgayKham.SelectedDate.HasValue ? dpNgayKham.SelectedDate.Value.ToShortDateString() : "";
+            var strGioKham = dpGioKham.SelectedDate.HasValue ? dpGioKham.SelectedDate.Value.ToShortTimeString() : "";
+            string strThoiGianKham = string.IsNullOrEmpty(strNgayKham) ? "" : strNgayKham + " " + strGioKham;
+            string strNgaySinh = dpNgaySinh.SelectedDate.HasValue ? dpNgaySinh.SelectedDate.Value.ToShortDateString() : "";
+
+            //var dataDatHen = oDatLichKham.DatLichKhamSelectAll("", "", "", dropListChuyenKhoa.SelectedValue, dropListBacSi.SelectedValue, strThoiGianKham, "", "", "", "").DefaultView;
+            //if (dataDatHen.Count > 0)
             //{
-                //send email         
-                sendEmail();
-                ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "runtime", " $(document).ready(function () {alert('Cám ơn bạn đã đặt lịch hẹn. Thông báo của bạn đã được gửi đi. Chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất!')});", true);
-                txtFullName.Text = "";
-                txtPhone.Text = "";
+            //    ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "runtime", " $(document).ready(function () {alert('Ngày và giờ khám của bác sĩ đã có hẹn, vui lòng đặt hẹn ngày và giờ khác!')});", true);
             //}
+            var dataDatHen = oDatLichKham.DatLichKhamSelectAll("", "", "", dropListChuyenKhoa.SelectedValue, dropListBacSi.SelectedValue, "", "", "", "", "").DefaultView;
+            DateTime dateNgayKham1 = Convert.ToDateTime(strThoiGianKham);
+            DateTime dateNgayKham2 = Convert.ToDateTime(dataDatHen[0]["NgayKham"]);
+            if (dataDatHen.Count > 0)
+            {
+                if (dateNgayKham1 == dateNgayKham2)
+                {
+                    ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "runtime", " $(document).ready(function () {alert('Ngày và giờ khám của bác sĩ đã có hẹn, vui lòng đặt hẹn ngày và giờ khác!')});", true);
+                }
+                else
+                {
+                    int success = oDatLichKham.DatLichKhamInsert(
+                        "",
+                        txtFullName.Text.Trim().ToString(),
+                        strNgaySinh,
+                        dropListGender.SelectedValue,
+                        txtPhone.Text.Trim().ToString(),
+                        "",
+                        dropListChuyenKhoa.SelectedValue,
+                        dropListBacSi.SelectedValue,
+                        "",
+                        strThoiGianKham,
+                        "",
+                        "True",
+                        ""
+                        );
+                    if (success > 0)
+                    {
+                        //if (RadCaptcha1.IsValid)
+                        //{
+                        //send email         
+                        sendEmail();
+                        ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "runtime", " $(document).ready(function () {alert('Cám ơn bạn đã đặt lịch hẹn. Thông báo của bạn đã được gửi đi. Chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất!')});", true);
+                        txtFullName.Text = "";
+                        txtPhone.Text = "";
+
+                        //}
+                    }
+                }
+            }
+            else
+            {
+                int success = oDatLichKham.DatLichKhamInsert(
+                            "",
+                            txtFullName.Text.Trim().ToString(),
+                            strNgaySinh,
+                            dropListGender.SelectedValue,
+                            txtPhone.Text.Trim().ToString(),
+                            "",
+                            dropListChuyenKhoa.SelectedValue,
+                            dropListBacSi.SelectedValue,
+                            "",
+                            strThoiGianKham,
+                            "",
+                            "True",
+                            ""
+                            );
+                if (success > 0)
+                {
+                    //if (RadCaptcha1.IsValid)
+                    //{
+                    //send email         
+                    sendEmail();
+                    ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "runtime", " $(document).ready(function () {alert('Cám ơn bạn đã đặt lịch hẹn. Thông báo của bạn đã được gửi đi. Chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất!')});", true);
+                    txtFullName.Text = "";
+                    txtPhone.Text = "";
+
+                    //}
+                }
+            }
         }
     }
     protected void btnGuiCauHoi_Click(object sender, EventArgs e)
@@ -70,5 +149,20 @@ public partial class _Default : System.Web.UI.Page
     protected string progressTitle(object input)
     {
         return TLLib.Common.ConvertTitle(input.ToString());
+    }
+    protected void btnGuiCamNhan_Click(object sender, EventArgs e)
+    {
+        if (Page.IsValid)
+        {
+            var oProject = new TLLib.Project();
+            oProject.ProjectInsert("", txtFullNameCamNhan.Text.Trim().ToString(), txtFullNameCamNhan.Text.Trim().ToString(), txtFullNameCamNhan.Text.Trim().ToString(), "", "", txtContentCamNhan.Text, "", "", "", "", "", "", "", "13", "False", "False", "False", "False", "");
+            //if (RadCaptcha1.IsValid)
+            //{
+            //send email         
+            ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "runtime", " $(document).ready(function () {alert('Cám ơn bạn gửi cảm nhận!')});", true);
+            txtFullNameCamNhan.Text = "";
+            txtContentCamNhan.Text = "";
+            //}
+        }
     }
 }

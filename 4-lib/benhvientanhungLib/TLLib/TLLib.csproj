@@ -77,6 +77,7 @@
     <Compile Include="CareerCategory.cs" />
     <Compile Include="Career.cs" />
     <Compile Include="Country.cs" />
+    <Compile Include="DatLichKham.cs" />
     <Compile Include="DeliveryMethods.cs" />
     <Compile Include="District.cs" />
     <Compile Include="ExchangeRate.cs" />
