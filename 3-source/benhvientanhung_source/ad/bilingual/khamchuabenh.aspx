@@ -406,8 +406,8 @@
                                         <hr />
                                     </td>
                                 </tr>
-                                <tr class="invisible">
-                                    <td class="left">Tag
+                                <tr>
+                                    <td class="left">Keyword
                                     </td>
                                     <td>
                                         <asp:TextBox ID="txtTag" runat="server" Width="500px" Text='<%# Bind("Tag") %>'></asp:TextBox>
@@ -486,8 +486,8 @@
                                         <hr />
                                     </td>
                                 </tr>
-                                <tr class="invisible">
-                                    <td class="left">Tag
+                                <tr>
+                                    <td class="left">Keyword
                                     </td>
                                     <td>
                                         <asp:TextBox ID="txtTagEn" runat="server" Width="500px" Text='<%# Bind("TagEn") %>'></asp:TextBox>

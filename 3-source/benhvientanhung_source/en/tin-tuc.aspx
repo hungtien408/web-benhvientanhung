@@ -17,6 +17,7 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="page_main" runat="Server">
     <h1 class="content-tit">news</h1>
+    <h2 style="display:none;"><%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %></h2>
     <div class="skin1" role="tabpanel">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
@@ -57,9 +58,9 @@
                                             visible='<%# string.IsNullOrEmpty( Eval("ImageName").ToString()) ? false : true %>'
                                             runat="server" />
                                         <div class="content">
-                                            <a href='<%# "/en/tintuc/" + progressTitle(Eval("ProjectTitleEn")) + "-" + Eval("ProjectID") + ".aspx" %>'><%# Eval("ProjectTitleEn") %></a>
+                                            <a href='<%# "/en/tin-tuc/" + progressTitle(Eval("ProjectTitleEn")) + "-" + Eval("ProjectID") + ".aspx" %>'><%# Eval("ProjectTitleEn") %></a>
                                             <p><%# TLLib.Common.SplitSummary(Eval("DescriptionEn").ToString(), 80) %></p>
-                                            <div class="read-more"><a href='<%# "/en/tintuc/" + progressTitle(Eval("ProjectTitleEn")) + "-" + Eval("ProjectID") + ".aspx" %>'>See more</a></div>
+                                            <div class="read-more"><a href='<%# "/en/tin-tuc/" + progressTitle(Eval("ProjectTitleEn")) + "-" + Eval("ProjectID") + ".aspx" %>'>See more</a></div>
                                         </div>
                                     </div>
                                 </ItemTemplate>
@@ -112,14 +113,14 @@
                         </ul>
                     </div>
                     <div class="content">
-                        <h1><%# Eval("ProjectTitleEn") %></h1>
+                        <h3><%# Eval("ProjectTitleEn") %></h3>
                         <p><%# Eval("DescriptionEn") %></p>
                         <div class="traloi">
                             <p>Xem trả lời</p>
                         </div>
                         <div class="clr"></div>
                         <div class="cautraloi">
-                            <h1>Câu trả lời của bác sĩ:</h1>
+                            <h3>Câu trả lời của bác sĩ:</h3>
                             <p><%# Eval("ContentEn") %></p>
                         </div>
                     </div>
@@ -167,7 +168,7 @@
     <div class="datcauhoi popup scroll-popup">
         <div class="popup-content">
             <div class="form-popup">
-                <h1>Đặt câu hỏi</h1>
+                <h3>Đặt câu hỏi</h3>
                 <div class="wrap-dch">
                     <div class="form-group">
                         <asp:TextBox ID="txtFullNameQuestion" runat="server"></asp:TextBox>

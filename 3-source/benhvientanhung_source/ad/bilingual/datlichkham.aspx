@@ -111,15 +111,15 @@
             </h4>
             <table class="search">
                 <tr>
-                    <td class="left">Họ tên
+                    <td class="left invisible">Họ tên
                     </td>
-                    <td>
+                    <td class="invisible">
                         <asp:RadTextBox ID="txtSearchHoTen" runat="server" Width="200px">
                         </asp:RadTextBox>
                     </td>
-                    <td class="left">Ngày khám
+                    <td class="left invisible">Ngày khám
                     </td>
-                    <td>
+                    <td class="invisible">
                         <asp:RadDatePicker ShowPopupOnFocus="True" ID="dpSearchNgayKham" runat="server" Culture="vi-VN"
                             Calendar-CultureInfo="vi-VN" Width="110px">
                             <Calendar ID="Calendar3" runat="server">
@@ -130,6 +130,42 @@
                                 </SpecialDays>
                             </Calendar>
                             <DateInput ID="DateInput1" DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy"
+                                runat="server">
+                            </DateInput>
+                            <DatePopupButton HoverImageUrl="" ImageUrl="" />
+                        </asp:RadDatePicker>
+                    </td>
+                    <td class="left">Từ ngày
+                    </td>
+                    <td>
+                        <asp:RadDatePicker ShowPopupOnFocus="True" ID="dpSearchTuNgay" runat="server" Culture="vi-VN"
+                            Calendar-CultureInfo="vi-VN" Width="110px">
+                            <Calendar ID="Calendar2" runat="server">
+                                <SpecialDays>
+                                    <asp:RadCalendarDay Repeatable="Today">
+                                        <ItemStyle CssClass="rcToday" />
+                                    </asp:RadCalendarDay>
+                                </SpecialDays>
+                            </Calendar>
+                            <DateInput ID="DateInput3" DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy"
+                                runat="server">
+                            </DateInput>
+                            <DatePopupButton HoverImageUrl="" ImageUrl="" />
+                        </asp:RadDatePicker>
+                    </td>
+                    <td class="left">Đến ngày
+                    </td>
+                    <td>
+                        <asp:RadDatePicker ShowPopupOnFocus="True" ID="dpSearchDenNgay" runat="server" Culture="vi-VN"
+                            Calendar-CultureInfo="vi-VN" Width="110px">
+                            <Calendar ID="Calendar4" runat="server">
+                                <SpecialDays>
+                                    <asp:RadCalendarDay Repeatable="Today">
+                                        <ItemStyle CssClass="rcToday" />
+                                    </asp:RadCalendarDay>
+                                </SpecialDays>
+                            </Calendar>
+                            <DateInput ID="DateInput4" DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy"
                                 runat="server">
                             </DateInput>
                             <DatePopupButton HoverImageUrl="" ImageUrl="" />
@@ -181,17 +217,17 @@
                             <asp:Button ID="ExportToWordButton" runat="server" CssClass="rgExpDOC" CommandName="ExportToWord"
                                 AlternateText="Word" ToolTip="Xuất ra Word" />
                         </div>
-                        <asp:LinkButton ID="LinkButton2" runat="server" CommandName="InitInsert" Visible='<%# !RadGrid1.MasterTableView.IsItemInserted %>'
-                            CssClass="item"><img class="vam" alt="" src="../assets/images/add.png" /> Thêm mới</asp:LinkButton>|
+                        <%--<asp:LinkButton ID="LinkButton2" runat="server" CommandName="InitInsert" Visible='<%# !RadGrid1.MasterTableView.IsItemInserted %>'
+                            CssClass="item"><img class="vam" alt="" src="../assets/images/add.png" /> Thêm mới</asp:LinkButton>|--%>
                         <%--<asp:LinkButton ID="LinkButton3" runat="server" CommandName="PerformInsert" Visible='<%# RadGrid1.MasterTableView.IsItemInserted %>'><img class="vam" alt="" src="../assets/images/accept.png" /> Thêm</asp:LinkButton>&nbsp;&nbsp;
                         <asp:LinkButton ID="btnCancel" runat="server" CommandName="CancelAll" Visible='<%# RadGrid1.EditIndexes.Count > 0 || RadGrid1.MasterTableView.IsItemInserted %>'><img class="vam" alt="" src="../assets/images/delete-icon.png" /> Hủy</asp:LinkButton>&nbsp;&nbsp;--%>
-                        <asp:LinkButton ID="btnEditSelected" runat="server" CommandName="EditSelected" Visible='<%# RadGrid1.EditIndexes.Count == 0 %>'
-                            CssClass="item"><img width="12px" class="vam" alt="" src="../assets/images/tools.png" /> Sửa</asp:LinkButton>|
+                        <%--<asp:LinkButton ID="btnEditSelected" runat="server" CommandName="EditSelected" Visible='<%# RadGrid1.EditIndexes.Count == 0 %>'
+                            CssClass="item"><img width="12px" class="vam" alt="" src="../assets/images/tools.png" /> Sửa</asp:LinkButton>|--%>
                         <%--<asp:LinkButton ID="btnUpdateEdited" runat="server" CommandName="UpdateEdited" Visible='<%# RadGrid1.EditIndexes.Count > 0 %>'><img class="vam" alt="" src="../assets/images/accept.png" /> Cập nhật</asp:LinkButton>&nbsp;&nbsp;--%>
                         <asp:LinkButton ID="LinkButton1" OnClientClick="javascript:return confirm('Xóa tất cả dòng đã chọn?')"
                             runat="server" CommandName="DeleteSelected" CssClass="item"><img class="vam" alt="" title="Xóa tất cả dòng được chọn" src="../assets/images/delete-icon.png" /> Xóa</asp:LinkButton>|
-                        <asp:LinkButton ID="LinkButton6" runat="server" CommandName="QuickUpdate" Visible='<%# RadGrid1.EditIndexes.Count == 0 %>'
-                            CssClass="item"><img class="vam" alt="" src="../assets/images/accept.png" /> Sửa nhanh</asp:LinkButton>|
+                        <%--<asp:LinkButton ID="LinkButton6" runat="server" CommandName="QuickUpdate" Visible='<%# RadGrid1.EditIndexes.Count == 0 %>'
+                            CssClass="item"><img class="vam" alt="" src="../assets/images/accept.png" /> Sửa nhanh</asp:LinkButton>|--%>
                         <asp:LinkButton ID="LinkButton4" runat="server" CommandName="RebindGrid" CssClass="item"><img class="vam" alt="" src="../assets/images/reload.png" /> Làm mới</asp:LinkButton>
                     </div>
                     <div class="clear">
@@ -257,7 +293,7 @@
                             </asp:RadNumericTextBox>
                         </ItemTemplate>
                     </asp:GridTemplateColumn>
-                    <asp:GridTemplateColumn HeaderText="Hiển thị" DataField="IsAvailable" SortExpression="IsAvailable">
+                    <asp:GridTemplateColumn HeaderText="Hiển thị" DataField="IsAvailable" SortExpression="IsAvailable" Visible="false">
                         <ItemTemplate>
                             <asp:CheckBox ID="chkIsAvailable" runat="server" Checked='<%# Eval("IsAvailable") == DBNull.Value ? false : Convert.ToBoolean(Eval("IsAvailable"))%>'
                                 CssClass="checkbox" />
@@ -512,6 +548,8 @@
             <asp:Parameter Name="ProjectCategoryID" Type="String" />
             <asp:Parameter Name="ProjectID" Type="String" />
             <asp:ControlParameter ControlID="dpSearchNgayKham" Name="NgayKham" PropertyName="SelectedDate" Type="String" />
+            <asp:ControlParameter ControlID="dpSearchTuNgay" Name="FromDate" PropertyName="SelectedDate" Type="String" />
+            <asp:ControlParameter ControlID="dpSearchDenNgay" Name="ToDate" PropertyName="SelectedDate" Type="String" />
             <asp:Parameter Name="GioKham" Type="String" />
             <asp:Parameter Name="IsAvailable" Type="String" />
             <asp:Parameter Name="Priority" Type="String" />

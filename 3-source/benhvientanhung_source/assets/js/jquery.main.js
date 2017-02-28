@@ -371,6 +371,11 @@ $('.lich-right > a').click(function (e) {
     $('#main-content').append('<div id="overlay-screen-active">');
     $('.datcauhoi .popup-content').css('top', '30px');
 });
+$('.btn-camnhan > a').click(function (e) {
+    e.preventDefault();
+    $('#main-content').append('<div id="overlay-screen-active">');
+    $('.vietcamnhan .popup-content').css('top', '30px');
+});
 
 $(document).on('click', ".close-modal, #overlay-screen-active", function () {
     $('.popup-content').css('top', '-250%');

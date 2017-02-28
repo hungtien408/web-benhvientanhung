@@ -250,6 +250,8 @@ namespace TLLib
             string ProjectID,
             string NgayKham,
             string GioKham,
+            string FromDate,
+            string ToDate,
             string IsAvailable,
             string Priority,
             string SortByPriority
@@ -268,6 +270,8 @@ namespace TLLib
                 cmd.Parameters.AddWithValue("@ProjectID", string.IsNullOrEmpty(ProjectID) ? dbNULL : (object)ProjectID);
                 cmd.Parameters.AddWithValue("@NgayKham", string.IsNullOrEmpty(NgayKham) ? dbNULL : (object)NgayKham);
                 cmd.Parameters.AddWithValue("@GioKham", string.IsNullOrEmpty(GioKham) ? dbNULL : (object)GioKham);
+                cmd.Parameters.AddWithValue("@FromDate", string.IsNullOrEmpty(FromDate) ? dbNULL : (object)FromDate);
+                cmd.Parameters.AddWithValue("@ToDate", string.IsNullOrEmpty(ToDate) ? dbNULL : (object)ToDate);
                 cmd.Parameters.AddWithValue("@IsAvailable", string.IsNullOrEmpty(IsAvailable) ? dbNULL : (object)IsAvailable);
                 cmd.Parameters.AddWithValue("@Priority", string.IsNullOrEmpty(Priority) ? dbNULL : (object)Priority);
                 cmd.Parameters.AddWithValue("@SortByPriority", string.IsNullOrEmpty(SortByPriority) ? dbNULL : (object)SortByPriority);

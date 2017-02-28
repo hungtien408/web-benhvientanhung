@@ -17,7 +17,7 @@
             </asp:ContentPlaceHolder>
             <section>
                 <div class="aside-mail">
-                    <h1>đăng ký nhận bản tin</h1>
+                    <h3>đăng ký nhận bản tin</h3>
                     <div class="mail-input">
                         <asp:TextBox ID="txtEmailNewLetter" CssClass="mail-textbox" runat="server"></asp:TextBox>
                         <asp:TextBoxWatermarkExtender ID="txtEmailNewLetter_WatermarkExtender" runat="server"
@@ -54,7 +54,7 @@
     <div class="datlich-kham popup scroll-popup">
         <div class="popup-content">
             <div class="form-popup">
-                <h1>Đặt lịch khám</h1>
+                <h3>Đặt lịch khám</h3>
                 <div class="wrap-datlich">
                     <div class="left">
                         <h3>Bạn muốn đặt lịch khám cho</h3>

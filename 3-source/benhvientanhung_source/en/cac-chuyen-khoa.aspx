@@ -16,7 +16,8 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="page_main" runat="Server">
     <div class="service">
-        <h1 class="content-tit">các phòng khoa</h1>
+        <h1 class="content-tit">các chuyên khoa</h1>
+        <h2 style="display:none;"><%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %></h2>
         <div class="row service-main">
             <asp:ListView ID="lstCacChuyenKhoa" runat="server" DataSourceID="odsCacChuyenKhoa"
                 EnableModelValidation="True">
@@ -24,10 +25,10 @@
                     <div class="col-md-4">
                         <div class="service-box">
                             <div class="service-name text-uppercase">
-                                <a href='<%# "/en/chuyenkhoa/"+ progressTitle(Eval("ProjectCategoryNameEn")) + "-" + Eval("ProjectCategoryID") + ".aspx" %>'><%# Eval("ProjectCategoryNameEn") %></a>
+                                <a href='<%# "/en/chuyen-khoa/"+ progressTitle(Eval("ProjectCategoryNameEn")) + "-" + Eval("ProjectCategoryID") + ".aspx" %>'><%# Eval("ProjectCategoryNameEn") %></a>
                             </div>
                             <div class="service-img">
-                                <a href='<%# "/en/chuyenkhoa/"+ progressTitle(Eval("ProjectCategoryNameEn")) + "-" + Eval("ProjectCategoryID") + ".aspx" %>'>
+                                <a href='<%# "/en/chuyen-khoa/"+ progressTitle(Eval("ProjectCategoryNameEn")) + "-" + Eval("ProjectCategoryID") + ".aspx" %>'>
                                     <img alt='<%# Eval("ImageName") %>' src='<%# "~/res/projectcategory/" + Eval("ImageName") %>'
                                         visible='<%# string.IsNullOrEmpty( Eval("ImageName").ToString()) ? false : true %>'
                                         runat="server" /></a>

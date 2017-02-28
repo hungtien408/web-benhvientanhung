@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using TLLib;
 
 public partial class _Default : System.Web.UI.Page
 {
@@ -53,11 +54,11 @@ public partial class _Default : System.Web.UI.Page
             //{
             //    ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "runtime", " $(document).ready(function () {alert('Ngày và giờ khám của bác sĩ đã có hẹn, vui lòng đặt hẹn ngày và giờ khác!')});", true);
             //}
-            var dataDatHen = oDatLichKham.DatLichKhamSelectAll("", "", "", dropListChuyenKhoa.SelectedValue, dropListBacSi.SelectedValue, "", "", "", "", "").DefaultView;
-            DateTime dateNgayKham1 = Convert.ToDateTime(strThoiGianKham);
-            DateTime dateNgayKham2 = Convert.ToDateTime(dataDatHen[0]["NgayKham"]);
+            var dataDatHen = oDatLichKham.DatLichKhamSelectAll("", "", "", dropListChuyenKhoa.SelectedValue, dropListBacSi.SelectedValue, "", "", "", "", "", "", "").DefaultView;
             if (dataDatHen.Count > 0)
             {
+                DateTime dateNgayKham1 = Convert.ToDateTime(strThoiGianKham);
+                DateTime dateNgayKham2 = Convert.ToDateTime(dataDatHen[0]["NgayKham"]);
                 if (dateNgayKham1 == dateNgayKham2)
                 {
                     ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "runtime", " $(document).ready(function () {alert('Ngày và giờ khám của bác sĩ đã có hẹn, vui lòng đặt hẹn ngày và giờ khác!')});", true);
@@ -154,8 +155,18 @@ public partial class _Default : System.Web.UI.Page
     {
         if (Page.IsValid)
         {
+            string ImageName = FileImageName.UploadedFiles.Count > 0 ? FileImageName.UploadedFiles[0].GetName() : "";
+            string ProjectTitle = txtFullNameCamNhan.Text.Trim();
+            string ConvertedProjectTitle = Common.ConvertTitle(ProjectTitle);
             var oProject = new TLLib.Project();
-            oProject.ProjectInsert("", txtFullNameCamNhan.Text.Trim().ToString(), txtFullNameCamNhan.Text.Trim().ToString(), txtFullNameCamNhan.Text.Trim().ToString(), "", "", txtContentCamNhan.Text, "", "", "", "", "", "", "", "13", "False", "False", "False", "False", "");
+            ImageName = oProject.ProjectInsert(ImageName, txtFullNameCamNhan.Text.Trim().ToString(), txtFullNameCamNhan.Text.Trim().ToString(), txtFullNameCamNhan.Text.Trim().ToString(), ConvertedProjectTitle, "", txtContentCamNhan.Text, "", "", "", "", "", "", "", "13", "False", "False", "False", "False", "");
+            string strFullPath = "~/res/project/" + ImageName;
+            if (!string.IsNullOrEmpty(ImageName))
+            {
+                FileImageName.UploadedFiles[0].SaveAs(Server.MapPath(strFullPath));
+                ResizeCropImage.ResizeByCondition(strFullPath, 89, 89);
+                ResizeCropImage.CreateThumbNailByCondition("~/res/project/", "~/res/project/thumbs/", ImageName, 120, 120);
+            }
             //if (RadCaptcha1.IsValid)
             //{
             //send email         

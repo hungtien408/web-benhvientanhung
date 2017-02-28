@@ -61,8 +61,11 @@
     <div class="df-site">
         <section class="pc">
             <div class="container">
+                <div class="id-sec">
+                    <h1>Thông tin y khoa</h1>
+                </div>
                 <div class="pc-left">
-                    <asp:ListView ID="lstAbout" runat="server" DataSourceID="odsAbout"
+                    <%--<asp:ListView ID="lstAbout" runat="server" DataSourceID="odsAbout"
                         EnableModelValidation="True">
                         <ItemTemplate>
                             <div class="id-cont">
@@ -77,11 +80,22 @@
                         <LayoutTemplate>
                             <span runat="server" id="itemPlaceholder" />
                         </LayoutTemplate>
+                    </asp:ListView>--%>
+                    <asp:ListView ID="lstAbout" runat="server" DataSourceID="odsAbout"
+                        EnableModelValidation="True">
+                        <ItemTemplate>
+                            <li><span><%# Container.DataItemIndex + 1 %></span><a class="text-uppercase" href='<%# "/tin-tuc/" + progressTitle(Eval("ProjectTitle")) + "-" + Eval("ProjectID") + ".aspx" %>'><%# Eval("ProjectTitle") %></a></li>
+                        </ItemTemplate>
+                        <LayoutTemplate>
+                            <ul>
+                                <li runat="server" id="itemPlaceholder"></li>
+                            </ul>
+                        </LayoutTemplate>
                     </asp:ListView>
                     <asp:ObjectDataSource ID="odsAbout" runat="server" SelectMethod="ProjectSelectAll" TypeName="TLLib.Project">
                         <SelectParameters>
                             <asp:Parameter DefaultValue="1" Name="StartRowIndex" Type="String" />
-                            <asp:Parameter DefaultValue="1" Name="EndRowIndex" Type="String" />
+                            <asp:Parameter DefaultValue="5" Name="EndRowIndex" Type="String" />
                             <asp:Parameter Name="Keyword" Type="String" />
                             <asp:Parameter Name="ProjectTitle" Type="String" />
                             <asp:Parameter Name="Description" Type="String" />
@@ -104,10 +118,10 @@
                             EnableModelValidation="True">
                             <ItemTemplate>
                                 <div class="video-details">
-                                    <div id="jwplayer1"></div>
+                                    <div id='<%# "jwplayer" + Eval("VideoID") %>'></div>
                                     <script type="text/javascript">
                                         $(document).ready(function () {
-                                            jwplayer('jwplayer1').setup({
+                                            jwplayer('<%# "jwplayer" + Eval("VideoID") %>').setup({
                                                 image: '<%# "res/video/thumbs/" + Eval("ImagePath") %>',
                                                 file: '<%# string.IsNullOrEmpty(Eval("VideoPath").ToString()) ? Eval("GLobalEmbedScript") : "res/video/" + Eval("VideoPath") %>',
                                                 flashplayer: "assets/js/jwplayer.flash.swf",
@@ -122,7 +136,7 @@
                                             //jwplayer('jwplayer1').play();
                                         });
                                         $(window).load(function () {
-                                            $('.wrapper-video').addClass('wrap-video');
+                                            $('.video-details').addClass('wrap-video');
                                         });
                                     </script>
                                 </div>
@@ -151,14 +165,16 @@
         <section class="lichhen">
             <div class="container">
                 <div class="lich-right">
-                    <span>đặt câu hỏi</span>
-                    <h1>trực tuyến</h1>
-                    <a href="#">Gửi câu hỏi</a>
+                    <img src="/assets/images/hoi.png" alt="" />
+                    <div class="content">
+                        <span>đặt câu hỏi</span>
+                        <h1>trực tuyến</h1>
+                    </div>
                 </div>
                 <div class="datcauhoi popup scroll-popup">
                     <div class="popup-content">
                         <div class="form-popup">
-                            <h1>Đặt câu hỏi</h1>
+                            <h3>Đặt câu hỏi</h3>
                             <div class="wrap-dch">
                                 <div class="form-group">
                                     <asp:TextBox ID="txtFullNameQuestion" runat="server"></asp:TextBox>
@@ -197,7 +213,7 @@
                     </div>
                 </div>
                 <div class="lich-left">
-                    <h1>đặt lịch hẹn trực tuyến</h1>
+                    <h3>đặt lịch hẹn trực tuyến</h3>
                     <div class="form-group">
                         <asp:TextBox ID="txtFullName" runat="server"></asp:TextBox>
                         <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender1" runat="server" Enabled="True"
@@ -370,7 +386,7 @@
                         <ItemTemplate>
                             <div class="item">
                                 <div class="content">
-                                    <a href='<%# "/chuyenkhoa/" + progressTitle(Eval("ProjectCategoryName")) + "-" + Eval("ProjectCategoryID") + ".aspx" %>'>
+                                    <a href='<%# "/chuyen-khoa/" + progressTitle(Eval("ProjectCategoryName")) + "-" + Eval("ProjectCategoryID") + ".aspx" %>'>
                                         <div class="wrap-content">
                                             <img alt='<%# Eval("ImageNameIcon") %>' src='<%# "~/res/projectcategory/icon/" + Eval("ImageNameIcon") %>'
                                                 visible='<%# string.IsNullOrEmpty( Eval("ImageNameIcon").ToString()) ? false : true %>'
@@ -380,7 +396,7 @@
                                     </a>
                                 </div>
                                 <div class="img">
-                                    <a href='<%# "/chuyenkhoa/" + progressTitle(Eval("ProjectCategoryName")) + "-" + Eval("ProjectCategoryID") + ".aspx" %>'>
+                                    <a href='<%# "/chuyen-khoa/" + progressTitle(Eval("ProjectCategoryName")) + "-" + Eval("ProjectCategoryID") + ".aspx" %>'>
                                         <img alt='<%# Eval("ImageName2") %>' src='<%# "~/res/projectcategory/image2/" + Eval("ImageName2") %>'
                                             visible='<%# string.IsNullOrEmpty( Eval("ImageName2").ToString()) ? false : true %>'
                                             runat="server" /></a>
@@ -412,7 +428,7 @@
                         EnableModelValidation="True">
                         <ItemTemplate>
                             <div class="item">
-                                <a href='<%# "/cosovatchat/" + progressTitle(Eval("ProjectTitle")) + "-" + Eval("ProjectID") + ".aspx" %>'>
+                                <a href='<%# "/co-so-vat-chat/" + progressTitle(Eval("ProjectTitle")) + "-" + Eval("ProjectID") + ".aspx" %>'>
                                     <img alt='<%# Eval("ImageName") %>' src='<%# "~/res/project/" + Eval("ImageName") %>'
                                         visible='<%# string.IsNullOrEmpty( Eval("ImageName").ToString()) ? false : true %>'
                                         runat="server" /></a>
@@ -462,7 +478,7 @@
                                 <div class="content">
                                     <p><%# Eval("Content") %></p>
                                     <span><%# Eval("ProjectTitle") %></span>
-                                    <div style="width: 100%; margin-top:10px;">
+                                    <div style="width: 100%; margin-top: 10px;">
                                         <div class="fb-like" data-href='<%= "http://www.diendancuoi.com/" + Request.Url.AbsolutePath.Substring(Request.Url.AbsolutePath.LastIndexOf("/") + 1) %>'
                                             data-send="false" data-layout="button_count" data-width="50" data-show-faces="true">
                                         </div>
@@ -498,48 +514,68 @@
                         </SelectParameters>
                     </asp:ObjectDataSource>
                     <div class="clr"></div>
-                    <div class="wrap-camnhan">
-                        <div class="form-group">
-                            <asp:TextBox ID="txtFullNameCamNhan" runat="server"></asp:TextBox>
-                            <asp:TextBoxWatermarkExtender ID="txtFullNameCamNhan_WatermarkExtender" runat="server" Enabled="True"
-                                WatermarkText="Họ tên (*)" TargetControlID="txtFullNameCamNhan">
-                            </asp:TextBoxWatermarkExtender>
-                            <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator8" runat="server"
-                                Display="Dynamic" ValidationGroup="CamNhan" ControlToValidate="txtFullNameCamNhan"
-                                ErrorMessage="Thông tin bắt buộc!" ForeColor="Red"></asp:RequiredFieldValidator>
-                        </div>
-                        <%--<div class="form-group">
-                            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-                            <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender3" runat="server" Enabled="True"
-                                WatermarkText="Email(*)" TargetControlID="txtEmailQuestion">
-                            </asp:TextBoxWatermarkExtender>
-                            <asp:RegularExpressionValidator CssClass="lb-error" ID="RegularExpressionValidator2"
-                                runat="server" ValidationGroup="DatCauHoi" ControlToValidate="txtEmailQuestion" ErrorMessage="Email is error!"
-                                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic"
-                                ForeColor="Red"></asp:RegularExpressionValidator>
-                            <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator9" runat="server"
-                                ValidationGroup="DatCauHoi" ControlToValidate="txtEmailQuestion" ErrorMessage="Thông tin bắt buộc!"
-                                Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                        </div>
-                        <div class="form-group">
-                            <asp:TextBox ID="TextBox3" runat="server" placeholder="Điện thoại"></asp:TextBox>
-                        </div>--%>
-                        <div class="form-group">
-                            <asp:TextBox ID="txtContentCamNhan" runat="server" TextMode="MultiLine"></asp:TextBox>
-                            <asp:TextBoxWatermarkExtender ID="txtContentCamNhan_WatermarkExtender" runat="server" Enabled="True"
-                                WatermarkText="Cảm nhận (*)" TargetControlID="txtContentCamNhan">
-                            </asp:TextBoxWatermarkExtender>
-                            <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator9" runat="server"
-                                Display="Dynamic" ValidationGroup="CamNhan" ControlToValidate="txtContentCamNhan"
-                                ErrorMessage="Thông tin bắt buộc!" ForeColor="Red"></asp:RequiredFieldValidator>
-                        </div>
-                        <div class="btn-gui">
-                            <asp:Button ID="btnGuiCamNhan" runat="server" Text="Gửi cảm nhận" OnClick="btnGuiCamNhan_Click" ValidationGroup="CamNhan" />
+                    <div class="btn-camnhan"><a href="#">Viết cảm nhận</a></div>
+                    <div class="vietcamnhan popup scroll-popup">
+                        <div class="popup-content">
+                            <div class="form-popup">
+                                <h3>Viết cảm nhận</h3>
+                                <div class="wrap-dch">
+                                    <div class="form-group">
+                                        <asp:RadUpload ID="FileImageName" runat="server" ControlObjectsVisibility="None"
+                                            Culture="vi-VN" Language="vi-VN" InputSize="69" AllowedFileExtensions=".jpg,.jpeg,.gif,.png" />
+                                        <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="Sai định dạng ảnh (*.jpg, *.jpeg, *.gif, *.png)"
+                                            ClientValidationFunction="validateRadUpload" Display="Dynamic"></asp:CustomValidator>
+                                    </div>
+                                    <div class="form-group">
+                                        <asp:TextBox ID="txtFullNameCamNhan" runat="server"></asp:TextBox>
+                                        <asp:TextBoxWatermarkExtender ID="txtFullNameCamNhan_WatermarkExtender" runat="server" Enabled="True"
+                                            WatermarkText="Họ tên (*)" TargetControlID="txtFullNameCamNhan">
+                                        </asp:TextBoxWatermarkExtender>
+                                        <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator8" runat="server"
+                                            Display="Dynamic" ValidationGroup="CamNhan" ControlToValidate="txtFullNameCamNhan"
+                                            ErrorMessage="Thông tin bắt buộc!" ForeColor="Red"></asp:RequiredFieldValidator>
+                                    </div>
+                                    <%--<div class="form-group">
+                                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                                        <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender3" runat="server" Enabled="True"
+                                            WatermarkText="Email(*)" TargetControlID="txtEmailQuestion">
+                                        </asp:TextBoxWatermarkExtender>
+                                        <asp:RegularExpressionValidator CssClass="lb-error" ID="RegularExpressionValidator2"
+                                            runat="server" ValidationGroup="DatCauHoi" ControlToValidate="txtEmailQuestion" ErrorMessage="Email is error!"
+                                            ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic"
+                                            ForeColor="Red"></asp:RegularExpressionValidator>
+                                        <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator9" runat="server"
+                                            ValidationGroup="DatCauHoi" ControlToValidate="txtEmailQuestion" ErrorMessage="Thông tin bắt buộc!"
+                                            Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                    </div>
+                                    <div class="form-group">
+                                        <asp:TextBox ID="TextBox3" runat="server" placeholder="Điện thoại"></asp:TextBox>
+                                    </div>--%>
+                                    <div class="form-group">
+                                        <asp:TextBox ID="txtContentCamNhan" runat="server" TextMode="MultiLine"></asp:TextBox>
+                                        <asp:TextBoxWatermarkExtender ID="txtContentCamNhan_WatermarkExtender" runat="server" Enabled="True"
+                                            WatermarkText="Cảm nhận (*)" TargetControlID="txtContentCamNhan">
+                                        </asp:TextBoxWatermarkExtender>
+                                        <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator9" runat="server"
+                                            Display="Dynamic" ValidationGroup="CamNhan" ControlToValidate="txtContentCamNhan"
+                                            ErrorMessage="Thông tin bắt buộc!" ForeColor="Red"></asp:RequiredFieldValidator>
+                                    </div>
+                                    <div class="btn-gui">
+                                        <asp:Button ID="btnGuiCamNhan" runat="server" Text="Gửi cảm nhận" OnClick="btnGuiCamNhan_Click" ValidationGroup="CamNhan" />
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="javascript:void(0);" class="close-modal"></a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     </div>
+    <script>
+        $(document).ready(function () {
+            $(".ruFakeInput").attr("value", "Hình đại diện");
+        });
+    </script>
 </asp:Content>
 

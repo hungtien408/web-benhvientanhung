@@ -60,11 +60,11 @@ public partial class uc_site_sub : System.Web.UI.MasterPage
                 string strThoiGianKham = string.IsNullOrEmpty(strNgayKham) ? "" : strNgayKham + " " + strGioKham;
                 string strNgaySinh = dpNgaySinh.SelectedDate.HasValue ? dpNgaySinh.SelectedDate.Value.ToShortDateString() : "";
 
-                var dataDatHen = oDatLichKham.DatLichKhamSelectAll("", "", "", dropListChuyenKhoa.SelectedValue, dropListBacSi.SelectedValue, strThoiGianKham, "", "", "", "").DefaultView;
-                DateTime dateNgayKham1 = Convert.ToDateTime(strThoiGianKham);
-                DateTime dateNgayKham2 = Convert.ToDateTime(dataDatHen[0]["NgayKham"]);
+                var dataDatHen = oDatLichKham.DatLichKhamSelectAll("", "", "", dropListChuyenKhoa.SelectedValue, dropListBacSi.SelectedValue, strThoiGianKham, "", "", "", "", "", "").DefaultView;
                 if (dataDatHen.Count > 0)
                 {
+                    DateTime dateNgayKham1 = Convert.ToDateTime(strThoiGianKham);
+                    DateTime dateNgayKham2 = Convert.ToDateTime(dataDatHen[0]["NgayKham"]);
                     if (dateNgayKham1 == dateNgayKham2)
                     {
                         ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "runtime", " $(document).ready(function () {alert('Ngày và giờ khám của bác sĩ đã có hẹn, vui lòng đặt hẹn ngày và giờ khác!')});", true);

@@ -1,13 +1,13 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="cam-nhan-benh-nhan.ascx.cs" Inherits="uc_cam_nhan_benh_nhan" %>
 <section>
     <div class="cam-nhan">
-        <h1>cảm nhận bệnh nhân</h1>
+        <h3>cảm nhận bệnh nhân</h3>
         <div class="cam-nhan-carousel owl-carousel">
             <asp:ListView ID="lstCamNhanBenhNhan" runat="server" DataSourceID="odsCamNhanBenhNhan"
                 EnableModelValidation="True">
                 <ItemTemplate>
                     <div class="item">
-                        <h1><%# Eval("ProjectTitle") %></h1>
+                        <h3><%# Eval("ProjectTitle") %></h3>
                         <p><%# Eval("Content") %></p>
                     </div>
                 </ItemTemplate>

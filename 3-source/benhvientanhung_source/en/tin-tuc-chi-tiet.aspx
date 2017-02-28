@@ -36,6 +36,7 @@
             <div class="abou-us-content">
                 <div class="title-main">
                     <h1><%# Eval("ProjectTitleEn") %></h1>
+                    <h2 style="display:none;"><%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %></h2>
                 </div>
                 <div class="description">
                     <%# Eval("ContentEn") %>
@@ -69,9 +70,9 @@
                             visible='<%# string.IsNullOrEmpty( Eval("ImageName").ToString()) ? false : true %>'
                             runat="server" />
                         <div class="content">
-                            <a href='<%# "/en/tintuc/" + progressTitle(Eval("ProjectTitleEn")) + "-" + Eval("ProjectID") + ".aspx" %>'><%# Eval("ProjectTitleEn") %></a>
+                            <a href='<%# "/en/tin-tuc/" + progressTitle(Eval("ProjectTitleEn")) + "-" + Eval("ProjectID") + ".aspx" %>'><%# Eval("ProjectTitleEn") %></a>
                             <p><%# TLLib.Common.SplitSummary(Eval("DescriptionEn").ToString(), 80) %></p>
-                            <div class="read-more"><a href='<%# "/en/tintuc/" + progressTitle(Eval("ProjectTitleEn")) + "-" + Eval("ProjectID") + ".aspx" %>'>See more</a></div>
+                            <div class="read-more"><a href='<%# "/en/tin-tuc/" + progressTitle(Eval("ProjectTitleEn")) + "-" + Eval("ProjectID") + ".aspx" %>'>See more</a></div>
                         </div>
                     </div>
                 </ItemTemplate>

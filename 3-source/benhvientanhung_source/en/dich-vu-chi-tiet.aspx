@@ -20,6 +20,7 @@
             <ItemTemplate>
                 <div class="title-main">
                     <h1><%# Eval("ProjectCategoryNameEn") %></h1>
+                    <h2 style="display:none;"><%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %></h2>
                 </div>
                 <div class="main-text">
                     <%# Eval("ContentEn") %>

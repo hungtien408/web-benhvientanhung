@@ -179,7 +179,7 @@
                                 <asp:ListView ID="lstBangGia" runat="server" DataSourceID="odsBangGia"
                                     EnableModelValidation="True">
                                     <ItemTemplate>
-                                        <li><a runat="server" href='<%# "~/banggia/" + progressTitle(Eval("ProjectCategoryName")) + "-" + Eval("ProjectCategoryID") + ".aspx" %>'><%# Eval("ProjectCategoryName") %></a></li>
+                                        <li><a runat="server" href='<%# "~/bang-gia/" + progressTitle(Eval("ProjectCategoryName")) + "-" + Eval("ProjectCategoryID") + ".aspx" %>'><%# Eval("ProjectCategoryName") %></a></li>
                                     </ItemTemplate>
                                     <LayoutTemplate>
                                         <ul>
@@ -270,6 +270,7 @@
                             <ul>
                                 <li><span>Đang online: <%= Application["visitors_online"].ToString() %></span><span style="padding-left: 10px">Hôm nay: <%= Application["HomNay"].ToString() %></span></li>
                                 <li><span>Tháng này: <%= Application["ThangNay"].ToString() %></span><span style="padding-left: 10px">Tổng số: <%= Application["TatCa"].ToString() %></span></li>
+                                <li><span>Ngày trước: <%= Application["HomQua"].ToString() %></span> <span><%= Convert.ToInt32(Application["HomQua"].ToString()) < Convert.ToInt32(Application["HomNay"].ToString()) ? "<" : ">" %></span> <span>Ngày sau: <%= Application["HomNay"].ToString() %></span></li>
                             </ul>
                         </div>
                         <div class="pull-right">

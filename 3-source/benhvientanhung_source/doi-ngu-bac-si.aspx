@@ -17,6 +17,7 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="page_main" runat="Server">
     <h1 class="content-tit">đội ngũ bác sĩ</h1>
+    <h2 style="display:none;"><%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %></h2>
     <div class="doingu-search">
         <p>Nhập tên bác sĩ hoặc chọn chuyên khoa để tìm kiếm</p>
         <asp:TextBox ID="txtSearchKhoa" runat="server"></asp:TextBox>

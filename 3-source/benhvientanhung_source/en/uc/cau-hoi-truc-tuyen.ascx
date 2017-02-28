@@ -9,7 +9,7 @@
 <div class="datcauhoi popup scroll-popup">
     <div class="popup-content">
         <div class="form-popup">
-            <h1>Đặt câu hỏi</h1>
+            <h3>Đặt câu hỏi</h3>
             <div class="wrap-dch">
                 <div class="form-group">
                     <asp:TextBox ID="txtFullNameQuestion" runat="server"></asp:TextBox>

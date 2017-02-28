@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="cap-cuu.ascx.cs" Inherits="uc_cap_cuu" %>
 <section class="cap-cuu">
-    <h1>CẤP CỨU 24/7</h1>
+    <h3>CẤP CỨU 24/7</h3>
     <asp:ListView ID="lstHotlineCapCuu" runat="server" DataSourceID="odsInfo"
         EnableModelValidation="True">
         <ItemTemplate>

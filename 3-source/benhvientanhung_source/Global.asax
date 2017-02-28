@@ -10,6 +10,7 @@
     {
         // Code that runs on application startup
         Application["HomNay"] = 0;
+        Application["HomQua"] = 0;
         Application["ThangNay"] = 0;
         Application["TatCa"] = 0;
         Application["visitors_online"] = 0;
@@ -47,6 +48,7 @@
             if (dt.Rows.Count > 0)
             {
                 Application["HomNay"] = long.Parse("0" + dt.Rows[0]["HomNay"]).ToString("#,###");
+                Application["HomQua"] = long.Parse("0" + dt.Rows[0]["HomQua"]).ToString("#,###");
                 Application["ThangNay"] = long.Parse("0" + dt.Rows[0]["ThangNay"]).ToString("#,###");
                 Application["TatCa"] = long.Parse("0" + dt.Rows[0]["TatCa"]).ToString("#,###");
             }

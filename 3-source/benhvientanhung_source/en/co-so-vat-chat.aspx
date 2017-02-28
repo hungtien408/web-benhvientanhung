@@ -17,6 +17,7 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="page_main" runat="Server">
     <h1 class="content-tit">Cơ sở vật chất</h1>
+    <h2 style="display:none;"><%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %></h2>
     <div class="csvc-cate">
         <asp:ListView ID="lstMayMoc" runat="server" DataSourceID="odsMayMoc"
             EnableModelValidation="True">
@@ -24,13 +25,13 @@
                 <div class="item">
                     <div class="wrap-item">
                         <div class="img">
-                            <a href='<%# "/en/cosovatchat/" + progressTitle(Eval("ProjectTitleEn")) + "-" + Eval("ProjectID") + ".aspx" %>'>
+                            <a href='<%# "/en/co-so-vat-chat/" + progressTitle(Eval("ProjectTitleEn")) + "-" + Eval("ProjectID") + ".aspx" %>'>
                                 <img alt='<%# Eval("ImageName") %>' src='<%# "~/res/project/" + Eval("ImageName") %>'
                                     visible='<%# string.IsNullOrEmpty( Eval("ImageName").ToString()) ? false : true %>'
                                     runat="server" /></a>
                         </div>
                         <div class="content">
-                            <a href='<%# progressTitle(Eval("ProjectTitleEn")) + "-cs-" + Eval("ProjectID") + ".aspx" %>'><%# Eval("ProjectTitleEn") %></a>
+                            <a href='<%# "/en/co-so-vat-chat/" + progressTitle(Eval("ProjectTitleEn")) + "-" + Eval("ProjectID") + ".aspx" %>'><%# Eval("ProjectTitleEn") %></a>
                             <p><%# Eval("DescriptionEn") %></p>
                         </div>
                     </div>
