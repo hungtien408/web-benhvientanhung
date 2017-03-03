@@ -264,7 +264,7 @@ section .pc-left ul li{
 }
 section .pc-left ul li a {
     
-	color:#363636;
+	/*color:#363636;*/
     
 	display:inline-block;
     
@@ -273,6 +273,8 @@ section .pc-left ul li a {
 	vertical-align:middle;
     
 	transition:all 0.5s ease;
+    text-decoration: underline;
+    color: #00a7ee
 
 }
 
@@ -373,6 +375,7 @@ section.lichhen > .container {
     margin-left:55px;
     float:right;
     margin-right:55px;
+    margin-top:5px;
 }
 .lich-left > h3 {
     font-size:18px;
@@ -462,8 +465,8 @@ section.lichhen > .container {
 .lich-right .content {
     position:absolute;
     top:150px;
-    left:calc(100% - 85px);
-    width:200px;
+    left:calc(100% - 120px);
+    width:250px;
 }
 .lich-right .content > span {
     font-size:18px;
@@ -527,17 +530,17 @@ section.lichhen > .container {
     z-index:5;
     transition:all 0.5s ease;
 }
-.doctors-team.owl-carousel .owl-item .item .wrap-item .content a {
+.doctors-team.owl-carousel .owl-item .item .wrap-item .content {
     display:block;
     padding:10px 0;
 }
-.doctors-team.owl-carousel .owl-item .item .wrap-item .content a p {
+.doctors-team.owl-carousel .owl-item .item .wrap-item .content p {
     font-size:16px;
     color:#41535b;
     text-transform:uppercase;
     font-weight:500;
 }
-.doctors-team.owl-carousel .owl-item .item .wrap-item .content a span {
+.doctors-team.owl-carousel .owl-item .item .wrap-item .content span {
     font-size:12px;
     color:#00a7ee;
     text-transform:uppercase;
@@ -545,8 +548,8 @@ section.lichhen > .container {
 .doctors-team.owl-carousel .owl-item .item .wrap-item .content:hover {
     background:rgba(0,167,238,0.85);
 }
-.doctors-team.owl-carousel .owl-item .item .wrap-item .content:hover a p,
-.doctors-team.owl-carousel .owl-item .item .wrap-item .content:hover a span{
+.doctors-team.owl-carousel .owl-item .item .wrap-item .content:hover p,
+.doctors-team.owl-carousel .owl-item .item .wrap-item .content:hover span{
     color:#fff;
 }
 .doctors-team.owl-carousel .owl-item .item .wrap-item:hover {
@@ -1109,6 +1112,7 @@ h1.content-tit::before{
     position:relative;
     z-index:3;
     bottom:2px;
+    background: #fff;
 }
 .list-doingu .item .wrap-item {
     position:absolute;
@@ -1840,7 +1844,7 @@ a.close-modal {
     background:#00a7ee;
     padding-bottom:35px;
 }
-#footer .pull-left h1,#footer .pull-right h1 {
+#footer .pull-left h3,#footer .pull-right h3 {
     font-size:18px;
     color:#fff;
     text-transform:uppercase;

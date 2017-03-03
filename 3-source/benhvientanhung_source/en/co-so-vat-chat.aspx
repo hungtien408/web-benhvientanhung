@@ -17,7 +17,7 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="page_main" runat="Server">
     <h1 class="content-tit">Cơ sở vật chất</h1>
-    <h2 style="display:none;"><%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %></h2>
+    <h2 style="display:none;"><a href='<%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %>' title='Cơ sở vật chất'>Cơ sở vật chất</a></h2>
     <div class="csvc-cate">
         <asp:ListView ID="lstMayMoc" runat="server" DataSourceID="odsMayMoc"
             EnableModelValidation="True">

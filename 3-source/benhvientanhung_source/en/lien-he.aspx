@@ -14,8 +14,8 @@
     <uc1:cauhoitructuyen runat="server" ID="cauhoitructuyen" />
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="page_main" runat="Server">
-    <h1 class="content-tit">liên hệ</h1>
-    <h2 style="display:none;"><%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %></h2>
+    <h1 class="content-tit">Contact Us</h1>
+    <h2 style="display:none;"><a href='<%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %>' title='Contact Us'>Contact Us</a></h2>
     <div class="lien-he-wrap">
         <div class="left">
             <h3>Liên hệ với chúng tôi</h3>

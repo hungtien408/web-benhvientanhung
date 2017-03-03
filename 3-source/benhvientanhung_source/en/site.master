@@ -237,7 +237,7 @@
                             <asp:ListView ID="lstInfo" runat="server" DataSourceID="odsInfo"
                                 EnableModelValidation="True">
                                 <ItemTemplate>
-                                    <h1><%# Eval("ProjectTitleEn") %></h1>
+                                    <h3><%# Eval("ProjectTitleEn") %></h3>
                                     <ul>
                                         <li class="local">Địa chỉ: <%# Eval("Description") %></li>
                                         <li class="phone">Điện thoại: <%# Eval("MetaTittle") %></li>
@@ -276,7 +276,7 @@
                             <p>Copyright 2016 © TAN HUNG HOSPITAL. <a href="http://www.tranlegroup.com" target="_blank">Thiet ke web Tran Le</a></p>
                         </div>
                         <div class="pull-right">
-                            <h1>liên kết hợp tác</h1>
+                            <h3>liên kết hợp tác</h3>
                             <div class="img-lkht owl-carousel">
                                 <asp:ListView ID="lstLienKetHopTac" runat="server" DataSourceID="odsLienKetHopTac"
                                     EnableModelValidation="True">

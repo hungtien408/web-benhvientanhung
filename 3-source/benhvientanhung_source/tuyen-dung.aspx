@@ -16,7 +16,7 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="page_main" runat="Server">
     <h1 class="content-tit">Tuyển dụng</h1>
-    <h2 style="display:none;"><%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %></h2>
+    <h2 style="display:none;"><a href='<%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %>' title='Tuyển dụng'>Tuyển dụng</a></h2>
     <div class="tuyendung-wrap">
         <asp:ListView ID="lstTuyenDungMoTa" runat="server" DataSourceID="odsTuyenDungMoTa"
             EnableModelValidation="True">

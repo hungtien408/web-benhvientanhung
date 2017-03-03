@@ -13,15 +13,16 @@ public partial class about_us : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            string strTitle, strDescription, strMetaTitle, strMetaDescription;
+            string strTitle, strDescription, strMetaTitle, strMetaDescription, strKeyword;
             var oProject = new Project();
             var dv = oProject.ProjectSelectOne("4").DefaultView;
             if (dv != null && dv.Count <= 0) return;
             var row = dv[0];
-            strTitle = Server.HtmlDecode(row["ProjectTitle"].ToString());
-            strDescription = Server.HtmlDecode(row["Description"].ToString());
-            strMetaTitle = Server.HtmlDecode(row["MetaTittle"].ToString());
-            strMetaDescription = Server.HtmlDecode(row["MetaDescription"].ToString());
+            strTitle = Server.HtmlDecode(row["ProjectTitleEn"].ToString());
+            strDescription = Server.HtmlDecode(row["DescriptionEn"].ToString());
+            strMetaTitle = Server.HtmlDecode(row["MetaTittleEn"].ToString());
+            strMetaDescription = Server.HtmlDecode(row["MetaDescriptionEn"].ToString());
+            strKeyword = Server.HtmlDecode(row["TagEn"].ToString());
 
             Page.Title = !string.IsNullOrEmpty(strMetaTitle) ? strMetaTitle : strTitle;
             var meta = new HtmlMeta()
@@ -30,7 +31,14 @@ public partial class about_us : System.Web.UI.Page
                 Content = !string.IsNullOrEmpty(strMetaDescription) ?
                     strMetaDescription : strDescription
             };
+            var metaKeyword = new HtmlMeta()
+            {
+                Name = "keywords",
+                Content = !string.IsNullOrEmpty(strKeyword) ?
+                    strKeyword : strDescription
+            };
             Header.Controls.Add(meta);
+            Header.Controls.Add(metaKeyword);
         }
     }
 }

@@ -45,6 +45,8 @@ function myfunload() {
         autoplay: true,
         autoplayTimeout: 2000,
         autoplayHoverPause: true,
+        touchDrag: false,
+        mouseDrag: false,
         responsive: {
             0: {
                 items: 1
@@ -346,6 +348,12 @@ $('.list-doingu .item').click(function () {
     $('#overlay-screen-active').remove();
     $('#main-content').append('<div id="overlay-screen-active">');
     $(this).find('.popup .popup-content').css('top', '30px');
+});
+$(document).on('click', '.doctors-team .owl-item', function () {
+    $('#overlay-screen-active').remove();
+    $('#main-content').append('<div id="overlay-screen-active">');
+    var n = $(this).children('.item').attr('id');
+    $('.team-of-doctors').find('.list-doingu').children('.popup[data-id="' + n + '"]').find('.popup-content').css('top', '30px');
 });
 $('.library-box > a').click(function () {
     $('#main-content').append('<div id="overlay-screen-active">');

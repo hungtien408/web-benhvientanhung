@@ -13,7 +13,7 @@ public partial class tin_tuc_chi_tiet : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            string strTitle, strDescription, strMetaTitle, strMetaDescription;
+            string strTitle, strDescription, strMetaTitle, strMetaDescription, strKeyword;
             if (!string.IsNullOrEmpty(Request.QueryString["tt"]))
             {
                 var oProject = new Project();
@@ -24,6 +24,7 @@ public partial class tin_tuc_chi_tiet : System.Web.UI.Page
                 strDescription = Server.HtmlDecode(row["DescriptionEn"].ToString());
                 strMetaTitle = Server.HtmlDecode(row["MetaTittleEn"].ToString());
                 strMetaDescription = Server.HtmlDecode(row["MetaDescriptionEn"].ToString());
+                strKeyword = Server.HtmlDecode(row["TagEn"].ToString());
                 //hdnSanPhamDetails.Value = progressTitle(dv2[0]["ProductCategoryName"].ToString()) + "-pci-" + dv2[0]["ProductCategoryID"].ToString() + ".aspx";
                 hdnTitle.Value = dv[0]["ProjectTitle"].ToString();
                 hdnDescription.Value = dv[0]["MetaDescription"].ToString();
@@ -34,6 +35,7 @@ public partial class tin_tuc_chi_tiet : System.Web.UI.Page
                 strTitle = strMetaTitle = "News";
                 strDescription = "";
                 strMetaDescription = "";
+                strKeyword = "";
             }
             Page.Title = !string.IsNullOrEmpty(strMetaTitle) ? strMetaTitle : strTitle;
             var meta = new HtmlMeta()
@@ -41,8 +43,15 @@ public partial class tin_tuc_chi_tiet : System.Web.UI.Page
                 Name = "description",
                 Content = !string.IsNullOrEmpty(strMetaDescription) ?
                     strMetaDescription : strDescription
+            }; 
+            var metaKeyword = new HtmlMeta()
+            {
+                Name = "keywords",
+                Content = !string.IsNullOrEmpty(strKeyword) ?
+                    strKeyword : strDescription
             };
             Header.Controls.Add(meta);
+            Header.Controls.Add(metaKeyword);
             //lblTitle.Text = strTitle;
         }
     }

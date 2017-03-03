@@ -236,7 +236,7 @@
                             <asp:ListView ID="lstInfo" runat="server" DataSourceID="odsInfo"
                                 EnableModelValidation="True">
                                 <ItemTemplate>
-                                    <h1><%# Eval("ProjectTitle") %></h1>
+                                    <h3><%# Eval("ProjectTitle") %></h3>
                                     <ul>
                                         <li class="local">Địa chỉ: <%# Eval("Description") %></li>
                                         <li class="phone">Điện thoại: <%# Eval("MetaTittle") %></li>
@@ -274,7 +274,7 @@
                             </ul>
                         </div>
                         <div class="pull-right">
-                            <h1>liên kết hợp tác</h1>
+                            <h3>liên kết hợp tác</h3>
                             <div class="img-lkht owl-carousel">
                                 <asp:ListView ID="lstLienKetHopTac" runat="server" DataSourceID="odsLienKetHopTac"
                                     EnableModelValidation="True">

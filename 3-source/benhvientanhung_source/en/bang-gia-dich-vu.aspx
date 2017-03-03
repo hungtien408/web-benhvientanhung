@@ -17,7 +17,7 @@
         EnableModelValidation="True">
         <ItemTemplate>
             <h1 class="content-tit"><%# Eval("ProjectTitleEn") %></h1>
-            <h2 style="display:none;"><%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %></h2>
+            <h2 style="display:none;"><a href='<%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %>' title='<%# Eval("ProjectTitleEn") %>'><%# Eval("ProjectTitleEn") %></a></h2>
             <asp:HiddenField ID="hdnProjectID" Value='<%# Eval("ProjectID") %>' runat="server" />
             <asp:ListView ID="lstFile" runat="server" DataSourceID="odsFile"
                 EnableModelValidation="True">

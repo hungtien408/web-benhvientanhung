@@ -20,6 +20,7 @@
         <ItemTemplate>
             <div class="abou-us-content">
                 <h1 class="content-tit"><%# Eval("ProjectTitle") %></h1>
+                <h2 style="display:none;"><a href='<%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %>' title='<%# Eval("ProjectTitle") %>'><%# Eval("ProjectTitle") %></a></h2>
                 <div class="description">
                     <%# Eval("Content") %>
                 </div>

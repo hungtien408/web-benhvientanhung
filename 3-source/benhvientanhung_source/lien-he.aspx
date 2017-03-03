@@ -15,7 +15,7 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="page_main" runat="Server">
     <h1 class="content-tit">liên hệ</h1>
-    <h2 style="display:none;"><%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %></h2>
+    <h2 style="display:none;"><a href='<%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %>' title='Liên hệ'>Liên hệ</a></h2>
     <div class="lien-he-wrap">
         <div class="left">
             <h3>Liên hệ với chúng tôi</h3>

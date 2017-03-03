@@ -167,7 +167,7 @@
                 <div class="lich-right">
                     <img src="/assets/images/hoi.png" alt="" />
                     <div class="content">
-                        <span>đặt câu hỏi</span>
+                        <span>đặt lịch hẹn</span>
                         <h1>trực tuyến</h1>
                     </div>
                 </div>
@@ -213,7 +213,6 @@
                     </div>
                 </div>
                 <div class="lich-left">
-                    <h3>đặt lịch hẹn trực tuyến</h3>
                     <div class="form-group">
                         <asp:TextBox ID="txtFullName" runat="server"></asp:TextBox>
                         <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender1" runat="server" Enabled="True"
@@ -326,7 +325,7 @@
                 </div>
             </div>
         </section>
-        <section class="team-of-doctors">
+        <%--<section class="team-of-doctors">
             <div class="container">
                 <div class="id-sec">
                     <h1>Đội ngũ bác sĩ</h1>
@@ -373,6 +372,99 @@
                         </SelectParameters>
                     </asp:ObjectDataSource>
                 </div>
+            </div>
+        </section>--%>
+        <section class="team-of-doctors">
+            <div class="container">
+                <div class="id-sec">
+                    <h1>Đội ngũ bác sĩ</h1>
+                </div>
+                <div class="doctors-team owl-carousel">
+                    <asp:ListView ID="lstDoiNguBacSi" runat="server" DataSourceID="odsDoiNguBacSi"
+                        EnableModelValidation="True">
+                        <ItemTemplate>
+                            <div class="item" id='<%# "it-" + Eval("ProjectID") %>'>
+                                <img alt='<%# Eval("ImageName") %>' src='<%# "~/res/project/" + Eval("ImageName") %>'
+                                    visible='<%# string.IsNullOrEmpty( Eval("ImageName").ToString()) ? false : true %>'
+                                    runat="server" />
+                                <div class="wrap-item">
+                                    <div class="content">
+                                        <p><%# Eval("ProjectTitle") %></p>
+                                        <span><%# Eval("ProjectCategoryName") %></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </ItemTemplate>
+                        <LayoutTemplate>
+                            <span runat="server" id="itemPlaceholder" />
+                        </LayoutTemplate>
+                    </asp:ListView>
+                    <asp:ObjectDataSource ID="odsDoiNguBacSi" runat="server" SelectMethod="ProjectSelectAll" TypeName="TLLib.Project">
+                        <SelectParameters>
+                            <asp:Parameter Name="StartRowIndex" Type="String" />
+                            <asp:Parameter Name="EndRowIndex" Type="String" />
+                            <asp:Parameter Name="Keyword" Type="String" />
+                            <asp:Parameter Name="ProjectTitle" Type="String" />
+                            <asp:Parameter Name="Description" Type="String" />
+                            <asp:Parameter DefaultValue="17" Name="ProjectCategoryID" Type="String" />
+                            <asp:Parameter Name="Tag" Type="String" />
+                            <asp:Parameter Name="IsHot" Type="String" />
+                            <asp:Parameter Name="IsNew" Type="String" />
+                            <asp:Parameter Name="IsShowOnHomePage" Type="String" />
+                            <asp:Parameter Name="FromDate" Type="String" />
+                            <asp:Parameter Name="ToDate" Type="String" />
+                            <asp:Parameter DefaultValue="True" Name="IsAvailable" Type="String" />
+                            <asp:Parameter Name="Priority" Type="String" />
+                            <asp:Parameter DefaultValue="True" Name="SortByPriority" Type="String" />
+                        </SelectParameters>
+                    </asp:ObjectDataSource>
+                </div>
+            </div>
+            <div class="list-doingu">
+                <asp:ListView ID="lstDoiNguBacSi2" runat="server" DataSourceID="odsDoiNguBacSi"
+                    EnableModelValidation="True">
+                    <ItemTemplate>
+                        <div class="popup scroll-popup" data-id='<%# "it-" + Eval("ProjectID") %>'>
+                            <div class="popup-content">
+                                <div class="modaltitle"><%# Eval("ProjectCategoryName") %></div>
+                                <div class="modal-main">
+                                    <div class="info-main">
+                                        <div class="info-img">
+                                            <img alt='<%# Eval("ImageName") %>' src='<%# "~/res/project/" + Eval("ImageName") %>'
+                                                visible='<%# string.IsNullOrEmpty( Eval("ImageName").ToString()) ? false : true %>'
+                                                runat="server" />
+                                        </div>
+                                        <div class="info-box">
+                                            <ul>
+                                                <li>
+                                                    <div class="info-title">Họ Tên:</div>
+                                                    <%# Eval("ProjectTitle") %></li>
+                                                <li>
+                                                    <div class="info-title">Chức vụ:</div>
+                                                    <%# Eval("Tag") %></li>
+                                                <li>
+                                                    <div class="info-title">Chuyên ngành:</div>
+                                                    <%# Eval("MetaTittle") %></li>
+                                                <li>
+                                                    <div class="info-title">Kinh nghiệm:</div>
+                                                    <%# Eval("MetaDescription") %></li>
+                                                <li>
+                                                    <div class="info-title">Ngoại ngữ:</div>
+                                                    <%# Eval("Description") %></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="info-content">
+                                        <%# Eval("Content") %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ItemTemplate>
+                    <LayoutTemplate>
+                        <span runat="server" id="itemPlaceholder" />
+                    </LayoutTemplate>
+                </asp:ListView>
             </div>
         </section>
         <section class="chuyenkhoa">
@@ -522,7 +614,9 @@
                                 <div class="wrap-dch">
                                     <div class="form-group">
                                         <asp:RadUpload ID="FileImageName" runat="server" ControlObjectsVisibility="None"
-                                            Culture="vi-VN" Language="vi-VN" InputSize="69" AllowedFileExtensions=".jpg,.jpeg,.gif,.png" />
+                                            Culture="vi-VN" Language="vi-VN" InputSize="69" AllowedFileExtensions=".jpg,.jpeg,.gif,.png">
+                                            <Localization Select="Ảnh đại diện" />
+                                        </asp:RadUpload>
                                         <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="Sai định dạng ảnh (*.jpg, *.jpeg, *.gif, *.png)"
                                             ClientValidationFunction="validateRadUpload" Display="Dynamic"></asp:CustomValidator>
                                     </div>

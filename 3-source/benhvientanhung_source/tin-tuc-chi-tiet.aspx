@@ -36,7 +36,7 @@
             <div class="abou-us-content">
                 <div class="title-main">
                     <h1><%# Eval("ProjectTitle") %></h1>
-                    <h2 style="display:none;"><%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %></h2>
+                    <h2 style="display:none;"><a href='<%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %>' title='<%# Eval("ProjectTitle") %>'><%# Eval("ProjectTitle") %></a></h2>
                 </div>
                 <div class="description">
                     <%# Eval("Content") %>

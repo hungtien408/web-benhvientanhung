@@ -20,7 +20,7 @@
             <ItemTemplate>
                 <div class="title-main">
                     <h1><%# Eval("ProjectCategoryName") %></h1>
-                    <h2 style="display:none;"><%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %></h2>
+                    <h2 style="display:none;"><a href='<%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %>' title='<%# Eval("ProjectCategoryName") %>'><%# Eval("ProjectCategoryName") %></a></h2>
                 </div>
                 <div class="main-text">
                     <%# Eval("Content") %>
