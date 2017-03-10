@@ -158,6 +158,32 @@
                                 <asp:Parameter DefaultValue="True" Name="SortByPriority" Type="String" />
                             </SelectParameters>
                         </asp:ObjectDataSource>
+                        <asp:ListView ID="lstPhotoAlbumCategory" runat="server" DataSourceID="odsPhotoAlbumCategory"
+                            EnableModelValidation="True">
+                            <ItemTemplate>
+                                <div class="img-details">
+                                    <a href="thu-vien-anh-video.aspx">
+                                        <img alt='<%# Eval("ImageName") %>' src='<%# "~/res/photoalbumcategory/" + Eval("ImageName") %>' runat="server"
+                                            visible='<%# string.IsNullOrEmpty(Eval("ImageName").ToString()) ? false : true %>' /></a>
+                                </div>
+                            </ItemTemplate>
+                            <LayoutTemplate>
+                                <span runat="server" id="itemPlaceholder" />
+
+                            </LayoutTemplate>
+                        </asp:ListView>
+                        <asp:ObjectDataSource ID="odsPhotoAlbumCategory" runat="server" SelectMethod="PhotoAlbumCategorySelectAll"
+                            TypeName="TLLib.PhotoAlbumCategory">
+                            <SelectParameters>
+                                <asp:Parameter Name="PhotoAlbumCategoryName" Type="String" />
+                                <asp:Parameter Name="IsShowOnMenu" Type="String" />
+                                <asp:Parameter DefaultValue="True" Name="IsShowOnHomePage" Type="String" />
+                                <asp:Parameter DefaultValue="True" Name="IsAvailable" Type="String" />
+                                <asp:Parameter Name="PhotoCategoryID" Type="String" />
+                                <asp:Parameter Name="Priority" Type="String" />
+                                <asp:Parameter DefaultValue="True" Name="SortByPriority" Type="String" />
+                            </SelectParameters>
+                        </asp:ObjectDataSource>
                     </div>
                 </div>
             </div>
@@ -449,7 +475,7 @@
                                                     <div class="info-title">Kinh nghiệm:</div>
                                                     <%# Eval("MetaDescriptionEn") %></li>
                                                 <li>
-                                                    <div class="info-title">Ngoại ngữ:</div>
+                                                    <div class="info-title">Ngôn ngữ giao tiếp:</div>
                                                     <%# Eval("DescriptionEn") %></li>
                                             </ul>
                                         </div>

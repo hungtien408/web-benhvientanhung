@@ -355,6 +355,27 @@ section .pc-right .wrap-video::before {
     right:-8px;
     bottom:-8px;
 }
+section .pc-right .img-details {
+    width:280px;
+    display:inline-block;
+    vertical-align:top;
+    margin-right:20px;
+    position:relative;
+}
+section .pc-right .img-details img{
+    width:280px;
+    height:190px;
+}
+section .pc-right .img-details::before {
+    position:absolute;
+    content:"";
+    background:#00a7ee;
+    width:280px;
+    height:190px;
+    right:-8px;
+    bottom:-8px;
+    z-index:-1;
+}
 section.lichhen{
     background:url(../images/lichhen-bg.png) no-repeat;
     background-position:center center;
@@ -2533,13 +2554,13 @@ a.close-modal {
 .menu ul li {
     position:relative;
 }
-.menu ul ul {
+.menu ul#menu > li > ul {
     width:220px;
     background:#fff;
     position:absolute;
     top:100%;
     z-index:9;
-    padding:5px 20px 0;
+    padding:0 20px 0;
     display:none;
     transform:translateX(-50%);
     -webkit-transform:translateX(-50%);
@@ -2548,7 +2569,7 @@ a.close-modal {
     -o-transform:translateX(-50%);
     left:30%;
 }
-.menu ul ul::before {
+.menu ul#menu > li > ul::before {
     position:absolute;
     content:"";
     width: 0; 
@@ -2574,7 +2595,7 @@ a.close-modal {
     text-transform:none;
     border-bottom:1px solid #cdd9e1;
 }
-.menu ul ul li a:hover, .menu ul ul li.active a {
+.menu ul ul li a:hover {
     color:#00a7ee;
 }
 .menu ul ul li:last-child a {
@@ -2597,7 +2618,16 @@ a.close-modal {
 .menu ul ul li a:hover::before {
     color:#00a7ee;
 }
-
+.menu ul#menu > li li ul {
+    display:none;
+    left:calc(100% + 20px);
+    top:0;
+    position:absolute;
+    width:220px;
+    background:#fff;
+    padding: 0 20px 0;    
+    z-index: 9;
+}
 /**/
 .popup.datlich-kham .popup-content {
     width:600px;

@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/site-sub.master" AutoEventWireup="true" CodeFile="cac-chuyen-khoa.aspx.cs" Inherits="chuyen_khoa" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/en/site-sub.master" AutoEventWireup="true" CodeFile="chuyen-khoa.aspx.cs" Inherits="chuyen_khoa" %>
 
-<%@ Register Src="~/uc/cam-nhan-benh-nhan.ascx" TagPrefix="uc1" TagName="camnhanbenhnhan" %>
-<%@ Register Src="~/uc/cap-cuu.ascx" TagPrefix="uc1" TagName="capcuu" %>
-<%@ Register Src="~/uc/banner-chuyenkhoa.ascx" TagPrefix="uc4" TagName="bannerchuyenkhoa" %>
-<%@ Register Src="~/uc/list-category-chuyen-khoa.ascx" TagPrefix="uc5" TagName="listcategorychuyenkhoa" %>
+<%@ Register Src="~/en/uc/cam-nhan-benh-nhan.ascx" TagPrefix="uc1" TagName="camnhanbenhnhan" %>
+<%@ Register Src="~/en/uc/cap-cuu.ascx" TagPrefix="uc1" TagName="capcuu" %>
+<%@ Register Src="~/en/uc/banner-chuyenkhoa.ascx" TagPrefix="uc4" TagName="bannerchuyenkhoa" %>
+<%@ Register Src="~/en/uc/list-category-chuyen-khoa.ascx" TagPrefix="uc5" TagName="listcategorychuyenkhoa" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="page_img" runat="Server">
@@ -16,7 +16,7 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="page_main" runat="Server">
     <div class="service">
-        <h1 class="content-tit">các chuyên khoa</h1>
+        <h1 class="content-tit">chuyên khoa</h1>
         <h2 style="display:none;"><a href='<%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %>' title='Các chuyên khoa'>Các chuyên khoa</a></h2>
         <div class="row service-main">
             <asp:ListView ID="lstCacChuyenKhoa" runat="server" DataSourceID="odsCacChuyenKhoa"
@@ -25,10 +25,10 @@
                     <div class="col-md-4">
                         <div class="service-box">
                             <div class="service-name text-uppercase">
-                                <a href='<%# "/chuyen-khoa/" + progressTitle(Eval("ProjectCategoryName")) + "-" + Eval("ProjectCategoryID") + ".aspx" %>'><%# Eval("ProjectCategoryName") %></a>
+                                <a href='<%# "/en/chuyen-khoa/"+ progressTitle(Eval("ProjectCategoryNameEn")) + "-" + Eval("ProjectCategoryID") + ".aspx" %>'><%# Eval("ProjectCategoryNameEn") %></a>
                             </div>
                             <div class="service-img">
-                                <a href='<%# "/chuyen-khoa/" + progressTitle(Eval("ProjectCategoryName")) + "-" + Eval("ProjectCategoryID") + ".aspx" %>'>
+                                <a href='<%# "/en/chuyen-khoa/"+ progressTitle(Eval("ProjectCategoryNameEn")) + "-" + Eval("ProjectCategoryID") + ".aspx" %>'>
                                     <img alt='<%# Eval("ImageName") %>' src='<%# "~/res/projectcategory/" + Eval("ImageName") %>'
                                         visible='<%# string.IsNullOrEmpty( Eval("ImageName").ToString()) ? false : true %>'
                                         runat="server" /></a>

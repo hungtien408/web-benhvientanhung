@@ -89,7 +89,7 @@
                                     OnClick="btnEN_Click" />
                                 <%--<asp:ImageButton ID="btnVN" runat="server" ImageUrl="~/assets/images/vi.png"
                                     OnClick="btnVN_Click" />--%>
-                                <asp:ImageButton ID="btnVN" runat="server" ImageUrl="~/assets/images/vi.png"/>
+                                <asp:ImageButton ID="btnVN" runat="server" ImageUrl="~/assets/images/vi.png" />
                                 <%--<a href="javascript:void(0);"><img src="/assets/images/vi.png" alt="" /></a>--%>
                             </div>
                             <div class="hotline">
@@ -136,7 +136,28 @@
                                 <asp:ListView ID="lstChuyenKhoa" runat="server" DataSourceID="odsChuyenKhoa"
                                     EnableModelValidation="True">
                                     <ItemTemplate>
-                                        <li><a href='<%# Eval("ProjectCategoryLink") %>' runat="server"><%# Eval("ProjectCategoryName") %></a></li>
+                                        <li><a href='<%# Eval("ProjectCategoryLink") %>' runat="server"><%# Eval("ProjectCategoryName") %></a>
+                                            <asp:HiddenField ID="hdnProjectCategoryID" runat="server" Value='<%# Eval("ProjectCategoryID") %>' />
+                                            <asp:ListView ID="lstChuyenKhoaSub" runat="server" DataSourceID="odsChuyenKhoaSub"
+                                                EnableModelValidation="True">
+                                                <ItemTemplate>
+                                                     <li><a href='<%# "/chuyen-khoa/" + progressTitle(Eval("ProjectCategoryName")) + "-" + Eval("ProjectCategoryID") + ".aspx" %>'><%# Eval("ProjectCategoryName") %></a></li>
+                                                </ItemTemplate>
+                                                <LayoutTemplate>
+                                                    <ul>
+                                                        <li runat="server" id="itemPlaceholder"></li>
+                                                    </ul>
+                                                </LayoutTemplate>
+                                            </asp:ListView>
+                                            <asp:ObjectDataSource ID="odsChuyenKhoaSub" runat="server" SelectMethod="ProjectCategorySelectAll" TypeName="TLLib.ProjectCategory">
+                                                <SelectParameters>
+                                                    <asp:ControlParameter ControlID="hdnProjectCategoryID" PropertyName="Value" Name="parentID" Type="Int32" />
+                                                    <asp:Parameter DefaultValue="1" Name="increaseLevelCount" Type="Int32" />
+                                                    <asp:Parameter Name="IsShowOnMenu" Type="String" />
+                                                    <asp:Parameter Name="IsShowOnHomePage" Type="String" />
+                                                </SelectParameters>
+                                            </asp:ObjectDataSource>
+                                        </li>
                                     </ItemTemplate>
                                     <LayoutTemplate>
                                         <ul>
@@ -208,8 +229,10 @@
                                 <img src="~/assets/images/search.png" alt="" runat="server" />
                             </div>
                             <div class="search-form">
-                                <asp:TextBox ID="txtSearch" CssClass="search-text" runat="server"></asp:TextBox>
-                                <asp:Button ID="btnSearch" CssClass="search-btn" runat="server" OnClick="btnSearch_Click" />
+                                <asp:Panel ID="Panel1" runat="server" DefaultButton="btnSearch">
+                                    <asp:TextBox ID="txtSearch" CssClass="search-text" runat="server"></asp:TextBox>
+                                    <asp:Button ID="btnSearch" CssClass="search-btn" runat="server" OnClick="btnSearch_Click" />
+                                </asp:Panel>
                             </div>
                         </div>
                         <div class="hotline-mobile">
@@ -269,8 +292,8 @@
                             <p style="font-size: 16px; font-weight: bold;">Thống kê truy cập</p>
                             <ul>
                                 <li><span>Đang online: <%= Application["visitors_online"].ToString() %></span><span style="padding-left: 10px">Hôm nay: <%= Application["HomNay"].ToString() %></span></li>
-                                <li><span>Tháng này: <%= Application["ThangNay"].ToString() %></span><span style="padding-left: 10px">Tổng số: <%= Application["TatCa"].ToString() %></span></li>
                                 <li><span>Ngày trước: <%= Application["HomQua"].ToString() %></span> <span><%= Convert.ToInt32(Application["HomQua"].ToString()) < Convert.ToInt32(Application["HomNay"].ToString()) ? "<" : ">" %></span> <span>Ngày sau: <%= Application["HomNay"].ToString() %></span></li>
+                                <li><span>Tháng này: <%= Application["ThangNay"].ToString() %></span><span style="padding-left: 10px">Tổng số: <%= Application["TatCa"].ToString() %></span></li>
                             </ul>
                         </div>
                         <div class="pull-right">

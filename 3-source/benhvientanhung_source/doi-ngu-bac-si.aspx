@@ -86,7 +86,7 @@
                                                 <div class="info-title">Kinh nghiệm:</div>
                                                 <%# Eval("MetaDescription") %></li>
                                             <li>
-                                                <div class="info-title">Ngoại ngữ:</div>
+                                                <div class="info-title">Ngôn ngữ giao tiếp:</div>
                                                 <%# Eval("Description") %></li>
                                         </ul>
                                     </div>
