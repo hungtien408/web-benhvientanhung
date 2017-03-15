@@ -57,7 +57,11 @@ public partial class ad_single_projectcategory : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (!IsPostBack)
+        {
+            if (!HttpContext.Current.User.IsInRole("Các Khoa Phòng"))
+                Response.Redirect("~/ad/bilingual/");
+        }
     }
 
     protected void RadGrid1_ItemCommand(object sender, GridCommandEventArgs e)

@@ -167,7 +167,7 @@
                                 </asp:RadMenuItem>
                             </Items>
                         </asp:RadMenuItem>
-                        <asp:RadMenuItem runat="server" Text="Các Phòng Khoa" Font-Bold="True">
+                        <asp:RadMenuItem runat="server" Text="Các Khoa Phòng" Font-Bold="True" NavigateUrl="~/ad/bilingual/cacphongkhoa.aspx">
                             <%--<Items>
                                         <asp:RadMenuItem runat="server" Text="Bài Viết" NavigateUrl="~/ad/bilingual/specialities.aspx">
                                         </asp:RadMenuItem>
@@ -176,7 +176,7 @@
                                         <asp:RadMenuItem runat="server" Text="Danh Mục" NavigateUrl="~/ad/bilingual/specialitycategory.aspx">
                                         </asp:RadMenuItem>
                                     </Items>--%>
-                            <Items>
+                            <%--<Items>
                                 <asp:RadMenuItem runat="server" Text="Các Phòng Khoa" NavigateUrl="~/ad/bilingual/cacphongkhoa.aspx">
                                 </asp:RadMenuItem>
                                 <asp:RadMenuItem runat="server" IsSeparator="True">
@@ -187,7 +187,7 @@
                                 </asp:RadMenuItem>
                                 <asp:RadMenuItem runat="server" Text="Chuẩn Đoán Hình Ảnh" NavigateUrl="~/ad/bilingual/chuandoanhinhanh.aspx">
                                 </asp:RadMenuItem>
-                            </Items>
+                            </Items>--%>
                         </asp:RadMenuItem>
                         <%--<asp:RadMenuItem runat="server" Text="Danh Mục Kỹ Thuật" PostBack="False" Font-Bold="True"
                             NavigateUrl="~/ad/bilingual/danhmuckythuat.aspx">
@@ -243,7 +243,7 @@
                         <asp:RadMenuItem runat="server" Text="News Letter" PostBack="False" Font-Bold="True"
                             NavigateUrl="~/ad/bilingual/newsletter.aspx">
                         </asp:RadMenuItem>
-                        <asp:RadMenuItem runat="server" Text="Đạt Lịch Khám" PostBack="False" Font-Bold="True"
+                        <asp:RadMenuItem runat="server" Text="Đặt Lịch Khám" PostBack="False" Font-Bold="True"
                             NavigateUrl="~/ad/bilingual/datlichkham.aspx">
                         </asp:RadMenuItem>
                         <asp:RadMenuItem runat="server" Text="Banner" PostBack="False" Font-Bold="True">

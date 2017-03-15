@@ -53,6 +53,9 @@ public partial class ad_single_photoalbum : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+            if (!HttpContext.Current.User.IsInRole("Giới Thiệu"))
+                Response.Redirect("~/ad/bilingual/");
+
             TempImage = new DataTable();
             TempImage.Columns.Add("ImageName");
         }

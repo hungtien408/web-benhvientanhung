@@ -133,7 +133,7 @@
                                     </SelectParameters>
                                 </asp:ObjectDataSource>
                             </li>
-                            <li><a href="javascript:void(0);">các phòng khoa</a>
+                            <li><a href="javascript:void(0);">các khoa phòng</a>
                                 <asp:ListView ID="lstChuyenKhoa" runat="server" DataSourceID="odsChuyenKhoa"
                                     EnableModelValidation="True">
                                     <ItemTemplate>

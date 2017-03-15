@@ -61,7 +61,11 @@ public partial class ad_single_advertisement : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (!IsPostBack)
+        {
+            if (!HttpContext.Current.User.IsInRole("Banner"))
+                Response.Redirect("~/ad/bilingual/");
+        }
     }
     public void RadGrid1_ItemCreated(object sender, Telerik.Web.UI.GridItemEventArgs e)
     {

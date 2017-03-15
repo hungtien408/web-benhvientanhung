@@ -41,6 +41,11 @@ public partial class ad_single_partner : System.Web.UI.Page
         //{
             //lblTongSoDatHen.Text = ((DataView)ObjectDataSource1.Select()).Count.ToString();
         //}
+        if (!IsPostBack)
+        {
+            if (!HttpContext.Current.User.IsInRole("Đặt Lịch Khám"))
+                Response.Redirect("~/ad/bilingual/");
+        }
     }
     public void RadGrid1_ItemCreated(object sender, Telerik.Web.UI.GridItemEventArgs e)
     {

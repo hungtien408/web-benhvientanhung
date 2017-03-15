@@ -30,7 +30,7 @@
 
             //if session is not less than 0
             if (sessionTimeout >= 0)
-            //call the function again after 1 minute delay
+                //call the function again after 1 minute delay
                 window.setTimeout("DisplaySessionTimeoutParentWindow()", 10000);
             else {
                 //show message box
@@ -78,289 +78,271 @@
 </head>
 <body id="body">
     <form id="form1" runat="server">
-    <script type="text/javascript" language="javascript">
-        var prMgr = Sys.WebForms.PageRequestManager.getInstance();
-        prMgr.add_beginRequest(BeginRequestHandler);
-        prMgr.add_endRequest(EndRequestHandler);
-        prMgr.add_initializeRequest(CheckStatus);
-        var elem;
+        <script type="text/javascript" language="javascript">
+            var prMgr = Sys.WebForms.PageRequestManager.getInstance();
+            prMgr.add_beginRequest(BeginRequestHandler);
+            prMgr.add_endRequest(EndRequestHandler);
+            prMgr.add_initializeRequest(CheckStatus);
+            var elem;
 
-        //abort the postback event by condition
-        function CheckStatus(sender, args) {
-            elem = args.get_postBackElement();
-        }
-        function BeginRequestHandler(sender, args) {
-            var showPostBackMask = $(elem).attr("ShowPostBackMask");
-
-            if (showPostBackMask == undefined)
-                showPostBackMask = $(elem).parent().attr("ShowPostBackMask");
-
-            if (showPostBackMask != "False") {
-                $("body").append('<div class="loading"></div><div id="loading_mask"></div>');
-                $('#loading_mask').css({ opacity: 0.5 })
-                    .fadeIn('medium');
-                $(".loading").css({ top: $(window).scrollTop() + ($(window).height() - $(".loading").height()) / 2, left: $(window).scrollLeft() + ($(window).width() - $(".loading").width()) / 2 })
-                    .fadeIn('medium');
+            //abort the postback event by condition
+            function CheckStatus(sender, args) {
+                elem = args.get_postBackElement();
             }
-        }
-        function EndRequestHandler(sender, args) {
-            $(".loading").fadeOut('medium', function () { $(this).remove() });
-            $("#loading_mask").fadeOut('medium', function () { $(this).remove() });
-            ResetCheckbox();
-            TextboxSelect();
-            ResetLightBox();
-            screenshotPreview();
-        }
-    </script>
-    <asp:RadScriptManager ID="RadScriptManager1" runat="server">
-    </asp:RadScriptManager>
-    <div id="wrapper">
-        <img alt="" src="~/ad/assets/images/logo.png" runat="server" class="logo" />
-        <div id="menu">
-            <asp:RadMenu ID="RadMenu1" runat="server" Skin="Black" CssClass="menu" Style="z-index: 1">
-                <Items>
-                    <asp:RadMenuItem runat="server" NavigateUrl="~/ad/bilingual/" Value="Trang Chủ" Text="Trang Chủ" ImageUrl="~/ad/assets/images/home.png"
-                        PostBack="False" Font-Bold="True">
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="Bộ Sưu Tập"
-                        Text="Bộ Sưu Tập" Font-Bold="True" NavigateUrl="~/ad/bilingual/collectioncategory.aspx">
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="Sản Phẩm"
-                        Text="Sản Phẩm" Font-Bold="True">
-                        <Items>
-                            <asp:RadMenuItem runat="server" NavigateUrl="~/ad/bilingual/product.aspx" Text="Sản Phẩm">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" IsSeparator="True">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" NavigateUrl="~/ad/bilingual/productcategory.aspx"
-                                Text="Danh Mục">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" IsSeparator="True">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" NavigateUrl="~/ad/bilingual/manufacturer1.aspx" Text="Thương Hiệu">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" IsSeparator="True">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" NavigateUrl="~/ad/bilingual/productsize.aspx" Text="Kích Thước">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" IsSeparator="True">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" NavigateUrl="~/ad/bilingual/province.aspx" Text="Tỉnh/Thành">
-                            </asp:RadMenuItem>
-                        </Items>
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="Về Pandemos"
-                        Text="Về Pandemos" Font-Bold="True" NavigateUrl="~/ad/bilingual/about.aspx">
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="Chính Sách Mua Hàng"
-                        Text="Chính Sách Mua Hàng" Font-Bold="True" NavigateUrl="~/ad/bilingual/policy.aspx">
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="Tư Vấn"
-                        Text="Tư Vấn" Font-Bold="True" NavigateUrl="~/ad/bilingual/consult.aspx">
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="Video" Text="Video"
-                        Font-Bold="True" NavigateUrl="~/ad/bilingual/videos.aspx">
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="Banner"
-                        Text="Banner" Font-Bold="True" NavigateUrl="~/ad/bilingual/advertisement.aspx">
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="Skype" Text="Skype"
-                        Font-Bold="True" NavigateUrl="~/ad/bilingual/skypecategory.aspx">
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="Email Marketing"
-                        Text="Email Marketing" Font-Bold="True" NavigateUrl="~/ad/bilingual/newsletter.aspx">
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="Hệ Thống Cửa Hàng"
-                        Text="Hệ Thống Cửa Hàng" Font-Bold="True" NavigateUrl="~/ad/bilingual/branch.aspx">
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="Đơn Hàng"
-                        Text="Đơn Hàng" Font-Bold="True">
-                        <Items>
-                            <asp:RadMenuItem runat="server" NavigateUrl="~/ad/bilingual/order.aspx" Text="Đơn Hàng (Thành Viên)">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" IsSeparator="True">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" Text="Đơn Hàng (Chưa đăng ký thành viên)" NavigateUrl="~/ad/bilingual/order-no-user.aspx">
-                            </asp:RadMenuItem>
-                        </Items>
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="Khách Hàng"
-                        Text="Khách Hàng" Font-Bold="True">
-                        <Items>
-                            <asp:RadMenuItem runat="server" NavigateUrl="~/ad/bilingual/customer.aspx" Text="Khách Hàng (Thành Viên)">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" IsSeparator="True">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" Text="Khách Hàng (Chưa đăng ký thành viên)" NavigateUrl="~/ad/bilingual/customer-no-register.aspx">
-                            </asp:RadMenuItem>
-                        </Items>
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="admin" Text="Hệ Thống"
-                        Font-Bold="True">
-                        <Items>
-                            <asp:RadMenuItem runat="server" Text="Quản Lý User" NavigateUrl="~/ad/bilingual/usermanagement-role.aspx">
-                            </asp:RadMenuItem>
-                        </Items>
-                    </asp:RadMenuItem>
-                    <%--<asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Text="Tin Tức"
-                        Font-Bold="True">
-                        <Items>
-                            <asp:RadMenuItem runat="server" NavigateUrl="~/ad/single/article.aspx" Text="Quản Lý Tin Tức">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" IsSeparator="True">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" Text="Quản Lý Danh Mục" NavigateUrl="~/ad/single/articlecategory.aspx">
-                            </asp:RadMenuItem>
-                        </Items>
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Text="Dịch Vụ"
-                        Font-Bold="True">
-                        <Items>
-                            <asp:RadMenuItem runat="server" NavigateUrl="~/ad/single/service.aspx" Text="Quản Lý Dịch Vụ">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" IsSeparator="True">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" Text="Quản Lý Danh Mục" NavigateUrl="~/ad/single/servicecategory.aspx">
-                            </asp:RadMenuItem>
-                        </Items>
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Text="Tuyển Dụng"
-                        Font-Bold="True">
-                        <Items>
-                            <asp:RadMenuItem runat="server" Text="Quản Lý Tuyển Dụng" NavigateUrl="~/ad/single/career.aspx">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" IsSeparator="True">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" Text="Quản Lý Danh Mục" NavigateUrl="~/ad/single/careercategory.aspx">
-                            </asp:RadMenuItem>
-                        </Items>
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Text="Dự Án" Font-Bold="True">
-                        <Items>
-                            <asp:RadMenuItem runat="server" Text="Quản Lý Dự Án" NavigateUrl="~/ad/single/project.aspx">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" IsSeparator="True">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" Text="Quản Lý Danh Mục" NavigateUrl="~/ad/single/projectcategory.aspx">
-                            </asp:RadMenuItem>
-                        </Items>
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Text="Download"
-                        Font-Bold="True">
-                        <Items>
-                            <asp:RadMenuItem runat="server" Text="Quản Lý Download" NavigateUrl="~/ad/single/download.aspx">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" IsSeparator="True">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" Text="Quản Lý Danh Mục" NavigateUrl="~/ad/single/downloadcategory.aspx">
-                            </asp:RadMenuItem>
-                        </Items>
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Text="Thư Viện Ảnh"
-                        Font-Bold="True" NavigateUrl="~/ad/single/photoalbum.aspx">
-                        <Items>
-                            <asp:RadMenuItem runat="server" Text="Quản Lý Thư Viện Ảnh" NavigateUrl="~/ad/single/photoalbum.aspx">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" IsSeparator="True">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" Text="Quản Lý Danh Mục" NavigateUrl="~/ad/single/photoalbumcategory.aspx">
-                            </asp:RadMenuItem>
-                        </Items>
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Text="Video (XML)" PostBack="False" Font-Bold="True"
-                        NavigateUrl="~/ad/single/videoxml.aspx">
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Text="Video" Font-Bold="True">
-                        <Items>
-                            <asp:RadMenuItem runat="server" Text="Quản Lý Video" NavigateUrl="~/ad/single/video.aspx">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" IsSeparator="True">
-                            </asp:RadMenuItem>
-                            <asp:RadMenuItem runat="server" Text="Quản Lý Danh Mục" NavigateUrl="~/ad/single/videocategory.aspx">
-                            </asp:RadMenuItem>
-                        </Items>
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Text="Đối Tác" PostBack="False" Font-Bold="True"
-                        NavigateUrl="~/ad/single/partner.aspx">
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Text="Quảng Cáo" PostBack="False" Font-Bold="True"
-                        NavigateUrl="~/ad/single/advertisement.aspx">
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Text="Đặt Hàng" PostBack="False" Font-Bold="True"
-                        NavigateUrl="~/ad/single/order.aspx">
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Text="Comment" PostBack="False" Font-Bold="True"
-                        NavigateUrl="~/ad/single/comment.aspx">
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Text="News Letter" PostBack="False" Font-Bold="True"
-                        NavigateUrl="~/ad/single/newsletter.aspx">
-                    </asp:RadMenuItem>
-                    <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Text="Hệ Thống"
-                        Font-Bold="True">
-                        <Items>
-                            <asp:RadMenuItem runat="server" Text="Quản Lý Menu" NavigateUrl="~/ad/single/menu.aspx">
-                            </asp:RadMenuItem>
-                        </Items>
-                        <Items>
-                            <asp:RadMenuItem runat="server" Text="Quản Lý Thành Viên" NavigateUrl="~/ad/single/usermanagement.aspx">
-                            </asp:RadMenuItem>
-                        </Items>
-                    </asp:RadMenuItem>--%>
-                </Items>
-            </asp:RadMenu>
-        </div>
-        <div align="right" class="loginStatus">
-            <asp:LoginView ID="LoginView1" runat="server">
-                <LoggedInTemplate>
-                    <asp:LoginName ID="LoginName1" runat="server" Font-Bold="true" />
-                    | <a id="A1" onclick="openWindow('changepassword.aspx','Đổi mật khẩu')" style="display: inline;
-                        cursor: pointer;" runat="server">Đổi mật khẩu </a>|
-                </LoggedInTemplate>
-            </asp:LoginView>
-            <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutText="Thoát" LoginText="Đăng nhập"
-                LogoutAction="Refresh" CssClass="loginstatus" />
-        </div>
-        <div id="content">
-            <div class="titleLeft">
-                <div class="titleRight">
-                    <div class="titleCenter">
+            function BeginRequestHandler(sender, args) {
+                var showPostBackMask = $(elem).attr("ShowPostBackMask");
+
+                if (showPostBackMask == undefined)
+                    showPostBackMask = $(elem).parent().attr("ShowPostBackMask");
+
+                if (showPostBackMask != "False") {
+                    $("body").append('<div class="loading"></div><div id="loading_mask"></div>');
+                    $('#loading_mask').css({ opacity: 0.5 })
+                        .fadeIn('medium');
+                    $(".loading").css({ top: $(window).scrollTop() + ($(window).height() - $(".loading").height()) / 2, left: $(window).scrollLeft() + ($(window).width() - $(".loading").width()) / 2 })
+                        .fadeIn('medium');
+                }
+            }
+            function EndRequestHandler(sender, args) {
+                $(".loading").fadeOut('medium', function () { $(this).remove() });
+                $("#loading_mask").fadeOut('medium', function () { $(this).remove() });
+                ResetCheckbox();
+                TextboxSelect();
+                ResetLightBox();
+                screenshotPreview();
+            }
+        </script>
+        <asp:RadScriptManager ID="RadScriptManager1" runat="server">
+        </asp:RadScriptManager>
+        <div id="wrapper">
+            <img alt="" src="~/ad/assets/images/logo.png" runat="server" class="logo" />
+            <div id="menu">
+                <asp:RadMenu ID="RadMenu1" runat="server" Skin="Black" CssClass="menu" Style="z-index: 1">
+                    <Items>
+                        <asp:RadMenuItem runat="server" NavigateUrl="~/ad/bilingual/" Value="Trang Chủ" Text="Trang Chủ" ImageUrl="~/ad/assets/images/home.png"
+                            PostBack="False" Font-Bold="True">
+                        </asp:RadMenuItem>
+                        <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="Giới Thiệu"
+                            Text="Giới Thiệu" Font-Bold="True">
+                            <Items>
+                                <asp:RadMenuItem runat="server" Text="Về Chúng Tôi" NavigateUrl="~/ad/bilingual/gioithieu.aspx">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" IsSeparator="True">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" Text="Đội Ngũ Bác Sĩ">
+                                    <Items>
+                                        <asp:RadMenuItem runat="server" Text="Phòng Ban" NavigateUrl="~/ad/bilingual/phongban.aspx">
+                                        </asp:RadMenuItem>
+                                        <asp:RadMenuItem runat="server" IsSeparator="True">
+                                        </asp:RadMenuItem>
+                                        <asp:RadMenuItem runat="server" Text="Bác Sĩ" NavigateUrl="~/ad/bilingual/bacsi.aspx">
+                                        </asp:RadMenuItem>
+                                    </Items>
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" IsSeparator="True">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" Text="Thư Viện Ảnh">
+                                    <Items>
+                                        <asp:RadMenuItem runat="server" Text="Danh Mục" NavigateUrl="~/ad/bilingual/photocategory.aspx">
+                                        </asp:RadMenuItem>
+                                        <asp:RadMenuItem runat="server" IsSeparator="True">
+                                        </asp:RadMenuItem>
+                                        <asp:RadMenuItem runat="server" Text="Album" NavigateUrl="~/ad/bilingual/photoalbum.aspx">
+                                        </asp:RadMenuItem>
+                                    </Items>
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" IsSeparator="True">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" Text="Video" NavigateUrl="~/ad/bilingual/video.aspx">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" IsSeparator="True">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" Text="Cơ Sở Vật Chất" NavigateUrl="~/ad/bilingual/cosovatchat.aspx">
+                                </asp:RadMenuItem>
+                            </Items>
+                        </asp:RadMenuItem>
+                        <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="Dịch Vụ"
+                            Text="Dịch Vụ" Font-Bold="True">
+                            <Items>
+                                <asp:RadMenuItem runat="server" Text="Khám Chữa Bệnh" NavigateUrl="~/ad/bilingual/khamchuabenh.aspx">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" IsSeparator="True">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" Text="Gói Khám Sức Khoẻ" NavigateUrl="~/ad/bilingual/goikhamsuckhoe.aspx">
+                                </asp:RadMenuItem>
+                            </Items>
+                        </asp:RadMenuItem>
+                        <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="Các Khoa Phòng"
+                            Text="Các Khoa Phòng" Font-Bold="True" NavigateUrl="~/ad/bilingual/cacphongkhoa.aspx">
+                            <%--<Items>
+                                        <asp:RadMenuItem runat="server" Text="Bài Viết" NavigateUrl="~/ad/bilingual/specialities.aspx">
+                                        </asp:RadMenuItem>
+                                        <asp:RadMenuItem runat="server" IsSeparator="True">
+                                        </asp:RadMenuItem>
+                                        <asp:RadMenuItem runat="server" Text="Danh Mục" NavigateUrl="~/ad/bilingual/specialitycategory.aspx">
+                                        </asp:RadMenuItem>
+                                    </Items>--%>
+                            <%--<Items>
+                                <asp:RadMenuItem runat="server" Text="Các Phòng Khoa" NavigateUrl="~/ad/bilingual/cacphongkhoa.aspx">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" IsSeparator="True">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" Text="Hồi Sức Cấp Cứu" NavigateUrl="~/ad/bilingual/hoisuccapcuu.aspx">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" IsSeparator="True">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" Text="Chuẩn Đoán Hình Ảnh" NavigateUrl="~/ad/bilingual/chuandoanhinhanh.aspx">
+                                </asp:RadMenuItem>
+                            </Items>--%>
+                        </asp:RadMenuItem>
+                        <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="Bảng Giá"
+                            Text="Bảng Giá" Font-Bold="True">
+                            <Items>
+                                <asp:RadMenuItem runat="server" Text="Bảo Hiểm Y Tế" NavigateUrl="~/ad/bilingual/baohiemyte.aspx">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" IsSeparator="True">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" Text="Bảng Giá Dịch Vụ" NavigateUrl="~/ad/bilingual/banggiadichvu.aspx">
+                                </asp:RadMenuItem>
+                            </Items>
+                        </asp:RadMenuItem>
+                        <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="Tin Tức" Text="Tin Tức"
+                            Font-Bold="True">
+                            <Items>
+                                <asp:RadMenuItem runat="server" Text="Bài Viết" NavigateUrl="~/ad/bilingual/tintuc.aspx">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" IsSeparator="True">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" Text="Danh Mục" NavigateUrl="~/ad/bilingual/danhmuctintuc.aspx">
+                                </asp:RadMenuItem>
+                            </Items>
+                        </asp:RadMenuItem>
+                        <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="Tuyển Dụng"
+                            Text="Tuyển Dụng" Font-Bold="True">
+                            <Items>
+                                <asp:RadMenuItem runat="server" Text="Bài Viết" NavigateUrl="~/ad/bilingual/tuyendung.aspx">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" IsSeparator="True">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" Text="Mô Tả" NavigateUrl="~/ad/bilingual/tuyendungmota.aspx">
+                                </asp:RadMenuItem>
+                            </Items>
+                        </asp:RadMenuItem>
+                        <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="Cảm Nhận Bệnh Nhân" Text="Cảm Nhận Bệnh Nhân"
+                            Font-Bold="True" NavigateUrl="~/ad/bilingual/camnhanbenhnhan.aspx">
+                        </asp:RadMenuItem>
+                        <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="Hỏi Bác Sĩ"
+                            Text="Hỏi Bác Sĩ" Font-Bold="True" NavigateUrl="~/ad/bilingual/hoibacsi.aspx">
+                        </asp:RadMenuItem>
+                        <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="Thông Tin Bệnh Viện"
+                            Text="Thông Tin Bệnh Viện" Font-Bold="True" NavigateUrl="~/ad/bilingual/info.aspx">
+                        </asp:RadMenuItem>
+                        <asp:RadMenuItem runat="server" Owner="RadMenu1" Value="Follow" Text="Follow" PostBack="False" Font-Bold="True"
+                            NavigateUrl="~/ad/bilingual/follow.aspx">
+                        </asp:RadMenuItem>
+                        <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="Liên Kết Hợp Tác" Text="Liên Kết Hợp Tác" Font-Bold="True"
+                            NavigateUrl="~/ad/bilingual/partner.aspx">
+                        </asp:RadMenuItem>
+                        <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="News Letter" Text="News Letter" Font-Bold="True"
+                            NavigateUrl="~/ad/bilingual/newsletter.aspx">
+                        </asp:RadMenuItem>
+                        <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="Đặt Lịch Khám" Text="Đặt Lịch Khám" Font-Bold="True"
+                            NavigateUrl="~/ad/bilingual/datlichkham.aspx">
+                        </asp:RadMenuItem>
+                        <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="Banner" Text="Banner" Font-Bold="True">
+                            <Items>
+                                <asp:RadMenuItem runat="server" Text="Banner Trang Chủ" NavigateUrl="~/ad/bilingual/bannermain.aspx">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" IsSeparator="True">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" Text="Banner Giới Thiệu" NavigateUrl="~/ad/bilingual/bannerabout.aspx">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" IsSeparator="True">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" Text="Banner Chuyên Khoa" NavigateUrl="~/ad/bilingual/bannerchuyenkhoa.aspx">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" IsSeparator="True">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" Text="Banner Dịch Vụ" NavigateUrl="~/ad/bilingual/bannerservice.aspx">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" IsSeparator="True">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" Text="Banner Bảng Giá" NavigateUrl="~/ad/bilingual/bannertechnology.aspx">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" IsSeparator="True">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" Text="Banner Tin Tức" NavigateUrl="~/ad/bilingual/bannernew.aspx">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" IsSeparator="True">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" Text="Banner Tuyển Dụng" NavigateUrl="~/ad/bilingual/bannercareer.aspx">
+                                </asp:RadMenuItem>
+                                <%--<asp:RadMenuItem runat="server" IsSeparator="True">
+                                </asp:RadMenuItem>
+                                <asp:RadMenuItem runat="server" Text="Banner Danh Mục" NavigateUrl="~/ad/bilingual/bannercategory.aspx">
+                                </asp:RadMenuItem>--%>
+                            </Items>
+                        </asp:RadMenuItem>
+                        <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Value="admin" Text="Hệ Thống"
+                            Font-Bold="True">
+                            <Items>
+                                <asp:RadMenuItem runat="server" Text="Quản Lý User" NavigateUrl="~/ad/bilingual/usermanagement-role.aspx">
+                                </asp:RadMenuItem>
+                            </Items>
+                        </asp:RadMenuItem>
+                    </Items>
+                </asp:RadMenu>
+            </div>
+            <div align="right" class="loginStatus">
+                <asp:LoginView ID="LoginView1" runat="server">
+                    <LoggedInTemplate>
+                        <asp:LoginName ID="LoginName1" runat="server" Font-Bold="true" />
+                        | <a id="A1" onclick="openWindow('changepassword.aspx','Đổi mật khẩu')" style="display: inline; cursor: pointer;"
+                            runat="server">Đổi mật khẩu </a>|
+                    </LoggedInTemplate>
+                </asp:LoginView>
+                <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutText="Thoát" LoginText="Đăng nhập"
+                    LogoutAction="Refresh" CssClass="loginstatus" />
+            </div>
+            <div id="content">
+                <div class="titleLeft">
+                    <div class="titleRight">
+                        <div class="titleCenter">
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <asp:ContentPlaceHolder ID="cphBody" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+                <div class="titleLeftBottom">
+                    <div class="titleRightBottom">
+                        <div class="titleCenterBottom">
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="content">
-                <asp:ContentPlaceHolder ID="cphBody" runat="server">
-                </asp:ContentPlaceHolder>
-            </div>
-            <div class="titleLeftBottom">
-                <div class="titleRightBottom">
-                    <div class="titleCenterBottom">
-                    </div>
-                </div>
+            <div id="footer" align="right">
+                Phát triển bởi: <strong><a href="http://tranlegroup.com" target="_blank" style="text-transform: uppercase">Trần Lê</a></strong>
+                <br />
+                32 Đường 18, P. Bình Trị Đông, Q. Bình Tân, TP. HCM
+            <br />
+                Phone: +84 - 08 - 62601272
             </div>
         </div>
-        <div id="footer" align="right">
-            Phát triển bởi: <strong><a href="http://tranlegroup.com" target="_blank" style="text-transform: uppercase">
-                Trần Lê</a></strong>
-            <br />
-            32 Đường 18, P. Bình Trị Đông, Q. Bình Tân, TP. HCM
-            <br />
-            Phone: +84 - 08 - 62601272
+        <div id="RestrictionZone" style="position: fixed; width: 100%; height: 100%; left: 0; top: 0; z-index: -1">
         </div>
-    </div>
-    <div id="RestrictionZone" style="position: fixed; width: 100%; height: 100%; left: 0;
-        top: 0; z-index: -1">
-    </div>
-    <asp:RadWindowManager EnableShadow="false" Behaviors="Close, Move, Maximize,Reload"
-        VisibleStatusbar="false" ID="RadWindowManager" Animation="None" RestrictionZoneID="RestrictionZone"
-        runat="server" Skin="Office2007" KeepInScreenBounds="True" AutoSize="false" InitialBehaviors="Maximize"
-        RenderMode="Lightweight" Modal="true" DestroyOnClose="true">
-        <Windows>
-            <asp:RadWindow ID="RadWindow1" VisibleOnPageLoad="false" runat="server">
-            </asp:RadWindow>
-        </Windows>
-    </asp:RadWindowManager>
-    <asp:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default">
-    </asp:RadAjaxLoadingPanel>
+        <asp:RadWindowManager EnableShadow="false" Behaviors="Close, Move, Maximize,Reload"
+            VisibleStatusbar="false" ID="RadWindowManager" Animation="None" RestrictionZoneID="RestrictionZone"
+            runat="server" Skin="Office2007" KeepInScreenBounds="True" AutoSize="false" InitialBehaviors="Maximize"
+            RenderMode="Lightweight" Modal="true" DestroyOnClose="true">
+            <Windows>
+                <asp:RadWindow ID="RadWindow1" VisibleOnPageLoad="false" runat="server">
+                </asp:RadWindow>
+            </Windows>
+        </asp:RadWindowManager>
+        <asp:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default">
+        </asp:RadAjaxLoadingPanel>
     </form>
 </body>
 </html>

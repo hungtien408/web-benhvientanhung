@@ -476,7 +476,7 @@
                                                 <li>
                                                     <div class="info-title">Ngôn ngữ giao tiếp:</div>
                                                     <%# Eval("Description") %></li>
-                                                <div class="popup-datlich"><span class="btn-pop-dl">Đặt lịch</span></div>
+                                                <div class="popup-datlich"><span class="btn-pop-dl">Đặt Lịch Khám</span></div>
                                             </ul>
                                         </div>
                                     </div>

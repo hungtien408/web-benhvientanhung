@@ -41,7 +41,11 @@ public partial class ad_single_project : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (!IsPostBack)
+        {
+            if (!HttpContext.Current.User.IsInRole("Tin Tức"))
+                Response.Redirect("~/ad/bilingual/");
+        }
     }
     public void RadGrid1_ItemCreated(object sender, Telerik.Web.UI.GridItemEventArgs e)
     {
