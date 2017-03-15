@@ -3465,3 +3465,35 @@ form.gsc-search-box {
 .thietbi-carousel .owl-item img{
     height: 220px;
 }
+.btn-pop-dl {
+    display:inline-block;
+    padding:5px 15px;
+    border-radius:10px;
+    background:#00a7ee;
+    color:#fff;
+    margin-top:5px;
+    cursor:pointer;
+}
+.btn-pop-dl:hover {
+    background:#cdd9e1;
+}
+.wrap-datlich .lich-left{
+    width:100%;
+    padding:25px;
+    margin:0;
+}
+.wrap-datlich .lich-left::before {
+    display:none;
+}
+.wrap-datlich .lich-left > input[type="submit"] {
+    position:relative;
+    display:block;
+    margin:0 auto;
+}
+.popup.datlich-kham.lichhen .popup-content {
+    height:450px;
+}
+.popup-datlich{
+    width: 100%;
+    text-align: center;
+}

@@ -9,6 +9,10 @@
         mymap();
         myfunload();
         menuDanhmuc();
+        $('.btn-pop-dl').click(function () {
+            $('.list-doingu .popup .popup-content').css({ 'top': '-250%' });
+            $('.datlich-kham .popup-content').css({ 'top': '30px' });
+        });
     });
 })(jQuery);
 

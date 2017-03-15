@@ -133,12 +133,14 @@
                                     </SelectParameters>
                                 </asp:ObjectDataSource>
                             </li>
-                            <li><a href="javascript:void(0);">chuyên khoa</a>
+                            <li><a href="javascript:void(0);">các phòng khoa</a>
                                 <asp:ListView ID="lstChuyenKhoa" runat="server" DataSourceID="odsChuyenKhoa"
                                     EnableModelValidation="True">
                                     <ItemTemplate>
-                                        <li><a href='<%# Eval("ProjectCategoryLink") %>' runat="server"><%# Eval("ProjectCategoryNameEn") %></a>
-                                            <asp:HiddenField ID="hdnProjectCategoryID" runat="server" Value='<%# Eval("ProjectCategoryID") %>' />
+                                        <li>
+                                            <%--<a href='<%# Eval("ProjectCategoryLink") %>' runat="server"><%# Eval("ProjectCategoryNameEn") %></a>--%>
+                                            <a href='<%# "/en/chuyen-khoa/"+ progressTitle(Eval("ProjectCategoryNameEn")) + "-" + Eval("ProjectCategoryID") + ".aspx" %>'><%# Eval("ProjectCategoryNameEn") %></a>
+                                            <%--<asp:HiddenField ID="hdnProjectCategoryID" runat="server" Value='<%# Eval("ProjectCategoryID") %>' />
                                             <asp:ListView ID="lstChuyenKhoaSub" runat="server" DataSourceID="odsChuyenKhoaSub"
                                                 EnableModelValidation="True">
                                                 <ItemTemplate>
@@ -157,7 +159,7 @@
                                                     <asp:Parameter Name="IsShowOnMenu" Type="String" />
                                                     <asp:Parameter Name="IsShowOnHomePage" Type="String" />
                                                 </SelectParameters>
-                                            </asp:ObjectDataSource>
+                                            </asp:ObjectDataSource>--%>
                                         </li>
                                     </ItemTemplate>
                                     <LayoutTemplate>
@@ -168,7 +170,7 @@
                                 </asp:ListView>
                                 <asp:ObjectDataSource ID="odsChuyenKhoa" runat="server" SelectMethod="ProjectCategorySelectAll" TypeName="TLLib.ProjectCategory">
                                     <SelectParameters>
-                                        <asp:Parameter DefaultValue="57" Name="parentID" Type="Int32" />
+                                        <asp:Parameter DefaultValue="14" Name="parentID" Type="Int32" />
                                         <asp:Parameter DefaultValue="1" Name="increaseLevelCount" Type="Int32" />
                                         <asp:Parameter Name="IsShowOnMenu" Type="String" />
                                         <asp:Parameter Name="IsShowOnHomePage" Type="String" />

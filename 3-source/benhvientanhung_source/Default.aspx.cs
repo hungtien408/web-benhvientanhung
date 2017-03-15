@@ -20,6 +20,10 @@ public partial class _Default : System.Web.UI.Page
             dpNgaySinh.DateInput.EmptyMessage = "Ngày sinh (*)";
             dpNgayKham.DateInput.EmptyMessage = "Ngày đặt hẹn (*)";
             dpGioKham.DateInput.EmptyMessage = "Giờ hẹn (*)";
+
+            dpNgaySinhPopup.DateInput.EmptyMessage = "Ngày sinh (*)";
+            dpNgayKhamPopup.DateInput.EmptyMessage = "Ngày đặt hẹn (*)";
+            dpGioKhamPopup.DateInput.EmptyMessage = "Giờ hẹn (*)";
         }
     }
     private void sendEmail()
@@ -36,6 +40,23 @@ public partial class _Default : System.Web.UI.Page
         msg += "<b>Điện thoại: </b>" + txtPhone.Text.Trim().ToString() + "<br /><br />";
         msg += "<b>Chuyên khoa: </b>" + dropListChuyenKhoa.SelectedItem.Text + "<br /><br />";
         msg += "<b>Bác sĩ: </b>" + dropListBacSi.SelectedItem.Text + "<br /><br />";
+        msg += "<b>Thời gian hẹn: </b>" + strThoiGianKham;
+        TLLib.Common.SendMail("smtp.gmail.com", 587, "webmastersendmail0401@gmail.com", "web123master", "hungtien408@gmail.com", "", "ĐẶT LỊCH HẸN BỆNH VIỆN ĐA KHOA TÂN HƯNG", msg, true);
+    }
+    private void sendEmail2()
+    {
+        var strNgayKham = dpNgayKhamPopup.SelectedDate.HasValue ? dpNgayKhamPopup.SelectedDate.Value.ToShortDateString() : "";
+        var strGioKham = dpGioKhamPopup.SelectedDate.HasValue ? dpGioKhamPopup.SelectedDate.Value.ToShortTimeString() : "";
+        string strThoiGianKham = string.IsNullOrEmpty(strNgayKham) ? "" : strNgayKham + " " + strGioKham;
+        string strNgaySinh = dpNgaySinhPopup.SelectedDate.HasValue ? dpNgaySinhPopup.SelectedDate.Value.ToShortDateString() : "";
+
+        string msg = "<h3 style='font-size: 18px'>BỆNH VIỆN ĐA KHOA TÂN HƯNG: ĐẶT LỊCH HẸN</h3><br/>";
+        msg += "<b>Họ tên: </b>" + txtFullNamePopup.Text.Trim().ToString() + "<br /><br />";
+        msg += "<b>Ngày sinh: </b>" + strNgaySinh + "<br /><br />";
+        msg += "<b>Giới tính: </b>" + dropListGenderPopup.SelectedItem.Text + "<br /><br />";
+        msg += "<b>Điện thoại: </b>" + txtPhonePopup.Text.Trim().ToString() + "<br /><br />";
+        msg += "<b>Chuyên khoa: </b>" + dropListChuyenKhoaPopup.SelectedItem.Text + "<br /><br />";
+        msg += "<b>Bác sĩ: </b>" + dropListBacSiPopup.SelectedItem.Text + "<br /><br />";
         msg += "<b>Thời gian hẹn: </b>" + strThoiGianKham;
         TLLib.Common.SendMail("smtp.gmail.com", 587, "webmastersendmail0401@gmail.com", "web123master", "hungtien408@gmail.com", "", "ĐẶT LỊCH HẸN BỆNH VIỆN ĐA KHOA TÂN HƯNG", msg, true);
     }
@@ -120,6 +141,93 @@ public partial class _Default : System.Web.UI.Page
                 }
             }
 
+        }
+    }
+    protected void btnDatHen2_Click(object sender, EventArgs e)
+    {
+        if (Page.IsValid)
+        {
+            var oDatLichKham = new TLLib.DatLichKham();
+            var strNgayKham = dpNgayKhamPopup.SelectedDate.HasValue ? dpNgayKhamPopup.SelectedDate.Value.ToShortDateString() : "";
+            var strGioKham = dpGioKhamPopup.SelectedDate.HasValue ? dpGioKhamPopup.SelectedDate.Value.ToShortTimeString() : "";
+            string strThoiGianKham = string.IsNullOrEmpty(strNgayKham) ? "" : strNgayKham + " " + strGioKham;
+            string strNgaySinh = dpNgaySinhPopup.SelectedDate.HasValue ? dpNgaySinhPopup.SelectedDate.Value.ToShortDateString() : "";
+
+            //var dataDatHen = oDatLichKham.DatLichKhamSelectAll("", "", "", dropListChuyenKhoa.SelectedValue, dropListBacSi.SelectedValue, strThoiGianKham, "", "", "", "").DefaultView;
+            //if (dataDatHen.Count > 0)
+            //{
+            //    ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "runtime", " $(document).ready(function () {alert('Ngày và giờ khám của bác sĩ đã có hẹn, vui lòng đặt hẹn ngày và giờ khác!')});", true);
+            //}
+            var dataDatHen = oDatLichKham.DatLichKhamSelectAll("", "", "", dropListChuyenKhoaPopup.SelectedValue, dropListBacSiPopup.SelectedValue, "", "", "", "", "", "", "").DefaultView;
+            if (dataDatHen.Count > 0)
+            {
+                DateTime dateNgayKham1 = Convert.ToDateTime(strThoiGianKham);
+                DateTime dateNgayKham2 = Convert.ToDateTime(dataDatHen[0]["NgayKham"]);
+                if (dateNgayKham1 == dateNgayKham2)
+                {
+                    ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "runtime", " $(document).ready(function () {alert('Ngày và giờ khám của bác sĩ đã có hẹn, vui lòng đặt hẹn ngày và giờ khác!')});", true);
+                }
+                else
+                {
+                    int success = oDatLichKham.DatLichKhamInsert(
+                        "",
+                        txtFullNamePopup.Text.Trim().ToString(),
+                        strNgaySinh,
+                        dropListGenderPopup.SelectedValue,
+                        txtPhonePopup.Text.Trim().ToString(),
+                        "",
+                        dropListChuyenKhoaPopup.SelectedValue,
+                        dropListBacSiPopup.SelectedValue,
+                        "",
+                        strThoiGianKham,
+                        "",
+                        "True",
+                        ""
+                        );
+                    if (success > 0)
+                    {
+                        //if (RadCaptcha1.IsValid)
+                        //{
+                        //send email         
+                        sendEmail2();
+                        ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "runtime", " $(document).ready(function () {alert('Cám ơn bạn đã đặt lịch hẹn. Thông báo của bạn đã được gửi đi. Chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất!')});", true);
+                        txtFullNamePopup.Text = "";
+                        txtPhonePopup.Text = "";
+
+                        //}
+                    }
+                }
+            }
+            else
+            {
+                int success = oDatLichKham.DatLichKhamInsert(
+                            "",
+                            txtFullNamePopup.Text.Trim().ToString(),
+                            strNgaySinh,
+                            dropListGenderPopup.SelectedValue,
+                            txtPhonePopup.Text.Trim().ToString(),
+                            "",
+                            dropListChuyenKhoaPopup.SelectedValue,
+                            dropListBacSiPopup.SelectedValue,
+                            "",
+                            strThoiGianKham,
+                            "",
+                            "True",
+                            ""
+                            );
+                if (success > 0)
+                {
+                    //if (RadCaptcha1.IsValid)
+                    //{
+                    //send email         
+                    sendEmail2();
+                    ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "runtime", " $(document).ready(function () {alert('Cám ơn bạn đã đặt lịch hẹn. Thông báo của bạn đã được gửi đi. Chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất!')});", true);
+                    txtFullNamePopup.Text = "";
+                    txtPhonePopup.Text = "";
+
+                    //}
+                }
+            }
         }
     }
     protected void btnGuiCauHoi_Click(object sender, EventArgs e)
