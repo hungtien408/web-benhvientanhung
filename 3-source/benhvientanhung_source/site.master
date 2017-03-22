@@ -138,7 +138,7 @@
                                     <ItemTemplate>
                                         <li>
                                             <%--<a href='<%# Eval("ProjectCategoryLink") %>' runat="server"><%# Eval("ProjectCategoryName") %></a>--%>
-                                            <a href='<%# "/chuyen-khoa/" + progressTitle(Eval("ProjectCategoryName")) + "-" + Eval("ProjectCategoryID") + ".aspx" %>'><%# Eval("ProjectCategoryName") %></a>
+                                            <a href='<%# "/cac-khoa-phong/" + progressTitle(Eval("ProjectCategoryName")) + "-" + Eval("ProjectCategoryID") + ".aspx" %>'><%# Eval("ProjectCategoryName") %></a>
                                             <%--<asp:HiddenField ID="hdnProjectCategoryID" runat="server" Value='<%# Eval("ProjectCategoryID") %>' />
                                             <asp:ListView ID="lstChuyenKhoaSub" runat="server" DataSourceID="odsChuyenKhoaSub"
                                                 EnableModelValidation="True">

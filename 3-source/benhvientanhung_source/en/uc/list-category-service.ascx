@@ -7,7 +7,7 @@
         <asp:ListView ID="lstGioiThieu" runat="server" DataSourceID="odsGioiThieu"
             EnableModelValidation="True">
             <ItemTemplate>
-                <li><a href='<%# Eval("ProjectCategoryLink") %>'><%# Eval("ProjectCategoryNameEn") %></a></li>
+                <li><a href='<%# Eval("ProjectCategoryLinkEn") %>'><%# Eval("ProjectCategoryNameEn") %></a></li>
             </ItemTemplate>
             <LayoutTemplate>
                 <ul>
