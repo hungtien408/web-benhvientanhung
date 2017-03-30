@@ -496,7 +496,7 @@
         <section class="chuyenkhoa">
             <div class="container">
                 <div class="id-sec">
-                    <h1>Chuyên khoa</h1>
+                    <h1>Các khoa phòng</h1>
                 </div>
                 <div class="chuyenkhoa-carousel owl-carousel">
                     <asp:ListView ID="lstChuyenKhoa" runat="server" DataSourceID="odsChuyenKhoa"
@@ -504,7 +504,7 @@
                         <ItemTemplate>
                             <div class="item">
                                 <div class="content">
-                                    <a href='<%# "/chuyen-khoa/" + progressTitle(Eval("ProjectCategoryName")) + "-" + Eval("ProjectCategoryID") + ".aspx" %>'>
+                                    <a href='<%# "/cac-khoa-phong/" + progressTitle(Eval("ProjectCategoryName")) + "-" + Eval("ProjectCategoryID") + ".aspx" %>'>
                                         <div class="wrap-content">
                                             <img alt='<%# Eval("ImageNameIcon") %>' src='<%# "~/res/projectcategory/icon/" + Eval("ImageNameIcon") %>'
                                                 visible='<%# string.IsNullOrEmpty( Eval("ImageNameIcon").ToString()) ? false : true %>'
@@ -514,7 +514,7 @@
                                     </a>
                                 </div>
                                 <div class="img">
-                                    <a href='<%# "/chuyen-khoa/" + progressTitle(Eval("ProjectCategoryName")) + "-" + Eval("ProjectCategoryID") + ".aspx" %>'>
+                                    <a href='<%# "/cac-khoa-phong/" + progressTitle(Eval("ProjectCategoryName")) + "-" + Eval("ProjectCategoryID") + ".aspx" %>'>
                                         <img alt='<%# Eval("ImageName2") %>' src='<%# "~/res/projectcategory/image2/" + Eval("ImageName2") %>'
                                             visible='<%# string.IsNullOrEmpty( Eval("ImageName2").ToString()) ? false : true %>'
                                             runat="server" /></a>

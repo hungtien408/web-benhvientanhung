@@ -360,6 +360,15 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td class="left" valign="top">Keyword
+                                    </td>
+                                    <td>
+                                        <asp:RadTextBox ID="txtTag" runat="server" Text='<%# Bind("Tag") %>'
+                                            Width="500px" EmptyMessage="Keyword...">
+                                        </asp:RadTextBox>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td class="left" valign="top">Tên danh mục
                                     </td>
                                     <td>
@@ -440,6 +449,15 @@
                                     <td>
                                         <asp:RadTextBox ID="txtMetaDescriptionEn" runat="server" Text='<%# Bind("MetaDescriptionEn") %>'
                                             Width="500px" EmptyMessage="Meta Description(En)...">
+                                        </asp:RadTextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="left" valign="top">Keyword(En)
+                                    </td>
+                                    <td>
+                                        <asp:RadTextBox ID="txtTagEn" runat="server" Text='<%# Bind("TagEn") %>'
+                                            Width="500px" EmptyMessage="Keyword(En)...">
                                         </asp:RadTextBox>
                                     </td>
                                 </tr>
@@ -558,6 +576,8 @@
             <asp:Parameter Name="MetaTitleEn" Type="String" />
             <asp:Parameter Name="MetaDescription" Type="String" />
             <asp:Parameter Name="MetaDescriptionEn" Type="String" />
+            <asp:Parameter Name="Tag" Type="String" />
+            <asp:Parameter Name="TagEn" Type="String" />
             <asp:Parameter Name="ImageName" Type="String" />
             <asp:Parameter Name="ImageName2" Type="String" />
             <asp:Parameter Name="ImageNameIcon" Type="String" />
@@ -587,6 +607,8 @@
             <asp:Parameter Name="MetaTitleEn" Type="String" />
             <asp:Parameter Name="MetaDescription" Type="String" />
             <asp:Parameter Name="MetaDescriptionEn" Type="String" />
+            <asp:Parameter Name="Tag" Type="String" />
+            <asp:Parameter Name="TagEn" Type="String" />
             <asp:Parameter Name="ImageName" Type="String" />
             <asp:Parameter Name="ImageName2" Type="String" />
             <asp:Parameter Name="ImageNameIcon" Type="String" />

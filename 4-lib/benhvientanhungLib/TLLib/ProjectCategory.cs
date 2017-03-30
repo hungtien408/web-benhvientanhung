@@ -94,6 +94,8 @@ namespace TLLib
             string MetaTitleEn,
             string MetaDescription,
             string MetaDescriptionEn,
+            string Tag,
+            string TagEn,
             string ImageName,
             string ImageName2,
             string ImageNameIcon,
@@ -121,6 +123,8 @@ namespace TLLib
                 cmd.Parameters.AddWithValue("@MetaTitleEn", string.IsNullOrEmpty(MetaTitleEn) ? dbNULL : (object)MetaTitleEn);
                 cmd.Parameters.AddWithValue("@MetaDescription", string.IsNullOrEmpty(MetaDescription) ? dbNULL : (object)MetaDescription);
                 cmd.Parameters.AddWithValue("@MetaDescriptionEn", string.IsNullOrEmpty(MetaDescriptionEn) ? dbNULL : (object)MetaDescriptionEn);
+                cmd.Parameters.AddWithValue("@Tag", string.IsNullOrEmpty(Tag) ? dbNULL : (object)Tag);
+                cmd.Parameters.AddWithValue("@TagEn", string.IsNullOrEmpty(TagEn) ? dbNULL : (object)TagEn);
                 cmd.Parameters.AddWithValue("@ImageName", string.IsNullOrEmpty(ImageName) ? dbNULL : (object)ImageName);
                 cmd.Parameters.AddWithValue("@ImageName2", string.IsNullOrEmpty(ImageName2) ? dbNULL : (object)ImageName2);
                 cmd.Parameters.AddWithValue("@ImageNameIcon", string.IsNullOrEmpty(ImageNameIcon) ? dbNULL : (object)ImageNameIcon);
@@ -237,6 +241,8 @@ namespace TLLib
             string MetaTitleEn,
             string MetaDescription,
             string MetaDescriptionEn,
+            string Tag,
+            string TagEn,
             string ImageName,
             string ImageName2,
             string ImageNameIcon,
@@ -265,6 +271,8 @@ namespace TLLib
                 cmd.Parameters.AddWithValue("@MetaTitleEn", string.IsNullOrEmpty(MetaTitleEn) ? dbNULL : (object)MetaTitleEn);
                 cmd.Parameters.AddWithValue("@MetaDescription", string.IsNullOrEmpty(MetaDescription) ? dbNULL : (object)MetaDescription);
                 cmd.Parameters.AddWithValue("@MetaDescriptionEn", string.IsNullOrEmpty(MetaDescriptionEn) ? dbNULL : (object)MetaDescriptionEn);
+                cmd.Parameters.AddWithValue("@Tag", string.IsNullOrEmpty(Tag) ? dbNULL : (object)Tag);
+                cmd.Parameters.AddWithValue("@TagEn", string.IsNullOrEmpty(TagEn) ? dbNULL : (object)TagEn);
                 cmd.Parameters.AddWithValue("@ImageName", string.IsNullOrEmpty(ImageName) ? dbNULL : (object)ImageName);
                 cmd.Parameters.AddWithValue("@ImageName2", string.IsNullOrEmpty(ImageName2) ? dbNULL : (object)ImageName2);
                 cmd.Parameters.AddWithValue("@ImageNameIcon", string.IsNullOrEmpty(ImageNameIcon) ? dbNULL : (object)ImageNameIcon);

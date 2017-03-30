@@ -46,11 +46,11 @@ body {
     color: #363636;
 }
 
-ul, li, ol {
+/*ul, li, ol {
     padding: 0;
     margin: 0;
     list-style: none;
-}
+}*/
 
 a:hover, a:focus {
     text-decoration: none;
@@ -128,11 +128,13 @@ a:visited, a:focus {
 }
 .menu #menu {
     float:left;
+    margin-bottom: 0;
 }
 .menu ul li {
     float:left;
     line-height:50px;
     background:url(../images/bg-li.png) no-repeat right top;
+    list-style:none;
 }
 .menu ul li a {
     font-size:14px;
@@ -189,7 +191,7 @@ a:visited, a:focus {
     width:auto;
     left:50%;
     margin-left:0;
-    bottom:-10px;
+    bottom:-20px;
     transform:translateX(-50%);
     -webkit-transform:translateX(-50%);
     -moz-transform:translateX(-50%);
@@ -254,12 +256,15 @@ section .pc-left .id-cont::before {
 	margin:auto;
 
 }
-
+section .pc-left ul{
+    padding:0;
+}
 section .pc-left ul li{
     
 	display:block;
     
 	padding:5px 0;
+    list-style:none;
     
 }
 section .pc-left ul li a {
@@ -1268,6 +1273,7 @@ a.close-modal {
 }
 .info-content ul li {
     position:relative;
+    list-style:none;
 }
 .info-content ul li::before {
     position:absolute;
@@ -1654,11 +1660,15 @@ a.close-modal {
     background:#e4f7ff;
     padding:5px 15px;
 }
+.list-question .item .header ul {
+    padding:0;
+}
 .list-question .item .header ul li{
     display:inline-block;
     position:relative;
     padding:0 15px;
     font-style:italic;
+    list-style:none;
 }
 .list-question .item .header ul li::before{
     position:absolute;
@@ -1873,6 +1883,9 @@ a.close-modal {
     margin-bottom:15px;
     margin-top:40px;
 }
+    #footer .pull-left ul {
+        padding:0;
+    }
 #footer .pull-left ul li, #footer .pull-left ul li a {
     color:#fff;
     font-size:14px;
@@ -1883,6 +1896,7 @@ a.close-modal {
 #footer .pull-left ul li {
     padding:3px 0;
     padding-left:25px;
+    list-style:none;
 }
 #footer .pull-left ul li.local {
     background:url(../images/local.png) no-repeat left center;

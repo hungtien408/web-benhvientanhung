@@ -158,6 +158,8 @@ public partial class ad_single_projectcategory : System.Web.UI.Page
             string strMetaTitleEn = ((RadTextBox)row.FindControl("txtMetaTitleEn")).Text.Trim();
             string strMetaDescription = ((RadTextBox)row.FindControl("txtMetaDescription")).Text.Trim();
             string strMetaDescriptionEn = ((RadTextBox)row.FindControl("txtMetaDescriptionEn")).Text.Trim();
+            string strTag = ((RadTextBox)row.FindControl("txtTag")).Text.Trim();
+            string strTagEn = ((RadTextBox)row.FindControl("txtTagEn")).Text.Trim();
             string strImageName = FileImageName.UploadedFiles.Count > 0 ? FileImageName.UploadedFiles[0].GetName() : "";
             string strImageName2 = FileImageName2.UploadedFiles.Count > 0 ? FileImageName2.UploadedFiles[0].GetName() : "";
             string strImageNameIcon = FileImageNameIcon.UploadedFiles.Count > 0 ? FileImageNameIcon.UploadedFiles[0].GetName() : "";
@@ -187,6 +189,8 @@ public partial class ad_single_projectcategory : System.Web.UI.Page
                     strMetaTitleEn,
                     strMetaDescription,
                     strMetaDescriptionEn,
+                    strTag,
+                    strTagEn,
                     strImageName,
                     strImageName2,
                     strImageNameIcon,
