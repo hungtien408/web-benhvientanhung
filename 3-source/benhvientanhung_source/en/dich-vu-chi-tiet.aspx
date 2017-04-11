@@ -9,7 +9,44 @@
     <uc4:bannerchuyenkhoa ID="bannerchuyenkhoa1" runat="server" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="page_aside" Runat="Server">
-    <uc5:listcategoryservice runat="server" ID="listcategoryservice1" />
+    <%--<uc5:listcategoryservice runat="server" ID="listcategoryservice1" />--%>
+    <section>
+        <div class="cam-nhan">
+            <h3>thông tin liên quan</h3>
+            <div class="cam-nhan-carousel owl-carousel">
+                <asp:ListView ID="lstThongTinLienQuan" runat="server" DataSourceID="odsThongTinLienQuan"
+                    EnableModelValidation="True">
+                    <ItemTemplate>
+                        <div class="item">
+                            <h3><a href='<%# "/en/tin-tuc/" + progressTitle(Eval("ProjectTitleEn")) + "-" + Eval("ProjectID") + ".aspx" %>'><%# Eval("ProjectTitleEn") %></a></h3>
+                        </div>
+                    </ItemTemplate>
+                    <LayoutTemplate>
+                        <span runat="server" id="itemPlaceholder" />
+                    </LayoutTemplate>
+                </asp:ListView>
+                <asp:ObjectDataSource ID="odsThongTinLienQuan" runat="server" SelectMethod="ProjectSelectAll" TypeName="TLLib.Project">
+                    <SelectParameters>
+                        <asp:Parameter Name="StartRowIndex" Type="String" />
+                        <asp:Parameter Name="EndRowIndex" Type="String" />
+                        <asp:Parameter Name="Keyword" Type="String" />
+                        <asp:Parameter Name="ProjectTitle" Type="String" />
+                        <asp:Parameter Name="Description" Type="String" />
+                        <asp:Parameter DefaultValue="5" Name="ProjectCategoryID" Type="String" />
+                        <asp:Parameter Name="Tag" Type="String" />
+                        <asp:Parameter Name="IsHot" Type="String" />
+                        <asp:Parameter Name="IsNew" Type="String" />
+                        <asp:Parameter Name="IsShowOnHomePage" Type="String" />
+                        <asp:Parameter Name="FromDate" Type="String" />
+                        <asp:Parameter Name="ToDate" Type="String" />
+                        <asp:Parameter DefaultValue="True" Name="IsAvailable" Type="String" />
+                        <asp:Parameter Name="Priority" Type="String" />
+                        <asp:Parameter DefaultValue="True" Name="SortByPriority" Type="String" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
+            </div>
+        </div>
+    </section>
     <uc1:camnhanbenhnhan runat="server" ID="camnhanbenhnhan" />
     <uc1:capcuu runat="server" ID="capcuu" />
 </asp:Content>

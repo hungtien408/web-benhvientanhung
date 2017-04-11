@@ -51,4 +51,8 @@ public partial class dich_vu_chi_tiet : System.Web.UI.Page
             //lblTitle.Text = strTitle;
         }
     }
+    protected string progressTitle(object input)
+    {
+        return TLLib.Common.ConvertTitle(input.ToString());
+    }
 }

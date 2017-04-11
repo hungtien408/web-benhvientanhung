@@ -126,7 +126,7 @@
                                                 file: '<%# string.IsNullOrEmpty(Eval("VideoPath").ToString()) ? Eval("GLobalEmbedScript") : "res/video/" + Eval("VideoPath") %>',
                                                 flashplayer: "assets/js/jwplayer.flash.swf",
                                                 height: 190,
-                                                width: 280,
+                                                width: 100+"%",
                                                 dock: true,
                                                 autostart: false,
                                                 primary: "html5",
