@@ -105,6 +105,9 @@ a:visited, a:focus {
     background:url(../images/head1.png) no-repeat right bottom;
     height:100%;
 }
+#header > .container.container-en{
+    background:url(../images/head2.png) no-repeat right bottom;
+}
 #header .pull-left a img {
     margin-top:17px;
 }
@@ -2944,7 +2947,6 @@ form.gsc-search-box {
 .gsib_a {
     padding-top: 0 !important;
 }
-
 #gsc-i-id1 {
     background: none !important;
 }
@@ -2957,7 +2959,7 @@ form.gsc-search-box {
     height: 30px !important;
     width: 33px !important;
 }
-#colContent .gsc-results-wrapper-overlay {
+.page-main .gsc-results-wrapper-overlay {
     border: none !important;
     position: relative !important;
     left: 0;

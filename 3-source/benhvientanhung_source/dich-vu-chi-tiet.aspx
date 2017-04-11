@@ -22,11 +22,14 @@
                             <h3><a href='<%# "/tin-tuc/" + progressTitle(Eval("ProjectTitle")) + "-" + Eval("ProjectID") + ".aspx" %>'><%# Eval("ProjectTitle") %></a></h3>
                         </div>
                     </ItemTemplate>
+                    <EmptyDataTemplate>
+                        <span>Đang cập nhật</span>
+                    </EmptyDataTemplate>
                     <LayoutTemplate>
                         <span runat="server" id="itemPlaceholder" />
                     </LayoutTemplate>
                 </asp:ListView>
-                <asp:ObjectDataSource ID="odsThongTinLienQuan" runat="server" SelectMethod="ProjectSelectAll" TypeName="TLLib.Project">
+                <asp:ObjectDataSource ID="odsThongTinLienQuan" runat="server" SelectMethod="ProjectSelectAll2" TypeName="TLLib.Project">
                     <SelectParameters>
                         <asp:Parameter Name="StartRowIndex" Type="String" />
                         <asp:Parameter Name="EndRowIndex" Type="String" />
@@ -34,6 +37,7 @@
                         <asp:Parameter Name="ProjectTitle" Type="String" />
                         <asp:Parameter Name="Description" Type="String" />
                         <asp:Parameter DefaultValue="5" Name="ProjectCategoryID" Type="String" />
+                        <asp:QueryStringParameter QueryStringField="dv" Name="ProjectCategorySameID" Type="String" />
                         <asp:Parameter Name="Tag" Type="String" />
                         <asp:Parameter Name="IsHot" Type="String" />
                         <asp:Parameter Name="IsNew" Type="String" />

@@ -181,6 +181,7 @@ public partial class ad_single_project : System.Web.UI.Page
             string ProjectCategoryID = ((RadComboBox)row.FindControl("ddlProjectCategory")).SelectedValue;
             if ("".Equals(ProjectCategoryID))
                 ProjectCategoryID = "2";
+            string ProjectCategorySameID = ((RadComboBox)row.FindControl("ddlProjectCategorySame")).SelectedValue;
             string IsHot = ((CheckBox)row.FindControl("chkIsHot")).Checked.ToString();
             string IsNew = ((CheckBox)row.FindControl("chkIsNew")).Checked.ToString();
             string IsShowOnHomePage = ((CheckBox)row.FindControl("chkIsShowOnHomePage")).Checked.ToString();
@@ -195,7 +196,7 @@ public partial class ad_single_project : System.Web.UI.Page
             {
                 var oProject = new Project();
 
-                ImageName = oProject.ProjectInsert(
+                ImageName = oProject.ProjectInsert2(
                 ImageName,
                 MetaTittle,
                 MetaDescription,
@@ -211,6 +212,7 @@ public partial class ad_single_project : System.Web.UI.Page
                 ContentEn,
                 TagEn,
                 ProjectCategoryID,
+                ProjectCategorySameID,
                 IsHot,
                 IsNew,
                 IsShowOnHomePage,
@@ -236,6 +238,7 @@ public partial class ad_single_project : System.Web.UI.Page
                 dsUpdateParam["ConvertedProjectTitle"].DefaultValue = ConvertedProjectTitle;
                 dsUpdateParam["ImageName"].DefaultValue = ImageName;
                 dsUpdateParam["ProjectCategoryID"].DefaultValue = ProjectCategoryID;
+                dsUpdateParam["ProjectCategorySameID"].DefaultValue = ProjectCategorySameID;
                 dsUpdateParam["IsHot"].DefaultValue = IsHot;
                 dsUpdateParam["IsNew"].DefaultValue = IsNew;
                 dsUpdateParam["IsShowOnHomePage"].DefaultValue = IsShowOnHomePage;
@@ -281,6 +284,7 @@ public partial class ad_single_project : System.Web.UI.Page
             var dv = (DataView)ObjectDataSource1.Select();
             var ProjectID = ((HiddenField)row.FindControl("hdnProjectID")).Value;
             var ddlProjectCategory = (RadComboBox)row.FindControl("ddlProjectCategory");
+            var ddlProjectCategorySame = (RadComboBox)row.FindControl("ddlProjectCategorySame");
             
             if (!string.IsNullOrEmpty(ProjectID))
             {
@@ -288,6 +292,8 @@ public partial class ad_single_project : System.Web.UI.Page
 
                 if (!string.IsNullOrEmpty(dv[0]["ProjectCategoryID"].ToString()))
                     ddlProjectCategory.SelectedValue = dv[0]["ProjectCategoryID"].ToString();
+                if (!string.IsNullOrEmpty(dv[0]["ProjectCategorySameID"].ToString()))
+                    ddlProjectCategorySame.SelectedValue = dv[0]["ProjectCategorySameID"].ToString();
             }
             RadAjaxPanel1.ResponseScripts.Add(string.Format("window['UploadId'] = '{0}';", FileImageName.ClientID));
         }

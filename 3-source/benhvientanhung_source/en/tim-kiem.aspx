@@ -52,5 +52,6 @@
          return decodeURIComponent((str + '').replace(/\+/g, '%20'));
      }
 </script>
+<gcse:search></gcse:search>
 </asp:Content>
 

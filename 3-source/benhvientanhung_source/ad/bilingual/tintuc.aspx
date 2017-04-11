@@ -391,6 +391,16 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td class="left">Khoa liên quan
+                                    </td>
+                                    <td>
+                                        <asp:RadComboBox Filter="Contains" ID="ddlProjectCategorySame" runat="server" DataSourceID="ObjectDataSource3"
+                                            DataTextField="ProjectCategoryName" DataValueField="ProjectCategoryID" Width="504px"
+                                            OnDataBound="DropDownList_DataBound">
+                                        </asp:RadComboBox>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td class="left">Thứ tự
                                     </td>
                                     <td>
@@ -637,8 +647,8 @@
             </asp:TextBoxSetting>
         </asp:RadInputManager>
     </asp:RadAjaxPanel>
-    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="ProjectSelectAll"
-        TypeName="TLLib.Project" DeleteMethod="ProjectDelete" UpdateMethod="ProjectUpdate">
+    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="ProjectSelectAll2"
+        TypeName="TLLib.Project" DeleteMethod="ProjectDelete" UpdateMethod="ProjectUpdate2">
         <DeleteParameters>
             <asp:Parameter Name="ProjectID" Type="String" />
         </DeleteParameters>
@@ -652,6 +662,7 @@
                 Type="String" />
             <asp:ControlParameter ControlID="ddlSearchCategory" DefaultValue="2" Name="ProjectCategoryID" PropertyName="SelectedValue"
                 Type="String" />
+            <asp:Parameter Name="ProjectCategorySameID" Type="String" />
             <asp:ControlParameter ControlID="txtSearchTag" Name="Tag" PropertyName="Text" Type="String" />
             <asp:Parameter Name="IsHot" Type="String" />
             <asp:Parameter Name="IsNew" Type="String" />
@@ -684,6 +695,7 @@
             <asp:Parameter Name="ContentEn" Type="String" />
             <asp:Parameter Name="TagEn" Type="String" />
             <asp:Parameter Name="ProjectCategoryID" Type="String" />
+            <asp:Parameter Name="ProjectCategorySameID" Type="String" />
             <asp:Parameter Name="IsHot" Type="String" />
             <asp:Parameter Name="IsNew" Type="String" />
             <asp:Parameter Name="IsShowOnHomePage" Type="String" />
@@ -695,6 +707,15 @@
         TypeName="TLLib.ProjectCategory">
         <SelectParameters>
             <asp:Parameter DefaultValue="2" Name="parentID" Type="Int32" />
+            <asp:Parameter DefaultValue="1" Name="increaseLevelCount" Type="Int32" />
+            <asp:Parameter Name="IsShowOnMenu" Type="String" />
+            <asp:Parameter Name="IsShowOnHomePage" Type="String" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="ObjectDataSource3" runat="server" SelectMethod="ProjectCategorySelectAll"
+        TypeName="TLLib.ProjectCategory">
+        <SelectParameters>
+            <asp:Parameter DefaultValue="14" Name="parentID" Type="Int32" />
             <asp:Parameter DefaultValue="1" Name="increaseLevelCount" Type="Int32" />
             <asp:Parameter Name="IsShowOnMenu" Type="String" />
             <asp:Parameter Name="IsShowOnHomePage" Type="String" />

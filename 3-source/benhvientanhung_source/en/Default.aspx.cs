@@ -13,9 +13,11 @@ public partial class _Default : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            Page.Title = "Bệnh viện Tân Hưng";
-            var meta = new HtmlMeta() { Name = "description", Content = "Bệnh viện Tân Hưng" };
+            Page.Title = "Bệnh Viện Đa Khoa Tân Hưng - Tan Hung Hospital";
+            var meta = new HtmlMeta() { Name = "description", Content = "Bệnh Viện Đa Khoa Tân Hưng - Tan Hung Hospital hội tụ đội ngũ y bác sĩ giàu kinh nghiệm, cơ sở vật chất, máy móc công nghệ hiện đại nhất Việt Nam." };
+            var metaKeyword = new HtmlMeta() { Name = "keywords", Content = "Bệnh Viện Đa Khoa Tân Hưng, Tan Hung Hospital" };
             Header.Controls.Add(meta);
+            Header.Controls.Add(metaKeyword);
 
             dpNgaySinh.DateInput.EmptyMessage = "Ngày sinh (*)";
             dpNgayKham.DateInput.EmptyMessage = "Ngày đặt hẹn (*)";
