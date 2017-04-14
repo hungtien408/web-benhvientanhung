@@ -3528,3 +3528,67 @@ form.gsc-search-box {
     width: 100%;
     text-align: center;
 }
+
+/**/
+.thongtin-lienquan {
+    background: #e4f7ff;
+    border: 1px solid #d7e8ef;
+    padding:20px;
+}
+.thongtin-lienquan .item {
+}
+.thongtin-lienquan  .item > h3{
+    margin:0;
+}
+.thongtin-lienquan  .item > h3 a {
+    margin-top: 0;
+    font-size: 14px;
+    color: #00a7ee;
+    font-weight: normal;
+}
+.thongtin-lienquan.slick-slider .slick-prev {
+    font-size: 0px;
+    position: absolute;
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    bottom:0;
+    top:auto;
+    left:40%;
+}
+.thongtin-lienquan.slick-slider .slick-prev::before {
+    position: absolute;
+    content: "\f104";
+    font-family: 'FontAwesome';
+    width: 20px;
+    height: 20px;
+    background: #cdd9e1;
+    color: #fff;
+    text-align: center;
+    line-height: 20px;
+    font-size: 15px;
+    left: 0;
+}
+.thongtin-lienquan.slick-slider .slick-next {
+    font-size: 0px;
+    position: absolute;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    bottom:0;
+    top:auto;
+    left:51%;
+}
+.thongtin-lienquan.slick-slider .slick-next::before {
+    position: absolute;
+    content: "\f105";
+    font-family: 'FontAwesome';
+    width: 20px;
+    height: 20px;
+    background: #cdd9e1;
+    color: #fff;
+    text-align: center;
+    line-height: 20px;
+    font-size: 15px;
+    left: 0;
+}

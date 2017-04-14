@@ -190,6 +190,32 @@ function myfunload() {
         ]
     });
 
+    $('.thongtin-lienquan').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        rows: 5,
+        //responsive: [
+        //{
+        //    breakpoint: 768,
+        //    settings: {
+        //        slidesToShow: 2,
+        //        slidesToScroll: 1,
+        //        rows: 2,
+        //    }
+        //},
+        //{
+        //    breakpoint: 1200,
+        //    settings: {
+        //        slidesToShow: 3,
+        //        slidesToScroll: 1,
+        //        rows: 2,
+        //    }
+        //}
+        //]
+    });
+
     $('.slider-for').slick({
         slidesToShow: 1,
         slidesToScroll: 1,

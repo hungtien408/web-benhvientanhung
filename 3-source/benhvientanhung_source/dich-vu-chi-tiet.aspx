@@ -14,7 +14,7 @@
     <section>
         <div class="cam-nhan">
             <h3>thông tin liên quan</h3>
-            <div class="cam-nhan-carousel owl-carousel">
+            <div class="thongtin-lienquan">
                 <asp:ListView ID="lstThongTinLienQuan" runat="server" DataSourceID="odsThongTinLienQuan"
                     EnableModelValidation="True">
                     <ItemTemplate>
