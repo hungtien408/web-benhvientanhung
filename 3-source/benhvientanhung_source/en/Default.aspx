@@ -191,7 +191,7 @@
         <section class="lichhen">
             <div class="container">
                 <div class="lich-right">
-                    <img src="/assets/images/hoi.png" alt="" />
+                    <img src="/assets/images/dat-lich-kham.png" alt="" />
                     <div class="content">
                         <span>đặt lịch hẹn</span>
                         <h1>trực tuyến</h1>
@@ -598,11 +598,11 @@
                                     <p><%# Eval("ContentEn") %></p>
                                     <span><%# Eval("ProjectTitleEn") %></span>
                                     <div style="width: 100%; margin-top: 10px;">
-                                        <div class="fb-like" data-href='<%= "http://www.diendancuoi.com/" + Request.Url.AbsolutePath.Substring(Request.Url.AbsolutePath.LastIndexOf("/") + 1) %>'
+                                        <div class="fb-like" data-href='<%= "http://www.benhvientanhung.com/" + Request.Url.AbsolutePath.Substring(Request.Url.AbsolutePath.LastIndexOf("/") + 1) %>'
                                             data-send="false" data-layout="button_count" data-width="50" data-show-faces="true">
                                         </div>
                                         <div class="fb-share-button"
-                                            data-href='<%= "http://www.diendancuoi.com/" + Request.Url.AbsolutePath.Substring(Request.Url.AbsolutePath.LastIndexOf("/") + 1) %>'
+                                            data-href='<%= "http://www.benhvientanhung.com/" + Request.Url.AbsolutePath.Substring(Request.Url.AbsolutePath.LastIndexOf("/") + 1) %>'
                                             data-layout="button_count">
                                         </div>
                                     </div>

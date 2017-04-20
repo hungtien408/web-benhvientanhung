@@ -61,7 +61,7 @@ public partial class site : System.Web.UI.MasterPage
         if (txtSearch.Text != "")
         {
             Session["Keyword"] = txtSearch.Text;
-            Response.Redirect("tim-kiem.aspx?kw=" + txtSearch.Text);
+            Response.Redirect("~/tim-kiem.aspx?kw=" + txtSearch.Text);
         }
         else
         {

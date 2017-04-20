@@ -28,7 +28,7 @@
              $(".gsc-search-button").trigger('click');
          }
          
-         var cx = '011728731253211755245:m4wnj_ljldi';
+         var cx = '011728731253211755245:ubmgaqvtxqg';
          var gcse = document.createElement('script');
          gcse.type = 'text/javascript';
          gcse.async = true;

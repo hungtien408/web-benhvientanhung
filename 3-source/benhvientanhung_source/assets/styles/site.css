@@ -470,8 +470,8 @@ section.lichhen > .container {
 }
 .lich-right {
     float:left;
-    padding-left:95px;
-    position:relative;
+    /*padding-left:95px;
+    position:relative;*/
 }
 /*.lich-right::before {
     position:absolute;
@@ -489,14 +489,23 @@ section.lichhen > .container {
 
 }*/
 .lich-right > img {
-    position:relative;
+    /*position:relative;
     bottom:-77px;
+    width:380px;*/
+    position: absolute;
+    bottom: -160px;
+    width: 380px;
+    left:90px;
 }
 .lich-right .content {
-    position:absolute;
+    /*position:absolute;
     top:150px;
     left:calc(100% - 120px);
-    width:250px;
+    width:250px;*/
+    position: absolute;
+    top: 81px;
+    left: 31%;
+    width: 250px;
 }
 .lich-right .content > span {
     font-size:18px;
@@ -775,6 +784,7 @@ section.chuyenkhoa {
     width:430px;
     float:left;
     margin-top:-44px;
+    margin-bottom:25px;
 }
 .camnhan-item .item:nth-of-type(2n) {
     float:right;
@@ -811,6 +821,13 @@ section.chuyenkhoa {
     border:2px solid #cdd9e1;
     border-top:0;
     padding:50px 30px 25px 60px;    
+    height:300px;
+}
+.camnhan-item .item .content.mCustomScrollbar {
+    padding-right:10px;
+}
+.camnhan-item .item .content.mCustomScrollbar .mCSB_inside > .mCSB_container {
+    margin-right:0;
 }
 .camnhan-item .item .content p {
     position:relative;
@@ -3138,6 +3155,10 @@ form.gsc-search-box {
     }
     .lich-left {
         margin-right:0;
+    }
+    /**/
+    .lich-right > img {
+        left:35px;
     }
 }
 

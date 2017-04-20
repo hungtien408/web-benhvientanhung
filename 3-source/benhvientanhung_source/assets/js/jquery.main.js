@@ -39,7 +39,10 @@ function myfunload() {
         autoHideScrollbar: true,
         theme: "dark-thick",
     });
-
+    $('.camnhan-item .item .content').mCustomScrollbar({
+        autoHideScrollbar: true,
+        theme: "dark-thick",
+    });
 
     $('.doctors-team').owlCarousel({
         loop: true,

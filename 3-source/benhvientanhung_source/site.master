@@ -86,7 +86,7 @@
                         <div class="pull-right">
                             <div class="lang">
                                 <asp:ImageButton ID="btnEN" runat="server" ImageUrl="~/assets/images/en.png"
-                                    OnClick="btnEN_Click" />
+                                    OnClick="btnEN_Click" Visible="false" />
                                 <%--<asp:ImageButton ID="btnVN" runat="server" ImageUrl="~/assets/images/vi.png"
                                     OnClick="btnVN_Click" />--%>
                                 <asp:ImageButton ID="btnVN" runat="server" ImageUrl="~/assets/images/vi.png" />

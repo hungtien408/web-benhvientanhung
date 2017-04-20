@@ -41,11 +41,11 @@
                 <div class="description">
                     <%# Eval("Content") %>
                 </div>
-                <div class="fb-like" data-href='<%= "http://www.diendancuoi.com/" + Request.Url.AbsolutePath.Substring(Request.Url.AbsolutePath.LastIndexOf("/") + 1) %>'
+                <div class="fb-like" data-href='<%= "http://www.benhvientanhung.com/" + Request.Url.AbsolutePath.Substring(Request.Url.AbsolutePath.LastIndexOf("/") + 1) %>'
                     data-send="false" data-layout="button_count" data-width="50" data-show-faces="true">
                 </div>
                 <div class="fb-share-button"
-                    data-href='<%= "http://www.diendancuoi.com/" + Request.Url.AbsolutePath.Substring(Request.Url.AbsolutePath.LastIndexOf("/") + 1) %>'
+                    data-href='<%= "http://www.benhvientanhung.com/" + Request.Url.AbsolutePath.Substring(Request.Url.AbsolutePath.LastIndexOf("/") + 1) %>'
                     data-layout="button_count">
                 </div>
             </div>

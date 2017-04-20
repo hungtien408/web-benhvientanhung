@@ -43,7 +43,7 @@ public partial class _Default : System.Web.UI.Page
         msg += "<b>Chuyên khoa: </b>" + dropListChuyenKhoa.SelectedItem.Text + "<br /><br />";
         msg += "<b>Bác sĩ: </b>" + dropListBacSi.SelectedItem.Text + "<br /><br />";
         msg += "<b>Thời gian hẹn: </b>" + strThoiGianKham;
-        TLLib.Common.SendMail("smtp.gmail.com", 587, "webmastersendmail0401@gmail.com", "web123master", "hungtien408@gmail.com", "", "ĐẶT LỊCH HẸN BỆNH VIỆN ĐA KHOA TÂN HƯNG", msg, true);
+        TLLib.Common.SendMail("smtp.gmail.com", 587, "webmastersendmail0401@gmail.com", "web123master", "info@benhvientanhung.com", "", "ĐẶT LỊCH HẸN BỆNH VIỆN ĐA KHOA TÂN HƯNG", msg, true);
     }
     private void sendEmail2()
     {
@@ -60,7 +60,7 @@ public partial class _Default : System.Web.UI.Page
         msg += "<b>Chuyên khoa: </b>" + dropListChuyenKhoaPopup.SelectedItem.Text + "<br /><br />";
         msg += "<b>Bác sĩ: </b>" + dropListBacSiPopup.SelectedItem.Text + "<br /><br />";
         msg += "<b>Thời gian hẹn: </b>" + strThoiGianKham;
-        TLLib.Common.SendMail("smtp.gmail.com", 587, "webmastersendmail0401@gmail.com", "web123master", "hungtien408@gmail.com", "", "ĐẶT LỊCH HẸN BỆNH VIỆN ĐA KHOA TÂN HƯNG", msg, true);
+        TLLib.Common.SendMail("smtp.gmail.com", 587, "webmastersendmail0401@gmail.com", "web123master", "info@benhvientanhung.com", "", "ĐẶT LỊCH HẸN BỆNH VIỆN ĐA KHOA TÂN HƯNG", msg, true);
     }
     protected void btnDatHen_Click(object sender, EventArgs e)
     {
@@ -244,7 +244,7 @@ public partial class _Default : System.Web.UI.Page
             msg += "<b>Email: </b>" + txtEmailQuestion.Text.Trim().ToString() + "<br /><br />";
             msg += "<b>Điện thoại: </b>" + txtPhoneQuestion.Text.Trim().ToString() + "<br /><br />";
             msg += "<b>Câu hỏi: </b>" + txtQuestion.Text.Trim().ToString();
-            TLLib.Common.SendMail("smtp.gmail.com", 587, "webmastersendmail0401@gmail.com", "web123master", "hungtien408@gmail.com", "", "ĐẶT CÂU HỎI BỆNH VIỆN ĐA KHOA TÂN HƯNG", msg, true);
+            TLLib.Common.SendMail("smtp.gmail.com", 587, "webmastersendmail0401@gmail.com", "web123master", "info@benhvientanhung.com", "", "ĐẶT CÂU HỎI BỆNH VIỆN ĐA KHOA TÂN HƯNG", msg, true);
             ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "runtime", " $(document).ready(function () {alert('Cám ơn bạn đã đặt câu hỏi. Thông báo của bạn đã được gửi đi. Chúng tôi sẽ trả lời bạn trong thời gian sớm nhất!')});", true);
             txtFullNameQuestion.Text = "";
             txtEmailQuestion.Text = "";

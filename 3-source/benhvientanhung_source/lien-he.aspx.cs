@@ -24,7 +24,7 @@ public partial class lien_he : System.Web.UI.Page
         msg += "<b>Họ và tên: </b>" + txtFullName.Text.Trim().ToString() + "<br />";
         msg += "<b>Email: </b>" + txtEmail.Text.Trim().ToString() + "<br />";
         msg += "<b>Lời nhắn: </b>" + txtNoiDung.Text.Trim().ToString();
-        Common.SendMail("smtp.gmail.com", 587, "webmastersendmail0401@gmail.com", "web123master", "cc@tranlegroup.com", "", "Contact BỆNH VIỆN ĐA KHOA TÂN HƯNG", msg, true);
+        Common.SendMail("smtp.gmail.com", 587, "webmastersendmail0401@gmail.com", "web123master", "info@benhvientanhung.com", "", "Contact BỆNH VIỆN ĐA KHOA TÂN HƯNG", msg, true);
     }
     protected void btnGui_Click(object sender, EventArgs e)
     {

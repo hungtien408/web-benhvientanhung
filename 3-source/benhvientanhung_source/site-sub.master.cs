@@ -46,7 +46,7 @@ public partial class uc_site_sub : System.Web.UI.MasterPage
             msg += "<b>Gợi ý bác sĩ giúp tôi: </b>" + "Không" + "<br /><br />";
         msg += "<b>Mô tả triệu chứng: </b>" + txtMoTa.Text.Trim().ToString() + "<br /><br />";
         msg += "<b>Thời gian khám bệnh: </b>" + strThoiGianKham;
-        TLLib.Common.SendMail("smtp.gmail.com", 587, "webmastersendmail0401@gmail.com", "web123master", "hungtien408@gmail.com", "", "ĐẶT LỊCH KHÁM BỆNH VIỆN ĐA KHOA TÂN HƯNG", msg, true);
+        TLLib.Common.SendMail("smtp.gmail.com", 587, "webmastersendmail0401@gmail.com", "web123master", "info@benhvientanhung.com", "", "ĐẶT LỊCH KHÁM BỆNH VIỆN ĐA KHOA TÂN HƯNG", msg, true);
     }
     protected void btnDatLich_Click(object sender, EventArgs e)
     {
