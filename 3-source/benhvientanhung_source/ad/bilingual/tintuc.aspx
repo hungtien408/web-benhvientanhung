@@ -703,7 +703,7 @@
             <asp:Parameter Name="Priority" Type="String" />
         </UpdateParameters>
     </asp:ObjectDataSource>
-    <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="ProjectCategorySelectAll"
+    <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="ProjectCategorySelectAll_TinTuc"
         TypeName="TLLib.ProjectCategory">
         <SelectParameters>
             <asp:Parameter DefaultValue="2" Name="parentID" Type="Int32" />
