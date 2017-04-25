@@ -1870,35 +1870,9 @@ a.close-modal {
     float:left;
     width:50%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* footer */
 #footer {
     background:#00a7ee;
-    padding-bottom:35px;
 }
 #footer .pull-left h3,#footer .pull-right h3 {
     font-size:18px;
@@ -1906,7 +1880,6 @@ a.close-modal {
     text-transform:uppercase;
     font-family: 'UTMGodsWordBold';
     margin-bottom:15px;
-    margin-top:40px;
 }
     #footer .pull-left ul {
         padding:0;
@@ -1963,12 +1936,6 @@ a.close-modal {
     font-size: 30px;
     margin: 15px 0 30px 0;
 }
-
-
-
-
-
-
 /*************/
 /**/ 
 .address-contact p, .address-contact p a {
