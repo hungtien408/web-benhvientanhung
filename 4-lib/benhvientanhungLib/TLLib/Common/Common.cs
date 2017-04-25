@@ -278,7 +278,48 @@ namespace TLLib
 
             level--; //on the each function end level will decrement by 1
         }
+        public void RecursiveFillTree_TinTuc(DataTable dtParent, int parentID, string parentColumnName, string displayColumnName, string valueColumnName, int increaseLevelCount, string IsShowOnMenu, string IsShowOnHomePage)
+        {
+            if (dt.Columns.Count == 0)
+            {
+                foreach (DataColumn dc in dtParent.Columns)
+                {
+                    dt.Columns.Add(dc.ColumnName);
+                }
+                dt.Columns.Add("Level");
+            }
 
+            level++; //on the each call level increment 1
+            System.Text.StringBuilder appender = new System.Text.StringBuilder();
+            var dv = new DataView(dtParent);
+
+            dv.RowFilter = string.Format(parentColumnName + " = {0} AND IsAvailable = 1 " +
+                (string.IsNullOrEmpty(IsShowOnMenu) ? "" : " AND IsShowOnMenu = " + IsShowOnMenu) +
+                (string.IsNullOrEmpty(IsShowOnHomePage) ? "" : " AND IsShowOnHomePage = " + IsShowOnHomePage)
+            , parentID);
+
+            if (dv.Count > 0 && (level <= increaseLevelCount - 1 || increaseLevelCount == -1))
+            {
+                foreach (DataRowView drv in dv)
+                {
+                    var columnLength = dt.Columns.Count;
+                    object[] obj = new object[columnLength];
+                    for (int i = 0; i < dtParent.Columns.Count; i++)
+                    {
+                        if (dtParent.Columns[i].ColumnName == displayColumnName)
+                            obj[i] = HttpContext.Current.Server.HtmlDecode(appender.ToString() + drv[i]);
+                        else
+                            obj[i] = drv[i];
+                    }
+                    obj[columnLength - 1] = level;
+                    dt.Rows.Add(obj);
+                    RecursiveFillTree(dtParent, int.Parse(drv[valueColumnName].ToString()), parentColumnName, displayColumnName, valueColumnName, "-");
+                    //RecursiveFillTree(dtParent, int.Parse(drv[valueColumnName].ToString()), parentColumnName, displayColumnName, valueColumnName, increaseLevelCount, IsShowOnMenu, IsShowOnHomePage);
+                }
+            }
+
+            level--; //on the each function end level will decrement by 1
+        }
         public void RecursiveFillMenuTree(string href, string queryStringName, DataTable dtParent, string parentID, string parentColumnName, string displayColumnName, string valueColumnName, int increaseLevelCount)
         {
             level++; //on the each call level increment 1

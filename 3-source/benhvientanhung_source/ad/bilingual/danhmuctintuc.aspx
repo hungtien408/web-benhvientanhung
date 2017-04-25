@@ -308,7 +308,7 @@
                                         Tên danh mục
                                     </td>
                                     <td>
-                                        <asp:RadTextBox ID="txtProjectCategoryName" runat="server" Text='<%# (Container is GridEditFormInsertItem) ? "" : (string.IsNullOrEmpty(Eval("ProjectCategoryName").ToString()) ? "" : Eval("ProjectCategoryName").ToString().Remove(0, Convert.ToInt32(Eval("Level")))) %>'
+                                        <asp:RadTextBox ID="txtProjectCategoryName" runat="server" Text='<%# (Container is GridEditFormInsertItem) ? "" : (string.IsNullOrEmpty(Eval("ProjectCategoryName").ToString()) ? "" : Eval("ProjectCategoryName").ToString()) %>'
                                             Width="500px" EmptyMessage="Tên danh mục...">
                                         </asp:RadTextBox>
                                     </td>

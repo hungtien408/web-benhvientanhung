@@ -499,7 +499,6 @@ namespace TLLib
                     throw new Exception("Stored Procedure 'usp_ProjectCategory_SelectAll' reported the ErrorCode : " + errorCodeParam.Value.ToString());
 
                 Common oCommon = new Common();
-
                 oCommon.RecursiveFillTree(dt, parentID, "ParentID", "ProjectCategoryName", "ProjectCategoryID", increaseLevelCount, IsShowOnMenu, IsShowOnHomePage);
 
                 return oCommon.Tree;
@@ -509,7 +508,35 @@ namespace TLLib
                 throw new Exception(ex.Message);
             }
         }
+        public DataTable ProjectCategorySelectAll_TinTuc(int parentID, int increaseLevelCount, string IsShowOnMenu, string IsShowOnHomePage)
+        {
+            try
+            {
+                var dt = new DataTable();
+                var scon = new SqlConnection(connectionString);
+                var cmd = new SqlCommand("usp_ProjectCategory_SelectAll", scon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter errorCodeParam = new SqlParameter("@ErrorCode", null);
+                errorCodeParam.Size = 4;
+                errorCodeParam.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(errorCodeParam);
+                var sda = new SqlDataAdapter(cmd);
+                sda.Fill(dt);
 
+                if (errorCodeParam.Value.ToString() != "0")
+                    throw new Exception("Stored Procedure 'usp_ProjectCategory_SelectAll' reported the ErrorCode : " + errorCodeParam.Value.ToString());
+
+                Common oCommon = new Common();
+
+                oCommon.RecursiveFillTree_TinTuc(dt, parentID, "ParentID", "ProjectCategoryName", "ProjectCategoryID", increaseLevelCount, IsShowOnMenu, IsShowOnHomePage);
+
+                return oCommon.Tree;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public string ProjectCategoryMenuSelectAll(string href, string queryStringName, string parentID, int increaseLevelCount, bool useForeignLanguage)
         {
             try
