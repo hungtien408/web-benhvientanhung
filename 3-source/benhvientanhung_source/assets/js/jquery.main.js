@@ -67,6 +67,10 @@ function myfunload() {
         autoHideScrollbar: true,
         theme: "dark-thick",
     });
+    $('.cam-nhan .cam-nhan-carousel .item').mCustomScrollbar({
+        autoHideScrollbar: true,
+        theme: "dark-thick",
+    });
 
     $('.doctors-team').owlCarousel({
         loop: true,
@@ -141,7 +145,7 @@ function myfunload() {
     $('.thietbi-carousel').owlCarousel({
         loop: true,
         autoplaySpeed: 4000,
-        margin: 2,
+        margin: 15,
         nav: true,
         autoplay: true,
         autoplayTimeout: 2000,

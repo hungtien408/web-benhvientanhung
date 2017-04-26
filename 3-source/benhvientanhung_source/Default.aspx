@@ -616,7 +616,9 @@
                                 <a href='<%# "/co-so-vat-chat/" + progressTitle(Eval("ProjectTitle")) + "-" + Eval("ProjectID") + ".aspx" %>'>
                                     <img alt='<%# Eval("ImageName") %>' src='<%# "~/res/project/" + Eval("ImageName") %>'
                                         visible='<%# string.IsNullOrEmpty( Eval("ImageName").ToString()) ? false : true %>'
-                                        runat="server" /></a>
+                                        runat="server" />
+                                    <p>asdasd</p>
+                                </a>
                             </div>
                         </ItemTemplate>
                         <LayoutTemplate>

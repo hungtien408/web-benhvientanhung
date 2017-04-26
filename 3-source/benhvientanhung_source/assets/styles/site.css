@@ -821,10 +821,9 @@ section.chuyenkhoa {
     border:2px solid #cdd9e1;
     border-top:0;
     padding:50px 30px 25px 60px;    
-    height:300px;
+    height:215px;
 }
 .camnhan-item .item .content.mCustomScrollbar {
-    padding-right:10px;
 }
 .camnhan-item .item .content.mCustomScrollbar .mCSB_inside > .mCSB_container {
     margin-right:0;
@@ -1030,6 +1029,14 @@ section.thietbi {
 .cam-nhan .cam-nhan-carousel .item{
     padding:20px;
     padding-bottom:10px;
+    height:265px;
+    padding-right:0;
+}
+.cam-nhan .cam-nhan-carousel .item .mCSB_inside > .mCSB_container {
+    margin-right:20px;
+}
+.cam-nhan .cam-nhan-carousel .item .mCSB_scrollTools {
+    /*right:-30px;*/
 }
 .cam-nhan .cam-nhan-carousel .item > h3 {
     margin-top:0;
@@ -2986,7 +2993,7 @@ form.gsc-search-box {
     font-size:0px;
     position:absolute;
     left:-15px;
-    top:50%;
+    top:45%;
     transform:translateY(-50%);
     -webkit-transform:translateY(-50%);
     -moz-transform:translateY(-50%);
@@ -3010,7 +3017,7 @@ form.gsc-search-box {
     font-size:0px;
     position:absolute;
     right:15px;
-    top:50%;
+    top:45%;
     transform:translateY(-50%);
     -webkit-transform:translateY(-50%);
     -moz-transform:translateY(-50%);
@@ -3487,6 +3494,11 @@ form.gsc-search-box {
 }
 .thietbi-carousel .owl-item img{
     height: 220px;
+}
+.thietbi-carousel .owl-item .item a p {
+    color:#363636;
+    text-align:center;
+    padding:3px 0;
 }
 .btn-pop-dl {
     display:inline-block;
