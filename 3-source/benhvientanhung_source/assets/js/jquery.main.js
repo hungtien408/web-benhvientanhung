@@ -13,6 +13,30 @@
             $('.list-doingu .popup .popup-content').css({ 'top': '-250%' });
             $('.datlich-kham .popup-content').css({ 'top': '30px' });
         });
+
+        /**/
+        var swiper = new Swiper('.swiper-container', {
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            slidesPerView: 3,
+            slidesPerColumn: 2,
+            paginationClickable: true,
+            spaceBetween: 15,
+            breakpoints: {
+                1200: {
+                    slidesPerView: 2,
+                },
+                992: {
+                    slidesPerView: 1,
+                },
+                768:{
+                    slidesPerView: 2,
+                },
+                640: {
+                    slidesPerView: 1,
+                }
+            }
+        });
     });
 })(jQuery);
 

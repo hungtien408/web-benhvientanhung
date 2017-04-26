@@ -65,6 +65,73 @@
                     <h1>Thông tin y khoa</h1>
                 </div>
                 <div class="pc-left">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="http://localhost:55507/res/project/150.png" alt="" />
+                                <a href="#">LÀM THẾ NÀO ĐỂ NGĂN NGỪA CẬN THỊ?</a>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="http://localhost:55507/res/project/150.png" alt="" />
+                                <a href="#">KỸ THUẬT CT MẠCH VÀNH KHÔNG PHỤ THUỘC BETA BLOCKER</a>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="http://localhost:55507/res/project/150.png" alt="" />
+                                <a href="#">CẬN THỊ HỌC ĐƯỜNG</a>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="http://localhost:55507/res/project/150.png" alt="" />
+                                <a href="#">LÀM THẾ NÀO ĐỂ NGĂN NGỪA CẬN THỊ?</a>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="http://localhost:55507/res/project/150.png" alt="" />
+                                <a href="#">KỸ THUẬT CT MẠCH VÀNH KHÔNG PHỤ THUỘC BETA BLOCKER</a>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="http://localhost:55507/res/project/150.png" alt="" />
+                                <a href="#">CẬN THỊ HỌC ĐƯỜNG</a>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="http://localhost:55507/res/project/150.png" alt="" />
+                                <a href="#">LÀM THẾ NÀO ĐỂ NGĂN NGỪA CẬN THỊ?</a>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="http://localhost:55507/res/project/150.png" alt="" />
+                                <a href="#">KỸ THUẬT CT MẠCH VÀNH KHÔNG PHỤ THUỘC BETA BLOCKER</a>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="http://localhost:55507/res/project/150.png" alt="" />
+                                <a href="#">CẬN THỊ HỌC ĐƯỜNG</a>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="http://localhost:55507/res/project/150.png" alt="" />
+                                <a href="#">LÀM THẾ NÀO ĐỂ NGĂN NGỪA CẬN THỊ?</a>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="http://localhost:55507/res/project/150.png" alt="" />
+                                <a href="#">KỸ THUẬT CT MẠCH VÀNH KHÔNG PHỤ THUỘC BETA BLOCKER</a>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="http://localhost:55507/res/project/150.png" alt="" />
+                                <a href="#">CẬN THỊ HỌC ĐƯỜNG</a>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="http://localhost:55507/res/project/150.png" alt="" />
+                                <a href="#">LÀM THẾ NÀO ĐỂ NGĂN NGỪA CẬN THỊ?</a>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="http://localhost:55507/res/project/150.png" alt="" />
+                                <a href="#">KỸ THUẬT CT MẠCH VÀNH KHÔNG PHỤ THUỘC BETA BLOCKER</a>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="http://localhost:55507/res/project/150.png" alt="" />
+                                <a href="#">CẬN THỊ HỌC ĐƯỜNG</a>
+                            </div>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+
                     <%--<asp:ListView ID="lstAbout" runat="server" DataSourceID="odsAbout"
                         EnableModelValidation="True">
                         <ItemTemplate>

@@ -15,6 +15,7 @@
     <link href="/assets/styles/slick.css" rel="stylesheet" />
     <link href="/assets/styles/owl.carousel.min.css" rel="stylesheet" />
     <link href="/assets/styles/jquery.mCustomScrollbar.css" rel="stylesheet" />
+    <link href="assets/styles/swiper.min.css" rel="stylesheet" />
     <%--<link rel="stylesheet" type="text/css" href="assets/styles/owl.carousel.min.css" />--%>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -396,6 +397,7 @@
         <script src="/assets/js/slick.min.js"></script>
         <script src="/assets/js/owl.carousel.min.js" defer="defer"></script>
         <script src="/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="assets/js/swiper.min.js"></script>
         <!-- main js -->
         <script src="/assets/js/jquery.main.js" defer="defer"></script>
 
