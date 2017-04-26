@@ -1038,7 +1038,7 @@ section.thietbi {
 .cam-nhan .cam-nhan-carousel .item .mCSB_scrollTools {
     /*right:-30px;*/
 }
-.cam-nhan .cam-nhan-carousel .item > h3 {
+.cam-nhan .cam-nhan-carousel .item h3 {
     margin-top:0;
     font-size:14px;
     color:#00a7ee;
@@ -1601,7 +1601,7 @@ a.close-modal {
 }
 .news-carousel .item {
     margin-bottom:15px;
-    width:calc(50% - 4px);
+    width:calc(33.3333% - 4px);
     display:inline-block;
     vertical-align:top;
     padding:0 15px;
@@ -3411,7 +3411,7 @@ form.gsc-search-box {
         width:100%;
     }
     .news-carousel .item {
-        width:100%;
+        width:calc(50% - 4px);
     }
 }
 
@@ -3432,6 +3432,9 @@ form.gsc-search-box {
     .csvc-cate .item{
 		width: 100%;
 	}
+    .news-carousel .item {
+        width:100%;
+    }
 }
 
 @media screen and (max-width:420px) {
@@ -3636,7 +3639,8 @@ form.gsc-search-box {
 
 /**/
 .camnhan-carousel.owl-carousel .owl-item img {
-    width:auto;
+    width:89px;
+    height: 89px;
     display:inline-block;
 }
 .camnhan-carousel.owl-carousel .owl-prev {

@@ -67,6 +67,13 @@
                 <div class="main-text">
                     <%# Eval("Content") %>
                 </div>
+                <div class="fb-like" data-href='<%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %>'
+                    data-send="false" data-layout="button_count" data-width="50" data-show-faces="true">
+                </div>
+                <div class="fb-share-button"
+                    data-href='<%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %>'
+                    data-layout="button_count">
+                </div>
             </ItemTemplate>
             <LayoutTemplate>
                 <span runat="server" id="itemPlaceholder" />

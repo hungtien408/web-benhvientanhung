@@ -222,7 +222,7 @@ public partial class ad_single_project : System.Web.UI.Page
                 if (!string.IsNullOrEmpty(ImageName))
                 {
                     FileImageName.UploadedFiles[0].SaveAs(Server.MapPath(strFullPath));
-                    //ResizeCropImage.ResizeByCondition(strFullPath, 800, 800);
+                    ResizeCropImage.ResizeByCondition(strFullPath, 238, 200);
                     ResizeCropImage.CreateThumbNailByCondition("~/res/project/", "~/res/project/thumbs/", ImageName, 120, 120);
                 }
                 RadGrid1.Rebind();
@@ -253,7 +253,7 @@ public partial class ad_single_project : System.Web.UI.Page
                     string strFullPath = "~/res/project/" + ImageName;
 
                     FileImageName.UploadedFiles[0].SaveAs(Server.MapPath(strFullPath));
-                    //ResizeCropImage.ResizeByCondition(strFullPath, 800, 800);
+                    ResizeCropImage.ResizeByCondition(strFullPath, 238, 200);
                     ResizeCropImage.CreateThumbNailByCondition("~/res/project/", "~/res/project/thumbs/", ImageName, 120, 120);
                 }
             }

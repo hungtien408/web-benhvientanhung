@@ -67,66 +67,19 @@
                 <div class="pc-left">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <img src="http://localhost:55507/res/project/150.png" alt="" />
-                                <a href="#">LÀM THẾ NÀO ĐỂ NGĂN NGỪA CẬN THỊ?</a>
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="http://localhost:55507/res/project/150.png" alt="" />
-                                <a href="#">KỸ THUẬT CT MẠCH VÀNH KHÔNG PHỤ THUỘC BETA BLOCKER</a>
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="http://localhost:55507/res/project/150.png" alt="" />
-                                <a href="#">CẬN THỊ HỌC ĐƯỜNG</a>
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="http://localhost:55507/res/project/150.png" alt="" />
-                                <a href="#">LÀM THẾ NÀO ĐỂ NGĂN NGỪA CẬN THỊ?</a>
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="http://localhost:55507/res/project/150.png" alt="" />
-                                <a href="#">KỸ THUẬT CT MẠCH VÀNH KHÔNG PHỤ THUỘC BETA BLOCKER</a>
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="http://localhost:55507/res/project/150.png" alt="" />
-                                <a href="#">CẬN THỊ HỌC ĐƯỜNG</a>
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="http://localhost:55507/res/project/150.png" alt="" />
-                                <a href="#">LÀM THẾ NÀO ĐỂ NGĂN NGỪA CẬN THỊ?</a>
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="http://localhost:55507/res/project/150.png" alt="" />
-                                <a href="#">KỸ THUẬT CT MẠCH VÀNH KHÔNG PHỤ THUỘC BETA BLOCKER</a>
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="http://localhost:55507/res/project/150.png" alt="" />
-                                <a href="#">CẬN THỊ HỌC ĐƯỜNG</a>
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="http://localhost:55507/res/project/150.png" alt="" />
-                                <a href="#">LÀM THẾ NÀO ĐỂ NGĂN NGỪA CẬN THỊ?</a>
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="http://localhost:55507/res/project/150.png" alt="" />
-                                <a href="#">KỸ THUẬT CT MẠCH VÀNH KHÔNG PHỤ THUỘC BETA BLOCKER</a>
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="http://localhost:55507/res/project/150.png" alt="" />
-                                <a href="#">CẬN THỊ HỌC ĐƯỜNG</a>
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="http://localhost:55507/res/project/150.png" alt="" />
-                                <a href="#">LÀM THẾ NÀO ĐỂ NGĂN NGỪA CẬN THỊ?</a>
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="http://localhost:55507/res/project/150.png" alt="" />
-                                <a href="#">KỸ THUẬT CT MẠCH VÀNH KHÔNG PHỤ THUỘC BETA BLOCKER</a>
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="http://localhost:55507/res/project/150.png" alt="" />
-                                <a href="#">CẬN THỊ HỌC ĐƯỜNG</a>
-                            </div>
+                            <asp:ListView ID="lstAbout" runat="server" DataSourceID="odsAbout"
+                                EnableModelValidation="True">
+                                <ItemTemplate>
+                                    <div class="swiper-slide">
+                                        <img alt='<%# Eval("ImageName") %>' src='<%# "~/res/project/" + Eval("ImageName") %>' runat="server"
+                                            visible='<%# string.IsNullOrEmpty(Eval("ImageName").ToString()) ? false : true %>' />
+                                        <a href='<%# "/tin-tuc/" + progressTitle(Eval("ProjectTitle")) + "-" + Eval("ProjectID") + ".aspx" %>'><%# Eval("ProjectTitle") %></a>
+                                    </div>
+                                </ItemTemplate>
+                                <LayoutTemplate>
+                                    <span runat="server" id="itemPlaceholder" />
+                                </LayoutTemplate>
+                            </asp:ListView>
                         </div>
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
@@ -148,7 +101,7 @@
                             <span runat="server" id="itemPlaceholder" />
                         </LayoutTemplate>
                     </asp:ListView>--%>
-                    <asp:ListView ID="lstAbout" runat="server" DataSourceID="odsAbout"
+                    <%--<asp:ListView ID="lstAbout" runat="server" DataSourceID="odsAbout"
                         EnableModelValidation="True">
                         <ItemTemplate>
                             <li><span><%# Container.DataItemIndex + 1 %></span><a class="text-uppercase" href='<%# "/tin-tuc/" + progressTitle(Eval("ProjectTitle")) + "-" + Eval("ProjectID") + ".aspx" %>'><%# Eval("ProjectTitle") %></a></li>
@@ -158,7 +111,7 @@
                                 <li runat="server" id="itemPlaceholder"></li>
                             </ul>
                         </LayoutTemplate>
-                    </asp:ListView>
+                    </asp:ListView>--%>
                     <asp:ObjectDataSource ID="odsAbout" runat="server" SelectMethod="ProjectSelectAll" TypeName="TLLib.Project">
                         <SelectParameters>
                             <asp:Parameter DefaultValue="1" Name="StartRowIndex" Type="String" />
@@ -193,7 +146,7 @@
                                                 file: '<%# string.IsNullOrEmpty(Eval("VideoPath").ToString()) ? Eval("GLobalEmbedScript") : "res/video/" + Eval("VideoPath") %>',
                                                 flashplayer: "assets/js/jwplayer.flash.swf",
                                                 height: 190,
-                                                width: 100+"%",
+                                                width: 100 + "%",
                                                 dock: true,
                                                 autostart: false,
                                                 primary: "html5",
@@ -229,8 +182,9 @@
                             EnableModelValidation="True">
                             <ItemTemplate>
                                 <div class="img-details">
-                                    <a href="thu-vien-anh-video.aspx"><img alt='<%# Eval("ImageName") %>' src='<%# "~/res/photoalbumcategory/" + Eval("ImageName") %>' runat="server"
-                                        visible='<%# string.IsNullOrEmpty(Eval("ImageName").ToString()) ? false : true %>' /></a>
+                                    <a href="thu-vien-anh-video.aspx">
+                                        <img alt='<%# Eval("ImageName") %>' src='<%# "~/res/photoalbumcategory/" + Eval("ImageName") %>' runat="server"
+                                            visible='<%# string.IsNullOrEmpty(Eval("ImageName").ToString()) ? false : true %>' /></a>
                                 </div>
                             </ItemTemplate>
                             <LayoutTemplate>
@@ -617,7 +571,7 @@
                                     <img alt='<%# Eval("ImageName") %>' src='<%# "~/res/project/" + Eval("ImageName") %>'
                                         visible='<%# string.IsNullOrEmpty( Eval("ImageName").ToString()) ? false : true %>'
                                         runat="server" />
-                                    <p>asdasd</p>
+                                    <p><%# Eval("ProjectTitle") %></p>
                                 </a>
                             </div>
                         </ItemTemplate>
@@ -769,116 +723,116 @@
                 <h3>Đặt lịch khám</h3>
                 <div class="wrap-datlich">
                     <div class="lich-left">
-                    <div class="form-group">
-                        <asp:TextBox ID="txtFullNamePopup" runat="server"></asp:TextBox>
-                        <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender2" runat="server" Enabled="True"
-                            WatermarkText="Họ tên (*)" TargetControlID="txtFullNamePopUp">
-                        </asp:TextBoxWatermarkExtender>
-                        <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator10" runat="server"
-                            Display="Dynamic" ValidationGroup="DatHenPopup" ControlToValidate="txtFullNamePopUp"
-                            ErrorMessage="Thông tin bắt buộc!" ForeColor="Red"></asp:RequiredFieldValidator>
-                    </div>
-                    <div class="form-group">
-                        <div class="ngaysinh">
-                            <asp:RadDatePicker ShowPopupOnFocus="True" ID="dpNgaySinhPopup" runat="server" Culture="vi-VN"
-                                Calendar-CultureInfo="vi-VN" Width="65%" Height="30px" CssClass="drop-ngaysinh">
-                                <Calendar ID="Calendar3" runat="server">
+                        <div class="form-group">
+                            <asp:TextBox ID="txtFullNamePopup" runat="server"></asp:TextBox>
+                            <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender2" runat="server" Enabled="True"
+                                WatermarkText="Họ tên (*)" TargetControlID="txtFullNamePopUp">
+                            </asp:TextBoxWatermarkExtender>
+                            <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator10" runat="server"
+                                Display="Dynamic" ValidationGroup="DatHenPopup" ControlToValidate="txtFullNamePopUp"
+                                ErrorMessage="Thông tin bắt buộc!" ForeColor="Red"></asp:RequiredFieldValidator>
+                        </div>
+                        <div class="form-group">
+                            <div class="ngaysinh">
+                                <asp:RadDatePicker ShowPopupOnFocus="True" ID="dpNgaySinhPopup" runat="server" Culture="vi-VN"
+                                    Calendar-CultureInfo="vi-VN" Width="65%" Height="30px" CssClass="drop-ngaysinh">
+                                    <Calendar ID="Calendar3" runat="server">
+                                        <SpecialDays>
+                                            <asp:RadCalendarDay Repeatable="Today">
+                                                <ItemStyle CssClass="rcToday" />
+                                            </asp:RadCalendarDay>
+                                        </SpecialDays>
+                                    </Calendar>
+                                    <DateInput ID="DateInput3" DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy"
+                                        runat="server" Height="32px">
+                                    </DateInput>
+                                    <DatePopupButton HoverImageUrl="" ImageUrl="" />
+                                </asp:RadDatePicker>
+                                <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator11" runat="server"
+                                    Display="Dynamic" ValidationGroup="DatHenPopup" ControlToValidate="dpNgaySinhPopup"
+                                    ErrorMessage="Thông tin bắt buộc!" ForeColor="Red"></asp:RequiredFieldValidator>
+                            </div>
+                            <div class="gioitinh">
+                                <asp:DropDownList ID="dropListGenderPopup" runat="server">
+                                    <asp:ListItem Value="0">Nam</asp:ListItem>
+                                    <asp:ListItem Value="1">Nữ</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <asp:TextBox ID="txtPhonePopup" runat="server"></asp:TextBox>
+                            <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender3" runat="server"
+                                Enabled="True" WatermarkText="Điện thoại(*)" TargetControlID="txtPhonePopup">
+                            </asp:TextBoxWatermarkExtender>
+                            <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator12" runat="server"
+                                Display="Dynamic" ValidationGroup="DatHenPopup" ControlToValidate="txtPhonePopup"
+                                ErrorMessage="Thông tin bắt buộc!" ForeColor="Red"></asp:RequiredFieldValidator>
+                        </div>
+                        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                            <ContentTemplate>
+                                <div class="form-group">
+                                    <asp:DropDownList ID="dropListChuyenKhoaPopup" runat="server" DataSourceID="odsPhongBanDrop" DataTextField="ProjectCategoryName" DataValueField="ProjectCategoryID" AutoPostBack="true" OnDataBound="DropDownListKhoa_DataBound"></asp:DropDownList>
+                                    <asp:ObjectDataSource ID="odsPhongBanDropPopup" runat="server" SelectMethod="ProjectCategorySelectAll" TypeName="TLLib.ProjectCategory">
+                                        <SelectParameters>
+                                            <asp:Parameter DefaultValue="17" Name="parentID" Type="Int32" />
+                                            <asp:Parameter DefaultValue="1" Name="increaseLevelCount" Type="Int32" />
+                                            <asp:Parameter Name="IsShowOnMenu" Type="String" />
+                                            <asp:Parameter Name="IsShowOnHomePage" Type="String" />
+                                        </SelectParameters>
+                                    </asp:ObjectDataSource>
+                                </div>
+                                <div class="form-group">
+                                    <asp:DropDownList ID="dropListBacSiPopup" runat="server" DataSourceID="odsBacSiDropPopup" DataTextField="ProjectTitle" DataValueField="ProjectID" AutoPostBack="true" OnDataBound="DropDownListBacSi_DataBound"></asp:DropDownList>
+                                    <asp:ObjectDataSource ID="odsBacSiDropPopup" runat="server" SelectMethod="ProjectSelectAll" TypeName="TLLib.Project">
+                                        <SelectParameters>
+                                            <asp:Parameter Name="StartRowIndex" Type="String" />
+                                            <asp:Parameter Name="EndRowIndex" Type="String" />
+                                            <asp:Parameter Name="Keyword" Type="String" />
+                                            <asp:Parameter Name="ProjectTitle" Type="String" />
+                                            <asp:Parameter Name="Description" Type="String" />
+                                            <asp:ControlParameter ControlID="dropListChuyenKhoaPopup" Name="ProjectCategoryID" PropertyName="SelectedValue" Type="String" />
+                                            <asp:Parameter Name="Tag" Type="String" />
+                                            <asp:Parameter Name="IsHot" Type="String" />
+                                            <asp:Parameter Name="IsNew" Type="String" />
+                                            <asp:Parameter Name="IsShowOnHomePage" Type="String" />
+                                            <asp:Parameter Name="FromDate" Type="String" />
+                                            <asp:Parameter Name="ToDate" Type="String" />
+                                            <asp:Parameter DefaultValue="True" Name="IsAvailable" Type="String" />
+                                            <asp:Parameter Name="Priority" Type="String" />
+                                            <asp:Parameter DefaultValue="True" Name="SortByPriority" Type="String" />
+                                        </SelectParameters>
+                                    </asp:ObjectDataSource>
+                                </div>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                        <div class="form-group">
+                            <asp:RadDatePicker ShowPopupOnFocus="True" ID="dpNgayKhamPopup" runat="server" Culture="vi-VN"
+                                Calendar-CultureInfo="vi-VN" Width="60%" Height="32px" CssClass="drop-ngaysinh">
+                                <Calendar ID="Calendar4" runat="server">
                                     <SpecialDays>
                                         <asp:RadCalendarDay Repeatable="Today">
                                             <ItemStyle CssClass="rcToday" />
                                         </asp:RadCalendarDay>
                                     </SpecialDays>
                                 </Calendar>
-                                <DateInput ID="DateInput3" DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy"
+                                <DateInput ID="DateInput4" DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy"
                                     runat="server" Height="32px">
                                 </DateInput>
                                 <DatePopupButton HoverImageUrl="" ImageUrl="" />
                             </asp:RadDatePicker>
-                            <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator11" runat="server"
-                                Display="Dynamic" ValidationGroup="DatHenPopup" ControlToValidate="dpNgaySinhPopup"
+                            <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator13" runat="server"
+                                Display="Dynamic" ValidationGroup="DatHenPopup" ControlToValidate="dpNgayKhamPopup"
+                                ErrorMessage="Thông tin bắt buộc!" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:RadTimePicker ID="dpGioKhamPopup" runat="server" Width="40%" Height="32px" ShowPopupOnFocus="true"
+                                TimeView-StartTime="07:00:00" TimeView-Interval="00:30:00" TimeView-EndTime="18:00:01" Culture="en-US" CssClass="drop-ngaysinh">
+                            </asp:RadTimePicker>
+                            <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator14" runat="server"
+                                Display="Dynamic" ValidationGroup="DatHenPopup" ControlToValidate="dpGioKhamPopup"
                                 ErrorMessage="Thông tin bắt buộc!" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
-                        <div class="gioitinh">
-                            <asp:DropDownList ID="dropListGenderPopup" runat="server">
-                                <asp:ListItem Value="0">Nam</asp:ListItem>
-                                <asp:ListItem Value="1">Nữ</asp:ListItem>
-                            </asp:DropDownList>
-                        </div>
+                        <p>(*) là thông tin bắt buộc nhập</p>
+                        <asp:Button ID="btnDatHen2" runat="server" Text="Đặt lịch hẹn" OnClick="btnDatHen2_Click" ValidationGroup="DatHenPopup" />
                     </div>
-                    <div class="form-group">
-                        <asp:TextBox ID="txtPhonePopup" runat="server"></asp:TextBox>
-                        <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender3" runat="server"
-                            Enabled="True" WatermarkText="Điện thoại(*)" TargetControlID="txtPhonePopup">
-                        </asp:TextBoxWatermarkExtender>
-                        <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator12" runat="server"
-                            Display="Dynamic" ValidationGroup="DatHenPopup" ControlToValidate="txtPhonePopup"
-                            ErrorMessage="Thông tin bắt buộc!" ForeColor="Red"></asp:RequiredFieldValidator>
-                    </div>
-                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                        <ContentTemplate>
-                            <div class="form-group">
-                                <asp:DropDownList ID="dropListChuyenKhoaPopup" runat="server" DataSourceID="odsPhongBanDrop" DataTextField="ProjectCategoryName" DataValueField="ProjectCategoryID" AutoPostBack="true" OnDataBound="DropDownListKhoa_DataBound"></asp:DropDownList>
-                                <asp:ObjectDataSource ID="odsPhongBanDropPopup" runat="server" SelectMethod="ProjectCategorySelectAll" TypeName="TLLib.ProjectCategory">
-                                    <SelectParameters>
-                                        <asp:Parameter DefaultValue="17" Name="parentID" Type="Int32" />
-                                        <asp:Parameter DefaultValue="1" Name="increaseLevelCount" Type="Int32" />
-                                        <asp:Parameter Name="IsShowOnMenu" Type="String" />
-                                        <asp:Parameter Name="IsShowOnHomePage" Type="String" />
-                                    </SelectParameters>
-                                </asp:ObjectDataSource>
-                            </div>
-                            <div class="form-group">
-                                <asp:DropDownList ID="dropListBacSiPopup" runat="server" DataSourceID="odsBacSiDropPopup" DataTextField="ProjectTitle" DataValueField="ProjectID" AutoPostBack="true" OnDataBound="DropDownListBacSi_DataBound"></asp:DropDownList>
-                                <asp:ObjectDataSource ID="odsBacSiDropPopup" runat="server" SelectMethod="ProjectSelectAll" TypeName="TLLib.Project">
-                                    <SelectParameters>
-                                        <asp:Parameter Name="StartRowIndex" Type="String" />
-                                        <asp:Parameter Name="EndRowIndex" Type="String" />
-                                        <asp:Parameter Name="Keyword" Type="String" />
-                                        <asp:Parameter Name="ProjectTitle" Type="String" />
-                                        <asp:Parameter Name="Description" Type="String" />
-                                        <asp:ControlParameter ControlID="dropListChuyenKhoaPopup" Name="ProjectCategoryID" PropertyName="SelectedValue" Type="String" />
-                                        <asp:Parameter Name="Tag" Type="String" />
-                                        <asp:Parameter Name="IsHot" Type="String" />
-                                        <asp:Parameter Name="IsNew" Type="String" />
-                                        <asp:Parameter Name="IsShowOnHomePage" Type="String" />
-                                        <asp:Parameter Name="FromDate" Type="String" />
-                                        <asp:Parameter Name="ToDate" Type="String" />
-                                        <asp:Parameter DefaultValue="True" Name="IsAvailable" Type="String" />
-                                        <asp:Parameter Name="Priority" Type="String" />
-                                        <asp:Parameter DefaultValue="True" Name="SortByPriority" Type="String" />
-                                    </SelectParameters>
-                                </asp:ObjectDataSource>
-                            </div>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
-                    <div class="form-group">
-                        <asp:RadDatePicker ShowPopupOnFocus="True" ID="dpNgayKhamPopup" runat="server" Culture="vi-VN"
-                            Calendar-CultureInfo="vi-VN" Width="60%" Height="32px" CssClass="drop-ngaysinh">
-                            <Calendar ID="Calendar4" runat="server">
-                                <SpecialDays>
-                                    <asp:RadCalendarDay Repeatable="Today">
-                                        <ItemStyle CssClass="rcToday" />
-                                    </asp:RadCalendarDay>
-                                </SpecialDays>
-                            </Calendar>
-                            <DateInput ID="DateInput4" DateFormat="dd/MM/yyyy" DisplayDateFormat="dd/MM/yyyy"
-                                runat="server" Height="32px">
-                            </DateInput>
-                            <DatePopupButton HoverImageUrl="" ImageUrl="" />
-                        </asp:RadDatePicker>
-                        <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator13" runat="server"
-                            Display="Dynamic" ValidationGroup="DatHenPopup" ControlToValidate="dpNgayKhamPopup"
-                            ErrorMessage="Thông tin bắt buộc!" ForeColor="Red"></asp:RequiredFieldValidator>
-                        <asp:RadTimePicker ID="dpGioKhamPopup" runat="server" Width="40%" Height="32px" ShowPopupOnFocus="true"
-                            TimeView-StartTime="07:00:00" TimeView-Interval="00:30:00" TimeView-EndTime="18:00:01" Culture="en-US" CssClass="drop-ngaysinh">
-                        </asp:RadTimePicker>
-                        <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator14" runat="server"
-                            Display="Dynamic" ValidationGroup="DatHenPopup" ControlToValidate="dpGioKhamPopup"
-                            ErrorMessage="Thông tin bắt buộc!" ForeColor="Red"></asp:RequiredFieldValidator>
-                    </div>
-                    <p>(*) là thông tin bắt buộc nhập</p>
-                    <asp:Button ID="btnDatHen2" runat="server" Text="Đặt lịch hẹn" OnClick="btnDatHen2_Click" ValidationGroup="DatHenPopup" />
-                </div>
                 </div>
             </div>
             <a href="javascript:void(0);" class="close-modal"></a>
