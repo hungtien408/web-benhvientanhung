@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/site-sub.master" AutoEventWireup="true" CodeFile="tin-tuc.aspx.cs" Inherits="tintuc" %>
+
 <%@ Register TagPrefix="asp" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit" %>
 <%@ Register TagPrefix="asp" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
 <%@ Register Src="~/uc/cam-nhan-benh-nhan.ascx" TagPrefix="uc1" TagName="camnhanbenhnhan" %>
@@ -17,7 +18,7 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="page_main" runat="Server">
     <h1 class="content-tit">tin tức</h1>
-    <h2 style="display:none;"><a href='<%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %>' title='Tin tức'>Tin tức</a></h2>
+    <h2 style="display: none;"><a href='<%= HttpContext.Current.Request.Url.Host + "" + HttpContext.Current.Request.Url.AbsolutePath %>' title='Tin tức'>Tin tức</a></h2>
     <div class="skin1" role="tabpanel">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
@@ -96,115 +97,117 @@
             </asp:ListView>
         </div>
     </div>
-    <h1 class="content-tit">hỏi bác sĩ</h1>
-    <div class="list-question">
-        <div class="top-ques">
-            <p>Nếu bạn có thắc mắc vui lòng gửi câu hỏi cho chúng tôi</p>
-            <a href="#">Gửi câu hỏi</a>
-        </div>
-        <asp:ListView ID="lstHoiBacSi" runat="server" DataSourceID="odsHoiBacSi"
-            EnableModelValidation="True">
-            <ItemTemplate>
-                <div class="item">
-                    <div class="header">
-                        <ul>
-                            <li>Người gửi: <%# Eval("Tag") %></li>
-                            <li>Email: <%# Eval("TagEn") %></li>
-                        </ul>
-                    </div>
-                    <div class="content">
-                        <h3><%# Eval("ProjectTitle") %></h3>
-                        <p><%# Eval("Description") %></p>
-                        <div class="traloi">
-                            <p>Xem trả lời</p>
-                        </div>
-                        <div class="clr"></div>
-                        <div class="cautraloi">
-                            <h3>Câu trả lời của bác sĩ:</h3>
-                            <p><%# Eval("Content") %></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="clr"></div>
-            </ItemTemplate>
-            <LayoutTemplate>
-                <span runat="server" id="itemPlaceholder" />
-            </LayoutTemplate>
-        </asp:ListView>
-        <asp:ObjectDataSource ID="odsHoiBacSi" runat="server" SelectMethod="ProjectSelectAll" TypeName="TLLib.Project">
-            <SelectParameters>
-                <asp:Parameter Name="StartRowIndex" Type="String" />
-                <asp:Parameter Name="EndRowIndex" Type="String" />
-                <asp:Parameter Name="Keyword" Type="String" />
-                <asp:Parameter Name="ProjectTitle" Type="String" />
-                <asp:Parameter Name="Description" Type="String" />
-                <asp:Parameter DefaultValue="53" Name="ProjectCategoryID" Type="String" />
-                <asp:Parameter Name="Tag" Type="String" />
-                <asp:Parameter Name="IsHot" Type="String" />
-                <asp:Parameter Name="IsNew" Type="String" />
-                <asp:Parameter Name="IsShowOnHomePage" Type="String" />
-                <asp:Parameter Name="FromDate" Type="String" />
-                <asp:Parameter Name="ToDate" Type="String" />
-                <asp:Parameter DefaultValue="True" Name="IsAvailable" Type="String" />
-                <asp:Parameter Name="Priority" Type="String" />
-                <asp:Parameter DefaultValue="True" Name="SortByPriority" Type="String" />
-            </SelectParameters>
-        </asp:ObjectDataSource>
-    </div>
-    <div class="pager">
-        <asp:DataPager ID="DataPager1" runat="server" PageSize="5" PagedControlID="lstHoiBacSi">
-            <Fields>
-                <asp:NextPreviousPagerField ButtonType="Link" ShowFirstPageButton="false"
-                    ShowNextPageButton="false" ShowPreviousPageButton="true" ButtonCssClass="prev fa fa-angle-left"
-                    RenderDisabledButtonsAsLabels="true" PreviousPageText="" />
-                <asp:NumericPagerField ButtonCount="5" NumericButtonCssClass="numer-paging"
-                    CurrentPageLabelCssClass="current" />
-                <asp:NextPreviousPagerField ButtonType="Link" ShowLastPageButton="false"
-                    ButtonCssClass="next fa fa-angle-right" ShowNextPageButton="true" ShowPreviousPageButton="false"
-                    RenderDisabledButtonsAsLabels="true" NextPageText="" />
-            </Fields>
-        </asp:DataPager>
-    </div>
-    <div class="datcauhoi popup scroll-popup">
-        <div class="popup-content">
-            <div class="form-popup">
-                <h3>Đặt câu hỏi</h3>
-                <div class="wrap-dch">
-                    <div class="form-group">
-                        <asp:TextBox ID="txtFullNameQuestion" runat="server"></asp:TextBox>
-                        <asp:TextBoxWatermarkExtender ID="txtFullNameQuestion_WatermarkExtender" runat="server" Enabled="True"
-                            WatermarkText="Họ tên (*)" TargetControlID="txtFullNameQuestion">
-                        </asp:TextBoxWatermarkExtender>
-                        <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator5" runat="server"
-                            Display="Dynamic" ValidationGroup="DatCauHoi" ControlToValidate="txtFullNameQuestion"
-                            ErrorMessage="Thông tin bắt buộc!" ForeColor="Red"></asp:RequiredFieldValidator>
-                    </div>
-                    <div class="form-group">
-                        <asp:TextBox ID="txtEmailQuestion" runat="server"></asp:TextBox>
-                        <asp:TextBoxWatermarkExtender ID="txtEmailQuestion_WatermarkExtender" runat="server" Enabled="True"
-                            WatermarkText="Email(*)" TargetControlID="txtEmailQuestion">
-                        </asp:TextBoxWatermarkExtender>
-                        <asp:RegularExpressionValidator CssClass="lb-error" ID="RegularExpressionValidator1"
-                            runat="server" ValidationGroup="DatCauHoi" ControlToValidate="txtEmailQuestion" ErrorMessage="Email is error!"
-                            ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic"
-                            ForeColor="Red"></asp:RegularExpressionValidator>
-                        <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator7" runat="server"
-                            ValidationGroup="DatCauHoi" ControlToValidate="txtEmailQuestion" ErrorMessage="Thông tin bắt buộc!"
-                            Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                    </div>
-                    <div class="form-group">
-                        <asp:TextBox ID="txtPhoneQuestion" runat="server" placeholder="Điện thoại"></asp:TextBox>
-                    </div>
-                    <div class="form-group">
-                        <asp:TextBox ID="txtQuestion" runat="server" placeholder="Câu hỏi muốn đặt" TextMode="MultiLine"></asp:TextBox>
-                    </div>
-                    <div class="btn-gui">
-                        <asp:Button ID="btnGuiCauHoi" runat="server" Text="Gửi câu hỏi" OnClick="btnGuiCauHoi_Click" ValidationGroup="DatCauHoi" />
-                    </div>
-                </div>
+    <asp:Panel ID="Panel1" runat="server" Visible="false">
+        <h1 class="content-tit">hỏi bác sĩ</h1>
+        <div class="list-question">
+            <div class="top-ques">
+                <p>Nếu bạn có thắc mắc vui lòng gửi câu hỏi cho chúng tôi</p>
+                <a href="#">Gửi câu hỏi</a>
             </div>
-            <a href="javascript:void(0);" class="close-modal"></a>
+            <asp:ListView ID="lstHoiBacSi" runat="server" DataSourceID="odsHoiBacSi"
+                EnableModelValidation="True">
+                <ItemTemplate>
+                    <div class="item">
+                        <div class="header">
+                            <ul>
+                                <li>Người gửi: <%# Eval("Tag") %></li>
+                                <li>Email: <%# Eval("TagEn") %></li>
+                            </ul>
+                        </div>
+                        <div class="content">
+                            <h3><%# Eval("ProjectTitle") %></h3>
+                            <p><%# Eval("Description") %></p>
+                            <div class="traloi">
+                                <p>Xem trả lời</p>
+                            </div>
+                            <div class="clr"></div>
+                            <div class="cautraloi">
+                                <h3>Câu trả lời của bác sĩ:</h3>
+                                <p><%# Eval("Content") %></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clr"></div>
+                </ItemTemplate>
+                <LayoutTemplate>
+                    <span runat="server" id="itemPlaceholder" />
+                </LayoutTemplate>
+            </asp:ListView>
+            <asp:ObjectDataSource ID="odsHoiBacSi" runat="server" SelectMethod="ProjectSelectAll" TypeName="TLLib.Project">
+                <SelectParameters>
+                    <asp:Parameter Name="StartRowIndex" Type="String" />
+                    <asp:Parameter Name="EndRowIndex" Type="String" />
+                    <asp:Parameter Name="Keyword" Type="String" />
+                    <asp:Parameter Name="ProjectTitle" Type="String" />
+                    <asp:Parameter Name="Description" Type="String" />
+                    <asp:Parameter DefaultValue="53" Name="ProjectCategoryID" Type="String" />
+                    <asp:Parameter Name="Tag" Type="String" />
+                    <asp:Parameter Name="IsHot" Type="String" />
+                    <asp:Parameter Name="IsNew" Type="String" />
+                    <asp:Parameter Name="IsShowOnHomePage" Type="String" />
+                    <asp:Parameter Name="FromDate" Type="String" />
+                    <asp:Parameter Name="ToDate" Type="String" />
+                    <asp:Parameter DefaultValue="True" Name="IsAvailable" Type="String" />
+                    <asp:Parameter Name="Priority" Type="String" />
+                    <asp:Parameter DefaultValue="True" Name="SortByPriority" Type="String" />
+                </SelectParameters>
+            </asp:ObjectDataSource>
         </div>
-    </div>
+        <div class="pager">
+            <asp:DataPager ID="DataPager1" runat="server" PageSize="5" PagedControlID="lstHoiBacSi">
+                <Fields>
+                    <asp:NextPreviousPagerField ButtonType="Link" ShowFirstPageButton="false"
+                        ShowNextPageButton="false" ShowPreviousPageButton="true" ButtonCssClass="prev fa fa-angle-left"
+                        RenderDisabledButtonsAsLabels="true" PreviousPageText="" />
+                    <asp:NumericPagerField ButtonCount="5" NumericButtonCssClass="numer-paging"
+                        CurrentPageLabelCssClass="current" />
+                    <asp:NextPreviousPagerField ButtonType="Link" ShowLastPageButton="false"
+                        ButtonCssClass="next fa fa-angle-right" ShowNextPageButton="true" ShowPreviousPageButton="false"
+                        RenderDisabledButtonsAsLabels="true" NextPageText="" />
+                </Fields>
+            </asp:DataPager>
+        </div>
+        <div class="datcauhoi popup scroll-popup">
+            <div class="popup-content">
+                <div class="form-popup">
+                    <h3>Đặt câu hỏi</h3>
+                    <div class="wrap-dch">
+                        <div class="form-group">
+                            <asp:TextBox ID="txtFullNameQuestion" runat="server"></asp:TextBox>
+                            <asp:TextBoxWatermarkExtender ID="txtFullNameQuestion_WatermarkExtender" runat="server" Enabled="True"
+                                WatermarkText="Họ tên (*)" TargetControlID="txtFullNameQuestion">
+                            </asp:TextBoxWatermarkExtender>
+                            <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator5" runat="server"
+                                Display="Dynamic" ValidationGroup="DatCauHoi" ControlToValidate="txtFullNameQuestion"
+                                ErrorMessage="Thông tin bắt buộc!" ForeColor="Red"></asp:RequiredFieldValidator>
+                        </div>
+                        <div class="form-group">
+                            <asp:TextBox ID="txtEmailQuestion" runat="server"></asp:TextBox>
+                            <asp:TextBoxWatermarkExtender ID="txtEmailQuestion_WatermarkExtender" runat="server" Enabled="True"
+                                WatermarkText="Email(*)" TargetControlID="txtEmailQuestion">
+                            </asp:TextBoxWatermarkExtender>
+                            <asp:RegularExpressionValidator CssClass="lb-error" ID="RegularExpressionValidator1"
+                                runat="server" ValidationGroup="DatCauHoi" ControlToValidate="txtEmailQuestion" ErrorMessage="Email is error!"
+                                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic"
+                                ForeColor="Red"></asp:RegularExpressionValidator>
+                            <asp:RequiredFieldValidator CssClass="lb-error" ID="RequiredFieldValidator7" runat="server"
+                                ValidationGroup="DatCauHoi" ControlToValidate="txtEmailQuestion" ErrorMessage="Thông tin bắt buộc!"
+                                Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                        </div>
+                        <div class="form-group">
+                            <asp:TextBox ID="txtPhoneQuestion" runat="server" placeholder="Điện thoại"></asp:TextBox>
+                        </div>
+                        <div class="form-group">
+                            <asp:TextBox ID="txtQuestion" runat="server" placeholder="Câu hỏi muốn đặt" TextMode="MultiLine"></asp:TextBox>
+                        </div>
+                        <div class="btn-gui">
+                            <asp:Button ID="btnGuiCauHoi" runat="server" Text="Gửi câu hỏi" OnClick="btnGuiCauHoi_Click" ValidationGroup="DatCauHoi" />
+                        </div>
+                    </div>
+                </div>
+                <a href="javascript:void(0);" class="close-modal"></a>
+            </div>
+        </div>
+    </asp:Panel>
 </asp:Content>
 

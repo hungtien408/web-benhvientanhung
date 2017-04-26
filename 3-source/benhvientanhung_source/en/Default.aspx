@@ -287,7 +287,7 @@
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
                             <div class="form-group">
-                                <asp:DropDownList ID="dropListChuyenKhoa" runat="server" DataSourceID="odsPhongBanDrop" DataTextField="ProjectCategoryNameEn" DataValueField="ProjectCategoryID" AutoPostBack="true"></asp:DropDownList>
+                                <asp:DropDownList ID="dropListChuyenKhoa" runat="server" DataSourceID="odsPhongBanDrop" DataTextField="ProjectCategoryNameEn" DataValueField="ProjectCategoryID" AutoPostBack="true" OnDataBound="DropDownListKhoa_DataBound"></asp:DropDownList>
                                 <asp:ObjectDataSource ID="odsPhongBanDrop" runat="server" SelectMethod="ProjectCategorySelectAll" TypeName="TLLib.ProjectCategory">
                                     <SelectParameters>
                                         <asp:Parameter DefaultValue="17" Name="parentID" Type="Int32" />
@@ -298,7 +298,7 @@
                                 </asp:ObjectDataSource>
                             </div>
                             <div class="form-group">
-                                <asp:DropDownList ID="dropListBacSi" runat="server" DataSourceID="odsBacSiDrop" DataTextField="ProjectTitleEn" DataValueField="ProjectID" AutoPostBack="true"></asp:DropDownList>
+                                <asp:DropDownList ID="dropListBacSi" runat="server" DataSourceID="odsBacSiDrop" DataTextField="ProjectTitleEn" DataValueField="ProjectID" AutoPostBack="true" OnDataBound="DropDownListBacSi_DataBound"></asp:DropDownList>
                                 <asp:ObjectDataSource ID="odsBacSiDrop" runat="server" SelectMethod="ProjectSelectAll" TypeName="TLLib.Project">
                                     <SelectParameters>
                                         <asp:Parameter Name="StartRowIndex" Type="String" />
@@ -747,7 +747,7 @@
                     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                         <ContentTemplate>
                             <div class="form-group">
-                                <asp:DropDownList ID="dropListChuyenKhoaPopup" runat="server" DataSourceID="odsPhongBanDrop" DataTextField="ProjectCategoryNameEn" DataValueField="ProjectCategoryID" AutoPostBack="true"></asp:DropDownList>
+                                <asp:DropDownList ID="dropListChuyenKhoaPopup" runat="server" DataSourceID="odsPhongBanDrop" DataTextField="ProjectCategoryNameEn" DataValueField="ProjectCategoryID" AutoPostBack="true" OnDataBound="DropDownListKhoa_DataBound"></asp:DropDownList>
                                 <asp:ObjectDataSource ID="odsPhongBanDropPopup" runat="server" SelectMethod="ProjectCategorySelectAll" TypeName="TLLib.ProjectCategory">
                                     <SelectParameters>
                                         <asp:Parameter DefaultValue="17" Name="parentID" Type="Int32" />
@@ -758,7 +758,7 @@
                                 </asp:ObjectDataSource>
                             </div>
                             <div class="form-group">
-                                <asp:DropDownList ID="dropListBacSiPopup" runat="server" DataSourceID="odsBacSiDropPopup" DataTextField="ProjectTitleEn" DataValueField="ProjectID" AutoPostBack="true"></asp:DropDownList>
+                                <asp:DropDownList ID="dropListBacSiPopup" runat="server" DataSourceID="odsBacSiDropPopup" DataTextField="ProjectTitleEn" DataValueField="ProjectID" AutoPostBack="true" OnDataBound="DropDownListBacSi_DataBound"></asp:DropDownList>
                                 <asp:ObjectDataSource ID="odsBacSiDropPopup" runat="server" SelectMethod="ProjectSelectAll" TypeName="TLLib.Project">
                                     <SelectParameters>
                                         <asp:Parameter Name="StartRowIndex" Type="String" />

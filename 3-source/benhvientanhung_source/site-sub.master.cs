@@ -14,6 +14,16 @@ public partial class uc_site_sub : System.Web.UI.MasterPage
         dpGioKham.DateInput.EmptyMessage = "Giờ hẹn (*)";
 
     }
+    protected void DropDownListKhoa_DataBound(object sender, EventArgs e)
+    {
+        var cbo = (DropDownList)sender;
+        cbo.Items.Insert(0, new ListItem("--Chọn Khoa--", ""));
+    }
+    protected void DropDownListBacSi_DataBound(object sender, EventArgs e)
+    {
+        var cbo = (DropDownList)sender;
+        cbo.Items.Insert(0, new ListItem("--Chọn Bác Sĩ--", ""));
+    }
     protected void btnNewLetter_Click(object sender, EventArgs e)
     {
         if (txtEmailNewLetter.Text != "")

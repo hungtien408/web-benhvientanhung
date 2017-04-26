@@ -28,6 +28,16 @@ public partial class _Default : System.Web.UI.Page
             dpGioKhamPopup.DateInput.EmptyMessage = "Giờ hẹn (*)";
         }
     }
+    protected void DropDownListKhoa_DataBound(object sender, EventArgs e)
+    {
+        var cbo = (DropDownList)sender;
+        cbo.Items.Insert(0, new ListItem("--Chọn Khoa--", ""));
+    }
+    protected void DropDownListBacSi_DataBound(object sender, EventArgs e)
+    {
+        var cbo = (DropDownList)sender;
+        cbo.Items.Insert(0, new ListItem("--Chọn Bác Sĩ--", ""));
+    }
     private void sendEmail()
     {
         var strNgayKham = dpNgayKham.SelectedDate.HasValue ? dpNgayKham.SelectedDate.Value.ToShortDateString() : "";
