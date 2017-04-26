@@ -267,6 +267,30 @@ function myfunload() {
         }
     });
 
+    //$('.news-carousel').owlCarousel({
+    //    loop: true,
+    //    autoplaySpeed: 4000,
+    //    margin: 30,
+    //    nav: true,
+    //    autoplay: true,
+    //    autoplayTimeout: 2000,
+    //    autoplayHoverPause: true,
+    //    responsive: {
+    //        0: {
+    //            items: 1
+    //        },
+    //        481: {
+    //            items: 1
+    //        },
+    //        769: {
+    //            items: 2,
+    //        },
+    //        1200: {
+    //            items: 3
+    //        },
+    //    }
+    //});
+
     $('.menu .search .search-img').click(function () {
         $(this).next('.search-form').slideToggle(300);
     });

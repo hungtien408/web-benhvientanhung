@@ -1590,20 +1590,21 @@ a.close-modal {
 /**/
 .news-carousel{
     padding-top:25px;
+    margin:0 -15px;
 }
 .news-carousel .item {
-    margin-bottom:-30px;
+    margin-bottom:15px;
+    width:calc(50% - 4px);
+    display:inline-block;
+    vertical-align:top;
+    padding:0 15px;
 }
 .news-carousel .item > img {
     width:100%;
 }
 .news-carousel .item .content {
-    width:calc(100% - 20px);
+    width:100%;
     background:#fff;
-    padding:15px;
-    float:right;
-    /*position:relative;*/
-    top:-40px;
 }
 .news-carousel .item .content > a{
     color:#00a7ee;
@@ -3400,6 +3401,9 @@ form.gsc-search-box {
     }
 
     .img-lkht{
+        width:100%;
+    }
+    .news-carousel .item {
         width:100%;
     }
 }

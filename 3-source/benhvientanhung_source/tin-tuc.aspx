@@ -50,7 +50,7 @@
                 <ItemTemplate>
                     <div role="tabpanel" class="tab-pane" id='<%# "tab" + Eval("ProjectCategoryID") %>'>
                         <asp:HiddenField ID="hdnProjectCategoryID" Value='<%# Eval("ProjectCategoryID") %>' runat="server" />
-                        <div class="news-carousel owl-carousel">
+                        <div class="news-carousel">
                             <asp:ListView ID="lstTinTuc" runat="server" DataSourceID="odsTinTuc"
                                 EnableModelValidation="True">
                                 <ItemTemplate>
