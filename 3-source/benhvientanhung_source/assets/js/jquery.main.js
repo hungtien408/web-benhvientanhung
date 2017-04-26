@@ -243,8 +243,7 @@ function myfunload() {
         ]
     });
 
-
-    $('.news-carousel').owlCarousel({
+    $('.camnhan-carousel').owlCarousel({
         loop: true,
         autoplaySpeed: 4000,
         margin: 30,
@@ -260,10 +259,10 @@ function myfunload() {
                 items: 1
             },
             769: {
-                items: 2,
+                items: 2
             },
             1200: {
-                items: 3
+                items: 2
             },
         }
     });

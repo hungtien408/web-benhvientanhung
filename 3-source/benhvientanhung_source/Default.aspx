@@ -584,34 +584,36 @@
                     <h1>Cảm nhận bệnh nhân</h1>
                 </div>
                 <div class="camnhan-item">
-                    <asp:ListView ID="lstCamNhanBenhNhan" runat="server" DataSourceID="odsCamNhanBenhNhan"
-                        EnableModelValidation="True">
-                        <ItemTemplate>
-                            <div class="item">
-                                <div class="img">
-                                    <img alt='<%# Eval("ImageName") %>' src='<%# "~/res/project/" + Eval("ImageName") %>'
-                                        visible='<%# string.IsNullOrEmpty( Eval("ImageName").ToString()) ? false : true %>'
-                                        runat="server" />
-                                </div>
-                                <div class="content">
-                                    <p><%# Eval("Content") %></p>
-                                    <span><%# Eval("ProjectTitle") %></span>
-                                    <div style="width: 100%; margin-top: 10px;">
-                                        <div class="fb-like" data-href='<%= "http://www.benhvientanhung.com/" + Request.Url.AbsolutePath.Substring(Request.Url.AbsolutePath.LastIndexOf("/") + 1) %>'
-                                            data-send="false" data-layout="button_count" data-width="50" data-show-faces="true">
-                                        </div>
-                                        <div class="fb-share-button"
-                                            data-href='<%= "http://www.benhvientanhung.com/" + Request.Url.AbsolutePath.Substring(Request.Url.AbsolutePath.LastIndexOf("/") + 1) %>'
-                                            data-layout="button_count">
+                    <div class="camnhan-carousel owl-carousel">
+                        <asp:ListView ID="lstCamNhanBenhNhan" runat="server" DataSourceID="odsCamNhanBenhNhan"
+                            EnableModelValidation="True">
+                            <ItemTemplate>
+                                <div class="item">
+                                    <div class="img">
+                                        <img alt='<%# Eval("ImageName") %>' src='<%# "~/res/project/" + Eval("ImageName") %>'
+                                            visible='<%# string.IsNullOrEmpty( Eval("ImageName").ToString()) ? false : true %>'
+                                            runat="server" />
+                                    </div>
+                                    <div class="content">
+                                        <p><%# Eval("Content") %></p>
+                                        <span><%# Eval("ProjectTitle") %></span>
+                                        <div style="width: 100%; margin-top: 10px;">
+                                            <div class="fb-like" data-href='<%= "http://www.benhvientanhung.com/" + Request.Url.AbsolutePath.Substring(Request.Url.AbsolutePath.LastIndexOf("/") + 1) %>'
+                                                data-send="false" data-layout="button_count" data-width="50" data-show-faces="true">
+                                            </div>
+                                            <div class="fb-share-button"
+                                                data-href='<%= "http://www.benhvientanhung.com/" + Request.Url.AbsolutePath.Substring(Request.Url.AbsolutePath.LastIndexOf("/") + 1) %>'
+                                                data-layout="button_count">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </ItemTemplate>
-                        <LayoutTemplate>
-                            <span runat="server" id="itemPlaceholder" />
-                        </LayoutTemplate>
-                    </asp:ListView>
+                            </ItemTemplate>
+                            <LayoutTemplate>
+                                <span runat="server" id="itemPlaceholder" />
+                            </LayoutTemplate>
+                        </asp:ListView>
+                    </div>
                     <asp:ObjectDataSource ID="odsCamNhanBenhNhan" runat="server" SelectMethod="ProjectSelectAll" TypeName="TLLib.Project">
                         <SelectParameters>
                             <asp:Parameter Name="StartRowIndex" Type="String" />
