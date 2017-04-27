@@ -1601,7 +1601,7 @@ a.close-modal {
 }
 .news-carousel .item {
     margin-bottom:15px;
-    width:calc(33.3333% - 4px);
+    width:calc(25% - 4px);
     display:inline-block;
     vertical-align:top;
     padding:0 15px;
@@ -3134,6 +3134,10 @@ form.gsc-search-box {
     /**/
     .lich-right > img {
         left:35px;
+    }
+    /**/
+    .news-carousel .item {
+        width:calc(33.3333% - 4px);
     }
 }
 
