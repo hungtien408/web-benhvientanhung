@@ -52,7 +52,7 @@
                         <asp:HiddenField ID="hdnProjectCategoryID" Value='<%# Eval("ProjectCategoryID") %>' runat="server" />
                         <div class="news-carousel">
                             <asp:ListView ID="lstTinTuc" runat="server" DataSourceID="odsTinTuc"
-                                EnableModelValidation="True">
+                                EnableModelValidation="True" OnDataBound="lstTinTuc_DataBound">
                                 <ItemTemplate>
                                     <div class="item">
                                         <img alt='<%# Eval("ImageName") %>' src='<%# "~/res/project/" + Eval("ImageName") %>'
@@ -88,6 +88,20 @@
                                     <asp:Parameter DefaultValue="True" Name="SortByPriority" Type="String" />
                                 </SelectParameters>
                             </asp:ObjectDataSource>
+                        </div>
+                        <div class="pager">
+                            <asp:DataPager ID="DataPager2" runat="server" PageSize="10" PagedControlID="lstTinTuc">
+                                <Fields>
+                                    <asp:NextPreviousPagerField ButtonType="Link" ShowFirstPageButton="false"
+                                        ShowNextPageButton="false" ShowPreviousPageButton="true" ButtonCssClass="prev fa fa-angle-left"
+                                        RenderDisabledButtonsAsLabels="true" PreviousPageText="" />
+                                    <asp:NumericPagerField ButtonCount="5" NumericButtonCssClass="numer-paging"
+                                        CurrentPageLabelCssClass="current" />
+                                    <asp:NextPreviousPagerField ButtonType="Link" ShowLastPageButton="false"
+                                        ButtonCssClass="next fa fa-angle-right" ShowNextPageButton="true" ShowPreviousPageButton="false"
+                                        RenderDisabledButtonsAsLabels="true" NextPageText="" />
+                                </Fields>
+                            </asp:DataPager>
                         </div>
                     </div>
                 </ItemTemplate>

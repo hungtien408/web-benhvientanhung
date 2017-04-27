@@ -1607,7 +1607,9 @@ a.close-modal {
     padding:0 15px;
 }
 .news-carousel .item > img {
-    width:100%;
+    /*width:100%;*/
+    width: 201px;
+    height: 134px;
 }
 .news-carousel .item .content {
     width:100%;
@@ -1615,7 +1617,7 @@ a.close-modal {
 }
 .news-carousel .item .content > a{
     color:#00a7ee;
-    font-size:16px;
+    font-size:15px;
     font-weight:bold;
     margin-bottom:5px;
     display:block;
@@ -3049,7 +3051,9 @@ form.gsc-search-box {
     padding:0 10px;
 }
 .csvc-cate .item .img img{
-    width:100%;
+    /*width:100%;*/
+    width: 238px;
+    height: 200px;
 }
 .csvc-cate .item .content a {
     padding:5px 0;
@@ -3501,6 +3505,7 @@ form.gsc-search-box {
 }
 .thietbi-carousel .owl-item img{
     height: 220px;
+    border: 2px solid #cdd9e1;
 }
 .thietbi-carousel .owl-item .item a p {
     color:#363636;
@@ -3607,6 +3612,7 @@ form.gsc-search-box {
 /**/
 .swiper-container .swiper-slide img {
     width:110px;
+    height: 73px;
     display:inline-block;
     vertical-align:top;
 }

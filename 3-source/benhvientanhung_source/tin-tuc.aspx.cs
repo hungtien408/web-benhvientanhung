@@ -73,4 +73,8 @@ public partial class tintuc : System.Web.UI.Page
             //}
         }
     }
+    protected void lstTinTuc_DataBound(object sender, EventArgs e)
+    {
+        
+    }
 }

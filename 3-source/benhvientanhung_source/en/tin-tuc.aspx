@@ -89,6 +89,20 @@
                                 </SelectParameters>
                             </asp:ObjectDataSource>
                         </div>
+                        <div class="pager">
+                            <asp:DataPager ID="DataPager2" runat="server" PageSize="10" PagedControlID="lstTinTuc">
+                                <Fields>
+                                    <asp:NextPreviousPagerField ButtonType="Link" ShowFirstPageButton="false"
+                                        ShowNextPageButton="false" ShowPreviousPageButton="true" ButtonCssClass="prev fa fa-angle-left"
+                                        RenderDisabledButtonsAsLabels="true" PreviousPageText="" />
+                                    <asp:NumericPagerField ButtonCount="5" NumericButtonCssClass="numer-paging"
+                                        CurrentPageLabelCssClass="current" />
+                                    <asp:NextPreviousPagerField ButtonType="Link" ShowLastPageButton="false"
+                                        ButtonCssClass="next fa fa-angle-right" ShowNextPageButton="true" ShowPreviousPageButton="false"
+                                        RenderDisabledButtonsAsLabels="true" NextPageText="" />
+                                </Fields>
+                            </asp:DataPager>
+                        </div>
                     </div>
                 </ItemTemplate>
                 <LayoutTemplate>
