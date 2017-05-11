@@ -1098,7 +1098,8 @@ section.thietbi {
     width: calc(100% - 230px);
 }
 h1.content-tit{
-  font-family: 'UTMGodsWordBold';
+  /*font-family: 'UTMGodsWordBold';*/
+  font-family: 'Cambria';
   font-size:24px;
   color:#41535b;
   text-transform:uppercase;
