@@ -326,7 +326,7 @@
                                         <asp:Parameter Name="Keyword" Type="String" />
                                         <asp:Parameter Name="ProjectTitle" Type="String" />
                                         <asp:Parameter Name="Description" Type="String" />
-                                        <asp:ControlParameter ControlID="dropListChuyenKhoa" Name="ProjectCategoryID" PropertyName="SelectedValue" Type="String" />
+                                        <asp:ControlParameter ControlID="dropListChuyenKhoa" DefaultValue="0" Name="ProjectCategoryID" PropertyName="SelectedValue" Type="String" />
                                         <asp:Parameter Name="Tag" Type="String" />
                                         <asp:Parameter Name="IsHot" Type="String" />
                                         <asp:Parameter Name="IsNew" Type="String" />
